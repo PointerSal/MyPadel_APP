@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MyPadelApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MyPadelApp"
+    xmlns:views="clr-namespace:MyPadelApp.Views"
+    xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarBackgroundColor="#59674b"
+    Shell.TabBarUnselectedColor="White"
+    Shell.TabBarTitleColor="#a4b0e7"
+    Shell.TabBarForegroundColor="#a4b0e7"
+    Title="MyPadelApp">
+
+    <TabBar>
+        <Tab Icon="chip" Title="{localization:Translate SearchField}">
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage"/>
+        </Tab>
+        <Tab Icon="profile" Title="{localization:Translate MyProfile}">
+            <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}" Route="MyProfilePage"/>
+        </Tab>
+        <Tab Icon="ball" Title="{localization:Translate MatchHistory}">
+            <ShellContent ContentTemplate="{DataTemplate views:MatchHistoryPage}" Route="HistoryPage"/>
+        </Tab>
+    </TabBar>
+
+</Shell>

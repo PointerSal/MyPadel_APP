@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.HomePage"
+             xmlns:local="clr-namespace:MyPadelApp.Converters"
+             BackgroundColor="#404a36"
+             Shell.TabBarIsVisible="True"
+             Shell.NavBarIsVisible="False"
+             Title="">
+    <ContentPage.Resources>
+        <Style x:Key="MyGrid" TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#a4b0e7" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <local:StatusToColorConverter x:Key="StatusToColorConverter"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" RowSpacing="10">
+        <Grid ColumnDefinitions="*,Auto" BackgroundColor="#59674b"  Padding="20,5">
+            <Label Text="{localization:Translate LogoText}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+        </Grid>
+        <Label Grid.Row="1" Text="{localization:Translate WhenYouWantToPlay}" TextColor="White" FontSize="23" FontAttributes="Bold" FontFamily="" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Margin="20,0"/>
+        <CollectionView Grid.Row="2" ItemsSource="{Binding CalendarItems}" Margin="20,0" SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid BackgroundColor="Transparent" Padding="0" Style="{StaticResource MyGrid}">
+                        <StackLayout Padding="5">
+                            <Label Text="{Binding Day}" TextColor="White" FontSize="13" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding Date, StringFormat='{0:dd}'}" TextColor="White" FontSize="20" FontAttributes="Bold" FontFamily="" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding MonthName}" TextColor="White" FontSize="13" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <StackLayout Grid.Row="4" Spacing="10" Margin="20,0">
+            <Label Text="{localization:Translate SportText}" Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
+            <HorizontalStackLayout Spacing="10">
+                <Border BackgroundColor="#a4b0e7"
+                        Stroke="White"
+                        StrokeShape="RoundRectangle 70"
+                        StrokeThickness="2"
+                        Padding="20,5"
+                        x:Name="PadelBorder">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="{localization:Translate PadelText}" Style="{StaticResource TooMicroAlginCenter}" />
+                </Border>
+                <Border BackgroundColor="Transparent"
+                        Stroke="White"
+                        StrokeShape="RoundRectangle 70"
+                        StrokeThickness="2"
+                        Padding="20,5"
+                        x:Name="TennisBorder">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="{localization:Translate TennisText}" Style="{StaticResource TooMicroAlginCenter}" />
+                </Border>
+            </HorizontalStackLayout>
+            <Label Text="{localization:Translate WhichTimeSlotToPlay}" Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
+            <Label Text="{localization:Translate PadelCourt1}" Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
+
+            <ScrollView Orientation="Horizontal">
+                <StackLayout BindableLayout.ItemsSource="{Binding TimeSlots}"
+                 Spacing="-3"
+                 Orientation="Horizontal">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Border BackgroundColor="Transparent"
+                                        Stroke="White"
+                                        Padding="10"
+                                        Opacity="1"
+                                        ZIndex="1"
+                                        StrokeThickness="2">
+                                    <Label Text="{Binding Time,StringFormat='{0:HH:mm}'}"
+                                           TextColor="White"
+                                           FontSize="10"
+                                           ZIndex="1"
+                                           FontAttributes="Bold"
+                                           FontFamily=""
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Border>
+                                <Border BackgroundColor="Red"
+                                        Stroke="White"
+                                        Padding="10"
+                                        Opacity="0.9"
+                                        ZIndex="1"
+                                        IsVisible="False"
+                                        StrokeThickness="2">
+                                    <Label Text="{Binding Status}"
+                                           TextColor="White"
+                                           FontSize="14"
+                                           Opacity="1"
+                                           ZIndex="1"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Binding="{Binding Status}" Value="Prenotato">
+                                            <Setter Property="IsVisible" Value="True"/>
+                                        </DataTrigger>
+                                    </Border.Triggers>
+                                </Border>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+
+
+            <Label Text="{localization:Translate PadelCourt2}" Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
+            <ScrollView Orientation="Horizontal">
+                <StackLayout BindableLayout.ItemsSource="{Binding TimeSlots2}"
+                             Spacing="-3"
+                             Orientation="Horizontal"> 
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Border BackgroundColor="Transparent"
+                             Stroke="White"
+                             Padding="10"
+                             Opacity="1"
+                             ZIndex="1"
+                             StrokeThickness="2">
+                                    <Label Text="{Binding Time,StringFormat='{0:HH:mm}'}"
+                                TextColor="White"
+                                FontSize="10"
+                                ZIndex="1"
+                                FontAttributes="Bold"
+                                FontFamily=""
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                                </Border>
+                                <Border BackgroundColor="Red"
+                             Stroke="White"
+                             Padding="10"
+                             Opacity="0.9"
+                            ZIndex="1"
+                             IsVisible="False"
+                             StrokeThickness="2">
+                                    <Label Text="{Binding Status}"
+                                TextColor="White"
+                                FontSize="14"
+                                Opacity="1"
+                                ZIndex="1"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Binding="{Binding Status}" Value="Prenotato">
+                                            <Setter Property="IsVisible" Value="True"/>
+                                        </DataTrigger>
+                                    </Border.Triggers>
+                                </Border>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+        <Button Grid.Row="5" Text="{localization:Translate BookButton}"  Style="{StaticResource BlueButtonStyle}" Margin="20"/>
+    </Grid>
+</ContentPage>

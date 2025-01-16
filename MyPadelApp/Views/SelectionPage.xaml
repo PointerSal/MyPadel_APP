@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.SelectionPage"
+             BackgroundColor="Black"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             Title="">
+
+    <Grid RowDefinitions="*,Auto" Margin="10,0,10,20">
+        <HorizontalStackLayout x:Name="horizontalswitch" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" FlowDirection="LeftToRight">
+            <Label Text="English" Style="{StaticResource SmallLabelStyle}" VerticalOptions="CenterAndExpand">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}" Value="true">
+                        <Setter Property="Text" Value="Itailian" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Switch x:Name="styleSwitch" Style="{StaticResource GreenSwitch}" Toggled="styleSwitch_Toggled"/>
+        </HorizontalStackLayout>
+        <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20" Margin="0,0,0,70">
+            <Label Text="{localization:Translate LogoText}" Style="{StaticResource LargeLogoLabelStyleAlignCenter}"/>
+            <StackLayout>
+                <Label Text="{localization:Translate ReadyToPlayText}" Style="{StaticResource LabelStyleAlginCenter}"/>
+                <Label Text="{localization:Translate AccessText}" Style="{StaticResource LabelUnBoldStyleAlginCenter}"/>
+            </StackLayout>
+            <Button Text="{localization:Translate RegisterText}" Style="{StaticResource BlueButtonStyle}" Clicked="OnRegisteredClicked"/>
+            <Button Text="{localization:Translate LoginButton}" Style="{StaticResource TransparentButtonStyle}" Clicked="OnLoginClicked"/>
+        </StackLayout>
+        <Label Grid.Row="1">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{localization:Translate TermsText}" Style="{StaticResource SpanWhiteUnbold}"/>
+                    <Span Text="{localization:Translate ConditionsText}" Style="{StaticResource SpanLightBlueUnbold}"/>
+                    <Span Text="{localization:Translate ConditionsTermsText}" Style="{StaticResource SpanWhiteUnbold}"/>
+                    <Span Text="{localization:Translate PrivacyText}" Style="{StaticResource SpanLightBlueUnbold}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyPadelApp.Views.BookedFieldPage"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             BackgroundColor="Black"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             Title="">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#404a36" Offset="0.1" />
+            <GradientStop Color="#869770" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="20" RowSpacing="20">
+        <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="40" Margin="0,30">
+            <Label Text="{localization:Translate VerificationMessage}" 
+                   Style="{StaticResource LargeLabelStyleCenter}"
+                   FontAttributes="None"
+                   HorizontalOptions="StartAndExpand"
+                   HorizontalTextAlignment="Start"/>
+        </StackLayout>
+        <Button Grid.Row="3" 
+                Text="{localization:Translate BookFieldButton}" 
+                Style="{StaticResource BlueButtonStyle}"
+                Clicked="OnBookedClicked"/>
+    </Grid>
+</ContentPage>

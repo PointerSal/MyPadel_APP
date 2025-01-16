@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.AccountDeletionPage"
+             BackgroundColor="#404a36"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             Title="">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Grid ColumnDefinitions="*,Auto" BackgroundColor="#59674b" Padding="20,5">
+            <Label Text="{localization:Translate LogoText}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+        </Grid>
+        <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="40" Margin="20">
+            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Clicked="ImageButton_Clicked"/>
+            <StackLayout Spacing="5">
+                <Label Text="{localization:Translate AttentionTitle}" Style="{StaticResource MediumLabelStyleHorizontalStart}"/>
+                <Label Text="{localization:Translate AttentionDescription}" Style="{StaticResource MediumLabelStyleHorizontalStart}"/>
+            </StackLayout>
+            <StackLayout Spacing="5">
+                <Grid>
+                    <Entry x:Name="currentpasswordEntry" Placeholder="{localization:Translate PasswordPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default" IsPassword="True"/>
+                    <ImageButton x:Name="currentpasswordImage" Source="closeeye.png" Style="{StaticResource PasswordImageStyle}" Clicked="OnCurrentPasswordEyeClicked">
+                        <ImageButton.Triggers>
+                            <DataTrigger TargetType="ImageButton" Binding="{Binding IsPassword, Source={x:Reference currentpasswordEntry}}" Value="True">
+                                <Setter Property="WidthRequest" Value="45" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="ImageButton" Binding="{Binding IsPassword, Source={x:Reference currentpasswordEntry}}" Value="False">
+                                <Setter Property="WidthRequest" Value="43" />
+                            </DataTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
+                    <BoxView Style="{StaticResource BoxViewStyle}"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+        <Button Grid.Row="2" Text="{localization:Translate ConfirmButtonText}" Style="{StaticResource BlueButtonStyle}" Margin="20"/>
+    </Grid>
+</ContentPage>

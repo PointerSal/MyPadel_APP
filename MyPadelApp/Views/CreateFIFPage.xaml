@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.CreateFIFPage"
+             BackgroundColor="Black"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             Title="{localization:Translate PageTitle}">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#404a36" Offset="0.1" />
+            <GradientStop Color="#869770" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="20" RowSpacing="20">
+        <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Clicked="OnBackClicked"/>
+        <ScrollView Grid.Row="1" Orientation="Vertical">
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="10" Margin="0,0,0,10">
+                <StackLayout Spacing="5">
+                    <Label Text="{localization:Translate RegistrationHeading}" Style="{StaticResource LabelStyleHorizontalStart}" />
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{localization:Translate RegistrationDescription}" Style="{StaticResource SmallUnBoldStyleHorizontalStart}" />
+                                <Span Text=" " Style="{StaticResource SmallUnBoldStyleHorizontalStart}" />
+                                <Span Text="{localization:Translate RegistrationFooter}" Style="{StaticResource SmallSpanWhitebold}" TextDecorations="Underline"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <StackLayout Spacing="5">
+                    <Grid>
+                        <Entry Placeholder="{localization:Translate NamePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Grid>
+                        <Entry Placeholder="{localization:Translate SurnamePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Grid>
+                        <Entry Placeholder="{localization:Translate GenderPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Grid>
+                        <Entry Placeholder="{localization:Translate CardNumberPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Grid>
+                        <Entry Placeholder="{localization:Translate AddressPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Grid>
+                        <Entry Placeholder="{localization:Translate ZipCodePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Grid>
+                        <Entry Placeholder="{localization:Translate CityPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="{localization:Translate UploadMedicalCertificate}" Style="{StaticResource LabelStyleHorizontalStart}"/>
+                        <ImageButton Grid.Column="1" Source="camera" Style="{StaticResource CameraImageStyle}" Clicked="OnCameraClicked"/>
+                    </Grid>
+                </StackLayout>
+                <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                    <StackLayout Spacing="5">
+                        <Label Text="{localization:Translate PaymentMethodHeading}" Style="{StaticResource SmallSpanWhitebold}"/>
+                        <Label Text="{localization:Translate PaymentOptionPayPal}" Style="{StaticResource SmallSpanWhitebold}"/>
+                        <Label Text="{localization:Translate PaymentOptionCreditCard}" Style="{StaticResource SmallSpanLightBluebold}"/>
+                        <Label Text="{localization:Translate PaymentOptionSatispay}" Style="{StaticResource SmallSpanWhitebold}"/>
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+        </ScrollView>
+        <Button Grid.Row="3" Text="{localization:Translate ProceedPayment}" Style="{StaticResource BlueButtonStyle}" Clicked="OnConfirmClicked"/>
+    </Grid>
+</ContentPage>

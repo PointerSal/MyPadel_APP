@@ -1,0 +1,205 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MyPadelApp
+build_property.ProjectDir = C:\Users\Sal\source\repos\MyPadel_APP\MyPadelApp\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/AccountDeletionPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.AccountDeletionPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AccountDeletionPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AccountDeletionPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/AlreadyFITCardPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.AlreadyFITCardPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AlreadyFITCardPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AlreadyFITCardPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/BookedFieldPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.BookedFieldPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\BookedFieldPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\BookedFieldPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/BookingSummaryPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.BookingSummaryPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\BookingSummaryPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\BookingSummaryPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/CancelBookingPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.CancelBookingPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\CancelBookingPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\CancelBookingPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/CompanyInfoPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.CompanyInfoPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\CompanyInfoPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\CompanyInfoPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/CreateFIFPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.CreateFIFPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\CreateFIFPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\CreateFIFPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/FinalStepPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.FinalStepPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\FinalStepPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\FinalStepPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/FITCardPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.FITCardPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\FITCardPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\FITCardPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/HistoryBookingSummaryPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.HistoryBookingSummaryPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\HistoryBookingSummaryPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\HistoryBookingSummaryPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/HomePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.HomePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\HomePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\HomePage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/MatchHistoryPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.MatchHistoryPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MatchHistoryPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MatchHistoryPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/MedicalCertificatePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.MedicalCertificatePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MedicalCertificatePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MedicalCertificatePage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/MyProfilePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.MyProfilePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MyProfilePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MyProfilePage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/PasswordChangedPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.PasswordChangedPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PasswordChangedPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PasswordChangedPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/PaymentBookingSummary.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.PaymentBookingSummary.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PaymentBookingSummary.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PaymentBookingSummary.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/PaymentMethodPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.PaymentMethodPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PaymentMethodPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PaymentMethodPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/PaymentScreenPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.PaymentScreenPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PaymentScreenPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PaymentScreenPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/ProfileInformationPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.ProfileInformationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ProfileInformationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ProfileInformationPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/RegisterPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.RegisterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\RegisterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\RegisterPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/RegistrationResendOTPPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.RegistrationResendOTPPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\RegistrationResendOTPPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\RegistrationResendOTPPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/ResendEmailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.ResendEmailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ResendEmailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ResendEmailPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/ResetPasswordOTPPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.ResetPasswordOTPPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ResetPasswordOTPPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ResetPasswordOTPPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/ResetPasswordPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.ResetPasswordPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ResetPasswordPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ResetPasswordPage.xaml
+
+[C:/Users/Sal/source/repos/MyPadel_APP/MyPadelApp/Views/SelectionPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MyPadelApp.Views.SelectionPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SelectionPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SelectionPage.xaml

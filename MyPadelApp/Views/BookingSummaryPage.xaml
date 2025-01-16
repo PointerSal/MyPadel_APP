@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.BookingSummaryPage"
+             BackgroundColor="#404a36"
+             Shell.TabBarIsVisible="True"
+             Shell.NavBarIsVisible="False"
+             Title="">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="10">
+        <Grid ColumnDefinitions="*,Auto" BackgroundColor="#59674b" Padding="20,5">
+            <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+        </Grid>
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Padding="20,5">
+            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Clicked="OnBackClicked"/>
+            <Label Grid.Column="1" Text="{localization:Translate BookingSummaryTitle}" Style="{StaticResource LargeLabelStyleCenter}" FontFamily=""/>
+        </Grid>
+
+        <Border Grid.Row="2" Style="{StaticResource MenuBoxBorder}">
+            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+                <Label Grid.Row="0" Text="{localization:Translate Padel}" Style="{StaticResource SmallBoldLabelStyleHorizontalStart}"/>
+                <Label Grid.Row="1" Text="{localization:Translate CampoPadel2}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
+
+                <Image Grid.RowSpan="2" Source="tennis" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="EndAndExpand"/>
+                <Grid Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*" Margin="0,10,0,0">
+                    <Label Grid.Row="0" Grid.Column="0" Text="{localization:Translate Date}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="15 nov" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Grid.Row="0" Grid.Column="1" Text="{localization:Translate Time}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="11:15" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Grid.Row="0" Grid.Column="2" Text="{localization:Translate Duration}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                    <Label Grid.Row="1" Grid.Column="2" Text="90 min" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Grid.Row="0" Grid.Column="3" Text="{localization:Translate Price}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                    <Label Grid.Row="1" Grid.Column="3" Text="44€" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <StackLayout Grid.Row="3" Margin="20,0" Spacing="20">
+            <Label Text="{localization:Translate SelectDuration}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
+            <HorizontalStackLayout Spacing="10">
+                <Border BackgroundColor="#a4b0e7" Stroke="White" StrokeShape="RoundRectangle 70" StrokeThickness="2" Padding="20,5" x:Name="min60Border">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="{localization:Translate Min60}" Style="{StaticResource TooMicroAlginCenter}" />
+                </Border>
+                <Border BackgroundColor="Transparent" Stroke="White" StrokeShape="RoundRectangle 70" StrokeThickness="2" Padding="20,5" x:Name="min90Border">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="{localization:Translate Min90}" Style="{StaticResource TooMicroAlginCenter}" />
+                </Border>
+                <Border BackgroundColor="Transparent" Stroke="White" StrokeShape="RoundRectangle 70" StrokeThickness="2" Padding="20,5" x:Name="min120Border">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="{localization:Translate Min120}" Style="{StaticResource TooMicroAlginCenter}" />
+                </Border>
+            </HorizontalStackLayout>
+
+            <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                <StackLayout Spacing="5">
+                    <Label Text="{localization:Translate PaymentMethod}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                    <Label Text="{localization:Translate PaymentOptionCash}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                    <Label Text="{localization:Translate PaymentOptionPayPal}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                    <Label Text="{localization:Translate PaymentOptionCreditCard}" TextColor="#24a9ff" FontAttributes="Bold" FontFamily="" FontSize="14"/>
+                </StackLayout>
+            </Border>
+
+            <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                <StackLayout Spacing="5">
+                    <Label Text="{localization:Translate CancellationPolicy}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                    <Label Text="{localization:Translate CancellationDetails}" Style="{StaticResource UnboldSmallLabelStyle}"/>
+                </StackLayout>
+            </Border>
+        </StackLayout>
+        <Button Grid.Row="4" Text="{localization:Translate PayOnline}" Style="{StaticResource BlueButtonStyle}" Clicked="Button_Clicked" Margin="20"/>
+    </Grid>
+</ContentPage>

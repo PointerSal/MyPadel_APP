@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.PaymentScreenPage"
+             BackgroundColor="Black"
+             Shell.TabBarIsVisible="{Binding IsHomeScreen}"
+             Shell.NavBarIsVisible="False"
+             Title=""
+             x:Name="this">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#404a36" Offset="0.1" />
+            <GradientStop Color="#869770" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="*,Auto" Margin="20" RowSpacing="20">
+        <Label Text="{localization:Translate PaymentScreenTitle}" 
+               Style="{StaticResource VeryLargeLabelStyleHorizontalStart}"/>
+
+        <Button Grid.Row="1" Text="{localization:Translate PayButtonText}" 
+                Style="{StaticResource BlueButtonStyle}"
+                Clicked="OnPayClicked"/>
+    </Grid>
+</ContentPage>

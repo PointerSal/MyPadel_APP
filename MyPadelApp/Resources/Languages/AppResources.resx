@@ -1,0 +1,941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+	
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+
+  <data name="LogoText" xml:space="preserve">
+    <value>LOGO</value>
+  </data>
+  <data name="AttentionTitle" xml:space="preserve">
+    <value>Attention!</value>
+  </data>
+  <data name="AttentionDescription" xml:space="preserve">
+    <value>By clicking “Confirm Account Deletion,” your account will be deleted. To use the app again, you must re-register!</value>
+  </data>
+  <data name="PasswordPlaceholder" xml:space="preserve">
+    <value>Password</value>
+  </data>
+	<data name="PasswordLoginPlaceholder" xml:space="preserve">
+    <value>Password</value>
+  </data>
+	
+  <data name="ConfirmButtonText" xml:space="preserve">
+    <value>Confirm Account Deletion</value>
+  </data>
+
+<data name="Title" xml:space="preserve">
+  <value>Already FIT Card</value>
+</data>
+<data name="BackButton" xml:space="preserve">
+  <value>Back</value>
+</data>
+	<data name="BookText" xml:space="preserve">
+  <value>Book</value>
+</data>
+<data name="Question" xml:space="preserve">
+  <value>Do you already have a FIT card?</value>
+</data>
+<data name="Instruction" xml:space="preserve">
+  <value>Enter your FIT card. Without it, you cannot play. If you don't have one, we can register it for you.</value>
+</data>
+<data name="CardNumberPlaceholder" xml:space="preserve">
+  <value>Card number</value>
+</data>
+<data name="UploadMedicalCertificate" xml:space="preserve">
+  <value>Upload medical certificate</value>
+</data>
+<data name="RequestNewCard" xml:space="preserve">
+  <value>Request new card</value>
+</data>
+<data name="CreateAccount" xml:space="preserve">
+  <value>Create account</value>
+</data>
+<data name="VerificationMessage" xml:space="preserve">
+  <value>Your details have been entered correctly!&#10;&#10;We are verifying the correctness of your details!&#10;&#10;If the details entered are correct, you will receive a notification and you will be able to track the expiry of your FIT card directly from the app!&#10;&#10;Remember to renew your card before it expires, access the "FIT card" section from "My profile" starting 30 days before the expiry date.</value>
+</data>
+<data name="BookFieldButton" xml:space="preserve">
+  <value>Book a camp</value>
+</data>
+
+<data name="Logo" xml:space="preserve">
+  <value>LOGO</value>
+</data>
+<data name="BookingSummary" xml:space="preserve">
+  <value>Booking Summary</value>
+</data>
+<data name="Padel" xml:space="preserve">
+  <value>PADEL</value>
+</data>
+<data name="CampoPadel2" xml:space="preserve">
+  <value>Padel Field 2</value>
+</data>
+<data name="Date" xml:space="preserve">
+  <value>Date</value>
+</data>
+<data name="Time" xml:space="preserve">
+  <value>Time</value>
+</data>
+<data name="Duration" xml:space="preserve">
+  <value>Duration</value>
+</data>
+<data name="Price" xml:space="preserve">
+  <value>Price</value>
+</data>
+<data name="SelectDuration" xml:space="preserve">
+  <value>Choose the duration</value>
+</data>
+<data name="Min60" xml:space="preserve">
+  <value>60 min</value>
+</data>
+<data name="Min90" xml:space="preserve">
+  <value>90 min</value>
+</data>
+<data name="Min120" xml:space="preserve">
+  <value>120 min</value>
+</data>
+<data name="PaymentMethod" xml:space="preserve">
+  <value>Payment Method:</value>
+</data>
+<data name="PayPal" xml:space="preserve">
+  <value>PayPal</value>
+</data>
+	<data name="CreditCard" xml:space="preserve">
+  <value>Credit card / ATM</value>
+</data>
+<data name="Satispay" xml:space="preserve">
+  <value>Satispay</value>
+</data>
+<data name="CancellationPolicy" xml:space="preserve">
+  <value>Cancellation Policy</value>
+</data>
+<data name="CancellationDetails" xml:space="preserve">
+  <value>You can cancel the booking within 24 hours in advance using the application, then you will necessarily have to call the centre</value>
+</data>
+<data name="PayOnline" xml:space="preserve">
+  <value>Paga Online (44€)</value>
+</data>
+<data name="Logo" xml:space="preserve">
+  <value>LOGO</value>
+</data>
+<data name="BookingSummary" xml:space="preserve">
+  <value>Riepilogo prenotazione</value>
+</data>
+<data name="CampoPadel2" xml:space="preserve">
+  <value>Campo Padel 2</value>
+</data>
+<data name="Date" xml:space="preserve">
+  <value>Data</value>
+</data>
+<data name="Time" xml:space="preserve">
+  <value>Ora</value>
+</data>
+<data name="Duration" xml:space="preserve">
+  <value>Durata</value>
+</data>
+<data name="Price" xml:space="preserve">
+  <value>Prezzo</value>
+</data>
+<data name="SelectDuration" xml:space="preserve">
+  <value>Scegli la durata</value>
+</data>
+<data name="Min60" xml:space="preserve">
+  <value>60 min</value>
+</data>
+<data name="Min90" xml:space="preserve">
+  <value>90 min</value>
+</data>
+<data name="Min120" xml:space="preserve">
+  <value>120 min</value>
+</data>
+<data name="PaymentMethod" xml:space="preserve">
+  <value>Metodo di pagamento:</value>
+</data>
+<data name="PayPal" xml:space="preserve">
+  <value>PayPal</value>
+</data>
+<data name="CreditCard" xml:space="preserve">
+  <value>Carta di credito / Bancomat</value>
+</data>
+<data name="Satispay" xml:space="preserve">
+  <value>Satispay</value>
+</data>
+<data name="CancellationPolicy" xml:space="preserve">
+  <value>Politica di annullamento</value>
+</data>
+<data name="CancellationDetails" xml:space="preserve">
+  <value>Potrai disdire la prenotazione entro 24 ore prima utilizzando l’applicazione, successivamente dovrai necessariamente chiamare il centro</value>
+</data>
+<data name="PayOnline" xml:space="preserve">
+  <value>Paga Online (44€)</value>
+</data>
+	
+	<data name="PageTitle" xml:space="preserve">
+  <value>Cancel Booking</value>
+</data>
+<data name="Logo" xml:space="preserve">
+  <value>LOGO</value>
+</data>
+<data name="BookingSummary" xml:space="preserve">
+  <value>Riepilogo prenotazione</value>
+</data>
+<data name="CancelScreenDescription" xml:space="preserve">
+  <value>CANCEL RESERVATION SCREEN&#10; + &#10;REFUND</value>
+</data>
+<data name="ConfirmButton" xml:space="preserve">
+  <value>Confirm Button</value>
+</data>
+
+	<data name="PageTitle" xml:space="preserve">
+  <value>Company Information</value>
+</data>
+<data name="Logo" xml:space="preserve">
+  <value>LOGO</value>
+</data>
+<data name="CompanyInformation" xml:space="preserve">
+  <value>Company Information</value>
+</data>
+
+	<data name="PageTitle" xml:space="preserve">
+  <value>Registration</value>
+</data>
+<data name="RegistrationHeading" xml:space="preserve">
+  <value>We'll register you!</value>
+</data>
+<data name="RegistrationDescription" xml:space="preserve">
+  <value>Enter the details below to create your FIT card.</value>
+</data>
+<data name="RegistrationFooter" xml:space="preserve">
+  <value>Pick it up at the front desk before you start playing!</value>
+</data>
+<data name="NamePlaceholder" xml:space="preserve">
+  <value>Name</value>
+</data>
+<data name="SurnamePlaceholder" xml:space="preserve">
+  <value>Surname</value>
+</data>
+<data name="GenderPlaceholder" xml:space="preserve">
+  <value>Gender</value>
+</data>
+<data name="CardNumberPlaceholder" xml:space="preserve">
+  <value>Card number</value>
+</data>
+	<data name="ProceedPayment" xml:space="preserve">
+  <value>Proceed to payment</value>
+</data>
+<data name="AddressPlaceholder" xml:space="preserve">
+  <value>Address</value>
+</data>
+	<data name="DateofBrithPlaceholder" xml:space="preserve">
+  <value>Date of Birth (dd-mm-yyyy)</value>
+</data>
+<data name="ZipCodePlaceholder" xml:space="preserve">
+  <value>ZIP code</value>
+</data>
+<data name="CityPlaceholder" xml:space="preserve">
+  <value>City</value>
+</data>
+<data name="UploadMedicalCertificate" xml:space="preserve">
+  <value>Upload medical certificate</value>
+</data>
+<data name="PaymentMethodHeading" xml:space="preserve">
+  <value>Payment method:</value>
+</data>
+<data name="PaymentOptionPayPal" xml:space="preserve">
+  <value>• PayPal</value>
+</data>
+<data name="PaymentOptionCreditCard" xml:space="preserve">
+  <value>• Credit card / Debit card</value>
+</data>
+<data name="PaymentOptionSatispay" xml:space="preserve">
+  <value>• Satispay</value>
+</data>
+<data name="CreateAccountButton" xml:space="preserve">
+  <value>Create account</value>
+</data>
+
+	<data name="FinalStepHeading" xml:space="preserve">
+  <value>The final step!</value>
+</data>
+<data name="HasCardInstruction" xml:space="preserve">
+  <value>I already have a FIT card. Please arrive 20 minutes early before your first match to register your FIT card.</value>
+</data>
+<data name="NoCardInstruction" xml:space="preserve">
+  <value>I don’t have a FIT card. Please arrive 30 minutes early with:
+• ID card
+• Medical Certificate
+To register your new FIT card.</value>
+</data>
+<data name="AcceptTermsText" xml:space="preserve">
+  <value>I accept the Terms and Conditions</value>
+</data>
+<data name="ConfirmButton" xml:space="preserve">
+  <value>Confirm</value>
+</data>
+
+  <!-- Booking Summary Title -->
+  <data name="BookingSummaryTitle" xml:space="preserve">
+    <value>Booking Summary</value>
+  </data>
+
+  <!-- Logo Text -->
+  <data name="LogoText" xml:space="preserve">
+    <value>LOGO</value>
+  </data>
+
+  <!-- Court Padel -->
+  <data name="CourtPadel" xml:space="preserve">
+    <value>Court</value>
+  </data>
+
+  <!-- Date -->
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+
+  <!-- Time -->
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+
+  <!-- Duration -->
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+
+  <!-- Price -->
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+
+  <!-- Payment Method -->
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
+
+  <!-- Credit Card Payment -->
+  <data name="CreditCardPayment" xml:space="preserve">
+    <value>Credit Card</value>
+  </data>
+
+  <!-- Booking Status -->
+  <data name="BookingStatus" xml:space="preserve">
+    <value>Booking Status</value>
+  </data>
+
+  <!-- Booking Status Value -->
+  <data name="BookingStatusValue" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+
+  <!-- Cancellation Policy -->
+  <data name="CancellationPolicy" xml:space="preserve">
+    <value>Cancellation Policy</value>
+  </data>
+
+  <!-- Cancellation Text -->
+  <data name="CancellationText" xml:space="preserve">
+    <value>You can cancel up to 24 hours before your booking.</value>
+  </data>
+
+  <!-- Cancel Booking Button -->
+  <data name="CancelBookingButton" xml:space="preserve">
+    <value>Cancel Booking</value>
+  </data>
+	
+<!-- Logo -->
+  <data name="Logo" xml:space="preserve">
+    <value>LOGO</value>
+  </data>
+
+  <!-- Attention -->
+  <data name="Attention" xml:space="preserve">
+    <value>Attention to expiration!</value>
+  </data>
+
+  <!-- Check Card -->
+  <data name="CheckCard" xml:space="preserve">
+    <value>Always make sure you have the</value>
+  </data>
+
+  <!-- FITCard Active -->
+  <data name="FITCardActive" xml:space="preserve">
+    <value>active FIT card,</value>
+  </data>
+
+  <!-- Renew it -->
+  <data name="RenewIt" xml:space="preserve">
+    <value>if you need to renew it</value>
+  </data>
+
+  <!-- Call Us -->
+  <data name="CallUs" xml:space="preserve">
+    <value>, call us and present yourself</value>
+  </data>
+
+  <!-- Twenty Minutes Before -->
+  <data name="TwentyMinutesBefore" xml:space="preserve">
+    <value>20 minutes before</value>
+  </data>
+
+  <!-- Match Start -->
+  <data name="MatchStart" xml:space="preserve">
+    <value>the start of the match</value>
+  </data>
+
+  <!-- Card Number Placeholder -->
+  <data name="CardNumberPlaceholder" xml:space="preserve">
+    <value>Card number</value>
+  </data>
+	
+<data name="LogoText" xml:space="preserve">
+    <value>LOGO</value>
+</data>
+<data name="EmailPlaceholder" xml:space="preserve">
+    <value>Email Address..</value>
+</data>
+<data name="PasswordPlaceholder" xml:space="preserve">
+    <value>Password</value>
+</data>
+<data name="RecoverPassword" xml:space="preserve">
+    <value>Recover Password</value>
+</data>
+<data name="LoginButton" xml:space="preserve">
+    <value>Sign in</value>
+</data>
+<data name="EmailPasswordInstruction" xml:space="preserve">
+    <value>Enter your email address and password</value>
+</data>
+
+	<data name="MatchHistoryPageTitle" xml:space="preserve">
+    <value>Match History</value>
+</data>
+<data name="Logo" xml:space="preserve">
+    <value>LOGO</value>
+</data>
+<data name="Active" xml:space="preserve">
+    <value>ACTIVE</value>
+</data>
+<data name="Archived" xml:space="preserve">
+    <value>ARCHIVED</value>
+</data>
+<data name="Deleted" xml:space="preserve">
+    <value>DELETED</value>
+</data>
+<data name="Logo" xml:space="preserve">
+    <value>LOGO</value>
+  </data>
+  <data name="CertificateReminder" xml:space="preserve">
+    <value>Beware of the expiration!</value>
+  </data>
+  <data name="CertificateDescription" xml:space="preserve">
+    <value>Always check that you have an active medical certificate, without it you won’t be able to play.</value>
+  </data>
+  <data name="DateLabel" xml:space="preserve">
+    <value>Medical Certificate Expiration Date</value>
+  </data>
+<data name="Logo" xml:space="preserve">
+    <value>LOGO</value>
+</data>
+<data name="ProfileInformation" xml:space="preserve">
+    <value>Profile Information</value>
+</data>
+<data name="FitCard" xml:space="preserve">
+    <value>FIT Card</value>
+</data>
+<data name="HealthCertificate" xml:space="preserve">
+    <value>Medical Certificate</value>
+</data>
+<data name="PaymentMethod" xml:space="preserve">
+    <value>Payment Method</value>
+</data>
+<data name="AccountCancellation" xml:space="preserve">
+    <value>Account Cancellation</value>
+</data>
+<data name="LogIn" xml:space="preserve">
+    <value>Log In</value>
+</data>
+
+	<!-- Resources.it.resx -->
+<!-- Resources.it.resx -->
+<data name="LogoText" xml:space="preserve">
+  <value>LOGO</value>
+</data>
+<data name="PasswordPrompt" xml:space="preserve">
+  <value>Enter e-mail address and password</value>
+</data>
+<data name="ResetNewPasswordPlaceholder" xml:space="preserve">
+  <value>Enter a new password</value>
+</data>
+<data name="ConfirmPasswordPlaceholder" xml:space="preserve">
+  <value>Confirm password..</value>
+</data>
+<data name="UpdatePasswordButton" xml:space="preserve">
+  <value>Update Password</value>
+</data>
+  <data name="PadelCourt" xml:space="preserve">
+    <value>PADEL</value>
+  </data>
+  <data name="CourtName" xml:space="preserve">
+    <value>Padel field 2</value>
+  </data>
+  <data name="BookingDate" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="BookingTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="BookingDuration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="BookingPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>Payment method:</value>
+  </data>
+  <data name="CreditCardMethod" xml:space="preserve">
+    <value>&#x2022; Credit card / ATM</value>
+  </data>
+  <data name="CancellationPolicy" xml:space="preserve">
+    <value>Cancellation Policy</value>
+  </data>
+  <data name="CancellationDescription" xml:space="preserve">
+    <value>You can cancel the booking within 24 hours in advance using the application, then you will necessarily have to call the centre</value>
+  </data>
+  <data name="CloseButton" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CancelBookingButton" xml:space="preserve">
+    <value>Cancel reservation</value>
+  </data>
+	
+<data name="LogoText" xml:space="preserve">
+    <value>LOGO</value>
+  </data>
+  <data name="ScreenTitle" xml:space="preserve">
+    <value>Screen with list of linked cards or PayPal account</value>
+  </data>
+
+ <data name="PaymentScreenTitle" xml:space="preserve">
+        <value>Payment Screen</value>
+    </data>
+    <data name="PayButtonText" xml:space="preserve">
+        <value>Pay</value>
+    </data>
+
+    <data name="ProfileInformationPageTitle" xml:space="preserve">
+        <value>Profile Information</value>
+    </data>
+    <data name="NameLabel" xml:space="preserve">
+        <value>First Last</value>
+    </data>
+    <data name="EmailLabel" xml:space="preserve">
+        <value>Email</value>
+    </data>
+    <data name="PasswordLabel" xml:space="preserve">
+        <value>Password</value>
+    </data>
+	<data name="NewText" xml:space="preserve">
+  <value>Game to play</value>
+</data>
+    <data name="ProfileInfoLabel" xml:space="preserve">
+        <value>Profile Information</value>
+    </data>
+    <data name="FitCardLabel" xml:space="preserve">
+        <value>FIT Card</value>
+    </data>
+    <data name="SecurityLabel" xml:space="preserve">
+        <value>Privacy information</value>
+    </data>
+  <data name="WelcomeText" xml:space="preserve">
+    <value>Welcome!</value>
+  </data>
+	<data name="NewCancellationPolicy" xml:space="preserve">
+    <value>Cancellation Policy</value>
+  </data>
+	<data name="HelpsContact" xml:space="preserve">
+    <value>Help and contacts</value>
+  </data>
+  <data name="EnterDetails" xml:space="preserve">
+    <value>Enter your details and create an account to get started.</value>
+  </data>
+  <data name="AcceptTerms" xml:space="preserve">
+    <value>Accept terms of use and Privacy Policy - Acknowledgment of acceptance</value>
+  </data>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>Create Account</value>
+  </data>
+  <data name="AlmostThere" xml:space="preserve">
+    <value>You're almost there!</value>
+  </data>
+  <data name="PhoneNumberPrompt" xml:space="preserve">
+    <value>Enter your phone number, we'll send you a code to verify your contact.</value>
+  </data>
+  <data name="ResendCode" xml:space="preserve">
+    <value>Send new code</value>
+  </data>
+  <data name="ConfirmCode" xml:space="preserve">
+    <value>Confirm Code</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>OR</value>
+  </data>
+  <data name="SendCode" xml:space="preserve">
+    <value>Send Code</value>
+  </data>
+	
+ <data name="PageTitle" xml:space="preserve">
+    <value>Almost There!</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Enter the e-mail with which you registered on MyPadel. We will send you an OTP code via SMS to the mobile number you registered with.</value>
+  </data>
+  <data name="ReSendButton" xml:space="preserve">
+    <value>Re-send email</value>
+  </data>
+	<data name="EnterName" xml:space="preserve">
+    <value>Enter name</value>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Reset Password OTP</value>
+  </data>
+  <data name="ResetEmailPlaceholder" xml:space="preserve">
+    <value>Enter Email..</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Enter the email you registered with on MyPadel. We'll send you an OTP code via SMS to the phone number you registered with.</value>
+  </data>
+
+	<data name="WelcomeText" xml:space="preserve">
+    <value>Welcome to My Padel App!</value>
+  </data>
+	<data name="EnterDetails" xml:space="preserve">
+    <value>Please enter your details below.</value>
+  </data>
+	<data name="EnterName" xml:space="preserve">
+    <value>Enter name</value>
+  </data>
+	<data name="EnterSurname" xml:space="preserve">
+    <value>Enter surname</value>
+  </data>
+	<data name="EnterEmail" xml:space="preserve">
+    <value>Enter email</value>
+  </data>
+	<data name="EnterPassword" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+	<data name="ResendemailMessage" xml:space="preserve">
+    <value>Click on the link we sent you via email to confirm your registration!</value>
+  </data>
+	<data name="AcceptTerms" xml:space="preserve">
+    <value>I accept the terms and conditions.</value>
+  </data>
+	<data name="CreateAccount" xml:space="preserve">
+    <value>Create Account</value>
+  </data>
+	<data name="AddCard" xml:space="preserve">
+  <value>Add Card</value>
+</data>
+	<data name="ResendCodeText" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="SendCodeButton" xml:space="preserve">
+    <value>Send Code</value>
+  </data>
+  <data name="ConfirmCodeButton" xml:space="preserve">
+    <value>Confirm Code</value>
+  </data>
+  <data name="OrLabel" xml:space="preserve">
+    <value>OR</value>
+  </data>
+<data name="PageTitle" xml:space="preserve">
+        <value>Reset Password</value>
+    </data>
+    <data name="CurrentPasswordPlaceholder" xml:space="preserve">
+        <value>Current Password..</value>
+    </data>
+    <data name="NewPasswordPlaceholder" xml:space="preserve">
+        <value>New Password</value>
+    </data>
+    <data name="ConfirmNewPasswordPlaceholder" xml:space="preserve">
+        <value>Confirm New Password</value>
+    </data>
+    <data name="UpdatePasswordButton" xml:space="preserve">
+        <value>Update Password</value>
+    </data>
+<data name="ReadyToPlayText" xml:space="preserve">
+        <value>Are you ready to play?</value>
+    </data>
+    <data name="AccessText" xml:space="preserve">
+        <value>Log in to MyPadel to challenge your friends and improve your score!</value>
+    </data>
+    <data name="RegisterText" xml:space="preserve">
+        <value>Register</value>
+    </data>
+    <data name="LoginText" xml:space="preserve">
+        <value>Log In</value>
+    </data>
+    <data name="TermsText" xml:space="preserve">
+        <value>By registering, you accept</value>
+    </data>
+    <data name="PrivacyText" xml:space="preserve">
+        <value>Privacy Policy.</value>
+    </data>
+	<data name="ConditionsText" xml:space="preserve">
+    <value> the terms and conditions </value>
+</data>
+<data name="ConditionsTermsText" xml:space="preserve">
+    <value>of this </value>
+</data>
+	<data name="WhenDoYouWantToPlay" xml:space="preserve">
+    <value>When do you want to play?</value>
+</data>
+	<data name="SportLabel" xml:space="preserve">
+    <value>Sport</value>
+</data>
+	<data name="TennisLabel" xml:space="preserve">
+    <value>Tennis</value>
+</data>
+	<data name="PadelLabel" xml:space="preserve">
+    <value>Padel</value>
+</data>
+	<data name="WhichTimeSlotToPlay" xml:space="preserve">
+    <value>Which time slot do you want to play?</value>
+</data>
+	<data name="PadelCourt1" xml:space="preserve">
+    <value>PADEL COURT 1</value>
+</data>
+	<data name="PadelCourt2" xml:space="preserve">
+    <value>PADEL COURT 2</value>
+</data>
+	<data name="BookButton" xml:space="preserve">
+    <value>Book</value>
+</data>
+
+	<!-- Day, Date, and Month labels in Calendar -->
+	<data name="Day" xml:space="preserve">
+    <value>Day</value>
+</data>
+	<data name="Date" xml:space="preserve">
+    <value>Date</value>
+</data>
+	<data name="MonthName" xml:space="preserve">
+    <value>Month</value>
+</data>
+
+	<!-- Status labels (e.g., for booked times) -->
+	<data name="StatusBooked" xml:space="preserve">
+    <value>Booked</value>
+</data>
+	<data name="StatusAvailable" xml:space="preserve">
+    <value>Available</value>
+</data>
+
+	<!-- Button labels -->
+	<data name="LeftArrow" xml:space="preserve">
+    <value>leftarrow</value>
+</data>
+	<data name="RightArrow" xml:space="preserve">
+    <value>rightarrow</value>
+</data>
+	
+<data name="Image2Text" xml:space="preserve">
+    <value>User consent to the processing of data for promotional purposes</value>
+</data>
+	<data name="NoFITCard" xml:space="preserve">
+    <value>I don't have a FIT card. We recommend that you pass</value>
+</data>
+	<data name="ThirtyMinutesBefore" xml:space="preserve">
+    <value>30 minutes before</value>
+</data>
+	<data name="With" xml:space="preserve">
+    <value> with:</value>
+</data>
+	<data name="IdentityCard" xml:space="preserve">
+    <value>&#10;&#x2022;Identity card</value>
+</data>
+	<data name="MedicalCertificate" xml:space="preserve">
+    <value>&#10;&#x2022;Medical Certificate</value>
+</data>
+	<data name="RegisterNewFITCard" xml:space="preserve">
+    <value>&#10;To register your new FIT card.</value>
+</data>
+	<data name="Accept" xml:space="preserve">
+    <value>I accept</value>
+</data>
+	<data name="TermsAndConditions" xml:space="preserve">
+    <value>Terms and Conditions</value>
+</data>
+	<data name="HaveFITCard" xml:space="preserve">
+    <value>I already have a FIT card. We recommend arriving</value>
+</data>
+	<data name="TwentyMinutesBefore" xml:space="preserve">
+    <value>20 minutes before</value>
+</data>
+	<data name="BeforeGameStart" xml:space="preserve">
+    <value> the start of the first game to register your</value>
+</data>
+	<data name="RegisterFITCard" xml:space="preserve">
+    <value>FIT card.</value>
+</data>
+	<data name="LogoText" xml:space="preserve">
+    <value>LOGO</value>
+</data>
+	<data name="WhenYouWantToPlay" xml:space="preserve">
+    <value>When do you want to play?</value>
+</data>
+	<data name="SportText" xml:space="preserve">
+    <value>Sport</value>
+</data>
+	<data name="TennisText" xml:space="preserve">
+    <value>Tennis</value>
+</data>
+		<data name="PaymentOptionCash" xml:space="preserve">
+  <value>• Cash</value>
+</data>
+<data name="ChooseDuration" xml:space="preserve">
+  <value>Payment method:</value>
+</data>
+	<data name="PadelText" xml:space="preserve">
+    <value>Padel</value>
+</data>
+	<data name="WhichTimeSlotToPlay" xml:space="preserve">
+    <value>Which time slot do you want to play?</value>
+</data>
+	<data name="BookButton" xml:space="preserve">
+    <value>Book</value>
+</data>
+
+	<!-- Day, Date, and Month labels in Calendar -->
+	<data name="Day" xml:space="preserve">
+    <value>Day</value>
+</data>
+	<data name="Date" xml:space="preserve">
+    <value>Date</value>
+</data>
+	<data name="MonthName" xml:space="preserve">
+    <value>Month</value>
+</data>
+
+	<!-- Status labels (e.g., for booked times) -->
+	<data name="StatusBooked" xml:space="preserve">
+    <value>Booked</value>
+</data>
+	<data name="StatusAvailable" xml:space="preserve">
+    <value>Available</value>
+</data>
+
+	<!-- Button labels -->
+	<data name="LeftArrow" xml:space="preserve">
+    <value>Left Arrow</value>
+</data>
+	<data name="RightArrow" xml:space="preserve">
+    <value>Right Arrow</value>
+</data>
+	<data name="SearchField" xml:space="preserve">
+    <value>Search Field</value>
+</data>
+	<data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+</data>
+	<data name="MatchHistory" xml:space="preserve">
+    <value>Match History</value>
+</data>
+
+</root>
