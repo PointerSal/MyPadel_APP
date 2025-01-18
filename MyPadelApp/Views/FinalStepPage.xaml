@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.FinalStepPage"
+             BackgroundColor="Black"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             Title="">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#404a36" Offset="0.1" />
+            <GradientStop Color="#869770" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid RowDefinitions="*,Auto,Auto" Margin="20" RowSpacing="10">
+        <StackLayout Grid.Row="0" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="15">
+            <Label Text="{localization:Translate FinalStepHeading}" Style="{StaticResource SmallBoldStyleHorizontalStart}" />
+            <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="5">
+                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*" RowSpacing="30" ColumnSpacing="15">
+                    <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource OuterRadioBorder}">
+                        <Border x:Name="InnerBorder1" Grid.Column="1" Style="{StaticResource InnerRadioBorder}" IsVisible="False" />
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnFirstRadioClicked" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                    <Label Grid.Column="1">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{localization:Translate HaveFITCard}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text="{localization:Translate TwentyMinutesBefore}" Style="{StaticResource VeryLargeSpanWhiteUnbold}" TextDecorations="Underline"/>
+                                <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text="{localization:Translate BeforeGameStart}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text="{localization:Translate RegisterFITCard}" Style="{StaticResource VeryLargeSpanWhiteUnbold}" TextDecorations="Underline"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                  
+                    <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource OuterRadioBorder}">
+                        <Border x:Name="InnerBorder2" Grid.Column="1" Style="{StaticResource InnerRadioBorder}" IsVisible="False" />
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSecondRadioClicked" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                    <Label Grid.Row="1" Grid.Column="1">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{localization:Translate NoFITCard}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text="{localization:Translate ThirtyMinutesBefore}" Style="{StaticResource VeryLargeSpanWhiteUnbold}" TextDecorations="Underline"/>
+                                <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text="{localization:Translate With}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text="{localization:Translate IdentityCard}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text="{localization:Translate MedicalCertificate}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                                <Span Text="{localization:Translate RegisterNewFITCard}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+
+        <Grid Grid.Row="1" RowDefinitions="Auto" ColumnDefinitions="Auto,*" ColumnSpacing="15">
+            <Grid>
+                <Border Style="{StaticResource CheckboxCricleBorder}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCheckedBoxClicked" />
+                    </Border.GestureRecognizers>
+                </Border>
+            </Grid>
+            <Image x:Name="image1" Source="check.png" Style="{StaticResource MoreSmallCricleImage}" Margin="5,0,0,5" IsVisible="False" />
+            <Label Grid.Column="1">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{localization:Translate Accept}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                        <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
+                        <Span Text="{localization:Translate TermsAndConditions}" Style="{StaticResource VeryLargeSpanWhiteUnbold}" TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+        <Button Grid.Row="2" Text="{localization:Translate ConfirmButton}" Style="{StaticResource BlueButtonStyle}" Clicked="OnConfirmClicked" />
+    </Grid>
+</ContentPage>

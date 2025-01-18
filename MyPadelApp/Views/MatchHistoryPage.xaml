@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.MatchHistoryPage"
+             BackgroundColor="{StaticResource SecondaryColor}"
+             Shell.TabBarIsVisible="True"
+             Shell.NavBarIsVisible="False"
+             Title="{localization:Translate MatchHistoryPageTitle}">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
+            <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+        </Grid>
+        <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Spacing="40" Margin="0">
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="-3">
+                <Border x:Name="FirstBorder" Style="{StaticResource BlueBorder}">
+                    <Label Text="{localization:Translate Active}" Style="{StaticResource TooMicroAlginCenter}"/>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Border.GestureRecognizers>
+                </Border>
+                <Border Grid.Column="1" x:Name="SecondBorder" BackgroundColor="Transparent" Style="{StaticResource BlueBorder}">
+                    <Label Text="{localization:Translate Archived}" Style="{StaticResource TooMicroAlginCenter}"/>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Border.GestureRecognizers>
+                </Border>
+                <Border Grid.Column="2" x:Name="ThirdBorder" BackgroundColor="Transparent" Style="{StaticResource BlueBorder}">
+                    <Label Text="{localization:Translate Deleted}" Style="{StaticResource TooMicroAlginCenter}"/>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Border.GestureRecognizers>
+                </Border>
+            </Grid>
+        </StackLayout>
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Items}" Margin="20">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label Grid.Row="0" Text="{Binding Title}" Style="{StaticResource SmallBoldLabelStyleHorizontalStart}"/>
+                            <Label Grid.Row="1" Text="{Binding Subtitle}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
+
+                            <Image Grid.RowSpan="2" Source="tennis" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="EndAndExpand"/>
+                            <Grid Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*" Margin="0,10,0,0">
+                                <Label Grid.Row="0" Grid.ColumnSpan="4" Text="{Binding Status}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Date}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Time}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Duration}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                <Label Grid.Row="1" Grid.Column="3" Text="{Binding Price}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </Grid>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                        </Border.GestureRecognizers>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

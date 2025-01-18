@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.MyProfilePage"
+             BackgroundColor="{StaticResource SecondaryColor}"
+             Shell.TabBarIsVisible="True"
+             Shell.NavBarIsVisible="False"
+             Title="">
+
+    <Grid RowDefinitions="Auto,*,Auto" RowSpacing="10">
+        <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}"  Padding="20,5">
+            <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+        </Grid>
+
+        <StackLayout Grid.Row="1" Spacing="20" VerticalOptions="CenterAndExpand">
+            <Border Style="{StaticResource MenuBoxBorder}">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                    <Image Source="profile" Style="{StaticResource MediumCricleImage}"/>
+                    <Label Grid.Column="1" Text="{localization:Translate ProfileInformation}" Style="{StaticResource TooMicroHorizontalStart}" FontFamily=""/>
+                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Border.GestureRecognizers>
+            </Border>
+            <Border Style="{StaticResource MenuBoxBorder}">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                    <Image Source="idcard" Style="{StaticResource MediumCricleImage}"/>
+                    <Label Grid.Column="1" Text="{localization:Translate FitCard}" Style="{StaticResource TooMicroHorizontalStart}" FontFamily=""/>
+                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Border.GestureRecognizers>
+            </Border>
+            <Border Style="{StaticResource MenuBoxBorder}">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                    <Image Source="healthcare" Style="{StaticResource MediumCricleImage}"/>
+                    <Label Grid.Column="1" Text="{localization:Translate HealthCertificate}" Style="{StaticResource TooMicroHorizontalStart}" FontFamily=""/>
+                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                </Border.GestureRecognizers>
+            </Border>
+            <Border Style="{StaticResource MenuBoxBorder}">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                    <Image Source="creditcard" Style="{StaticResource MediumCricleImage}"/>
+                    <Label Grid.Column="1" Text="{localization:Translate PaymentMethod}" Style="{StaticResource TooMicroHorizontalStart}" FontFamily=""/>
+                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                </Border.GestureRecognizers>
+            </Border>
+            <Border Style="{StaticResource MenuBoxBorder}">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                    <Image Source="profile" Style="{StaticResource MediumCricleImage}"/>
+                    <Label Grid.Column="1" Text="{localization:Translate AccountCancellation}" Style="{StaticResource TooMicroHorizontalStart}" FontFamily=""/>
+                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4"/>
+                </Border.GestureRecognizers>
+            </Border>
+        </StackLayout>
+
+        <Button Grid.Row="2" Text="Logout" Style="{StaticResource TransparentButtonStyle}" Margin="20" Clicked="Button_Clicked"/>
+    </Grid>
+</ContentPage>

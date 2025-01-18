@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.HistoryBookingSummaryPage"
+             BackgroundColor="{StaticResource SecondaryColor}"
+             Shell.TabBarIsVisible="True"
+             Shell.NavBarIsVisible="False"
+             Title="{localization:Translate BookingSummaryTitle}">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="10">
+        <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
+            <Label Text="{localization:Translate LogoText}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+        </Grid>
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Padding="20,5">
+            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Clicked="OnBackClicked"/>
+            <Label Grid.Column="1" Text="{localization:Translate BookingSummaryTitle}" Style="{StaticResource LargeLabelStyleCenter}" FontFamily=""/>
+        </Grid>
+
+        <Border Grid.Row="2" Style="{StaticResource MenuBoxBorder}">
+            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+                <Label Grid.Row="0" Text="{localization:Translate Padel}" Style="{StaticResource SmallBoldLabelStyleHorizontalStart}"/>
+                <Label Grid.Row="1" Text="{localization:Translate CourtPadel}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
+
+                <Image Grid.RowSpan="2" Source="tennis" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="EndAndExpand"/>
+                <Grid Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*" Margin="0,10,0,0">
+                    <Label Grid.Row="0" Grid.Column="0" Text="{localization:Translate Date}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="15 nov" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Grid.Row="0" Grid.Column="1" Text="{localization:Translate Time}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="9:30" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Grid.Row="0" Grid.Column="2" Text="{localization:Translate Duration}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                    <Label Grid.Row="1" Grid.Column="2" Text="90 min" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+                    <Label Grid.Row="0" Grid.Column="3" Text="{localization:Translate Price}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                    <Label Grid.Row="1" Grid.Column="3" Text="44€" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <StackLayout Grid.Row="3" Margin="20,30,20,0" Spacing="10">
+            <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                <StackLayout Spacing="5">
+                    <Label Text="{localization:Translate PaymentMethod}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                    <Label Text="{localization:Translate PaymentOptionCreditCard}" Style="{StaticResource SmallBlueBoldLabelStyle}"/>
+                </StackLayout>
+            </Border>
+
+            <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                <StackLayout Spacing="5">
+                    <Label Text="{localization:Translate BookingStatus}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                    <Label Text="{localization:Translate NewText}" Style="{StaticResource UnboldSmallLabelStyle}"/>
+                </StackLayout>
+            </Border>
+
+            <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                <StackLayout Spacing="5">
+                    <Label Text="{localization:Translate NewCancellationPolicy}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                    <Label Text="{localization:Translate CancellationDescription}" Style="{StaticResource UnboldSmallLabelStyle}"/>
+                </StackLayout>
+            </Border>
+        </StackLayout>
+        <Button Grid.Row="4" Text="{localization:Translate CancelBookingButton}" Style="{StaticResource RedButtonStyle}" Margin="20" Clicked="Button_Clicked"/>
+    </Grid>
+</ContentPage>

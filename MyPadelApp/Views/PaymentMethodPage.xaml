@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyPadelApp.Views.PaymentMethodPage"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             BackgroundColor="{StaticResource SecondaryColor}"
+             Shell.TabBarIsVisible="True"
+             Shell.NavBarIsVisible="False"
+             Title="">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
+            <Label Text="{localization:Translate LogoText}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+        </Grid>
+        <ImageButton Grid.Row="1" Source="backbutton" Style="{StaticResource BackButtonStyle}" Margin="20" Clicked="ImageButton_Clicked"/>
+        <Label Grid.Row="2" Text="{localization:Translate ScreenTitle}" Style="{StaticResource VeryLargeLabelStyleHorizontalStart}"/>
+    </Grid>
+</ContentPage>

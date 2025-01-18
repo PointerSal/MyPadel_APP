@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             x:Class="MyPadelApp.Views.ProfileInformationPage"
+             BackgroundColor="{StaticResource SecondaryColor}"
+             Shell.TabBarIsVisible="True"
+             Shell.NavBarIsVisible="False"
+             Title="{localization:Translate ProfileInformationPageTitle}">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="20">
+        <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
+            <Label Text="LOGO" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+        </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Padding="20,5">
+            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" VerticalOptions="CenterAndExpand" Clicked="OnBackClicked"/>
+            <Image Grid.Column="1" Source="profilepic" Style="{StaticResource LargeCricleImage}"/>
+        </Grid>
+
+        <Grid Grid.Row="2" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto" Padding="20,5" RowSpacing="25" ColumnSpacing="15" Margin="0,40">
+            <Image Grid.Row="0" Grid.Column="0" Source="profile" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="StartAndExpand"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="{localization:Translate NameLabel}" Style="{StaticResource MediumLabelStyleHorizontalStart}"/>
+
+            <Image Grid.Row="1" Grid.Column="0" Source="email" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="StartAndExpand"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="{localization:Translate EmailLabel}" Style="{StaticResource MediumLabelStyleHorizontalStart}"/>
+
+            <Image Grid.Row="2" Grid.Column="0" Source="padlock" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="StartAndExpand"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="{localization:Translate PasswordLabel}" Style="{StaticResource MediumLabelStyleHorizontalStart}"/>
+            <Image Grid.Row="2" Grid.Column="2" Source="pencil" HeightRequest="18" WidthRequest="18" HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+
+        <StackLayout Grid.Row="3" Spacing="20">
+            <Border Style="{StaticResource MenuBoxBorder}">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                    <Image Source="security" HeightRequest="25"/>
+                    <Label Grid.Column="1" Text="{localization:Translate SecurityLabel}" Style="{StaticResource TooMicroHorizontalStart}"/>
+                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource MinorSmallCricleImage}"/>
+                </Grid>
+            </Border>
+
+            <!-- FIT Card Section -->
+            <Border Style="{StaticResource MenuBoxBorder}">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                    <Image Source="question" HeightRequest="25"/>
+                    <Label Grid.Column="1" Text="{localization:Translate HelpsContact}" Style="{StaticResource TooMicroHorizontalStart}"/>
+                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource MinorSmallCricleImage}"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Border.GestureRecognizers>
+            </Border>
+        </StackLayout>
+    </Grid>
+</ContentPage>

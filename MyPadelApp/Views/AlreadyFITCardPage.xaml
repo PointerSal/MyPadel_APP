@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyPadelApp.Views.AlreadyFITCardPage"
+             xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             BackgroundColor="Black"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             Style="{StaticResource DefaultContentPage}"
+             Title="">
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="20" RowSpacing="20">
+        <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Clicked="OnBackClicked"/>
+        <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="40" Margin="0,30">
+            <StackLayout Spacing="5">
+                <Label Text="{localization:Translate Question}" Style="{StaticResource LabelStyleHorizontalStart}"/>
+                <Label Text="{localization:Translate Instruction}" Style="{StaticResource LabelStyleHorizontalStart}"/>
+            </StackLayout>
+            <StackLayout Spacing="5">
+                <Grid>
+                    <Entry Placeholder="{localization:Translate CardNumberPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                    <BoxView Style="{StaticResource BoxViewStyle}"/>
+                </Grid>
+                <Grid>
+                    <DatePicker Style="{StaticResource GeneralDatePicker}"/>
+                    <BoxView Style="{StaticResource BoxViewStyle}"/>
+                </Grid>
+                <Grid>
+                    <DatePicker Style="{StaticResource GeneralDatePicker}"/>
+                    <BoxView Style="{StaticResource BoxViewStyle}"/>
+                </Grid>
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="{localization:Translate UploadMedicalCertificate}" Style="{StaticResource SmallUnBoldStyleHorizontalStart}"/>
+                    <ImageButton Grid.Column="1" Source="camera" Style="{StaticResource CameraImageStyle}" Clicked="OnCameraClicked"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+        <Button Grid.Row="2" Text="{localization:Translate RequestNewCard}" Style="{StaticResource TransparentButtonStyle}" Clicked="OnNewCardClicked"/>
+        <Button Grid.Row="3" Text="{localization:Translate CreateAccount}" Style="{StaticResource BlueButtonStyle}" Clicked="OnAddCardClicked"/>
+    </Grid>
+</ContentPage>
