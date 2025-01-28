@@ -23,11 +23,11 @@ public partial class SelectionPage : ContentPage
 
     private async void OnRegisteredClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new RegisterPage());
+        await Shell.Current.GoToAsync("RegisterPage");
     }
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new LoginPage());
+        await Shell.Current.GoToAsync("LoginPage");
     }
     private void styleSwitch_Toggled(object sender, ToggledEventArgs e)
     {

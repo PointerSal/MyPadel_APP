@@ -1,11 +1,19 @@
+using MyPadelApp.ViewModels;
+
 namespace MyPadelApp.Views;
 
 public partial class RegistrationResendOTPPage : ContentPage
 {
-	public RegistrationResendOTPPage()
+    #region Properties
+
+    RegistrationResendOTPViewModel _registrationResendOTPViewModel;
+
+    #endregion
+    public RegistrationResendOTPPage(RegistrationResendOTPViewModel registrationResendOTPViewModel)
 	{
 		InitializeComponent();
-	}
+        BindingContext = _registrationResendOTPViewModel = registrationResendOTPViewModel;
+    }
 
     private void OnTextChanged(object sender, TextChangedEventArgs e)
     {
@@ -14,6 +22,7 @@ public partial class RegistrationResendOTPPage : ContentPage
             if (!string.IsNullOrEmpty(currentEntry.Text))
             {
                 currentEntry.Text = currentEntry.Text.Substring(0, 1);
+                _registrationResendOTPViewModel.UserData.OTP = entry1.Text + entry2.Text + entry3.Text + entry4.Text + entry5.Text;
                 MoveToNextEntry(currentEntry);
             }
         }
@@ -29,9 +38,5 @@ public partial class RegistrationResendOTPPage : ContentPage
             entry5.Unfocus();
             entry5.HideSoftInputAsync(System.Threading.CancellationToken.None);
         }
-    }
-    private async void OnConfirmClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new FinalStepPage());
     }
 }

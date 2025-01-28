@@ -2,6 +2,8 @@
 using LocalizationResourceManager.Maui;
 using Microsoft.Extensions.Logging;
 using MyPadelApp.Resources.Languages;
+using MyPadelApp.ViewModels;
+using MyPadelApp.Views;
 
 namespace MyPadelApp
 {
@@ -48,6 +50,19 @@ namespace MyPadelApp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<ResetPasswordOTPViewModel>();
+            builder.Services.AddTransient<ResetPasswordOTPPage>();
+            builder.Services.AddTransient<PasswordChangedViewModel>();
+            builder.Services.AddTransient<PasswordChangedPage>();
+            builder.Services.AddTransient<RegisterViewModel>();
+            builder.Services.AddTransient<RegisterPage>();
+            builder.Services.AddTransient<ResendEmailViewModel>();
+            builder.Services.AddTransient<ResendEmailPage>();
+            builder.Services.AddTransient<RegistrationResendOTPViewModel>();
+            builder.Services.AddTransient<RegistrationResendOTPPage>();
 
 #if DEBUG
             builder.Logging.AddDebug();

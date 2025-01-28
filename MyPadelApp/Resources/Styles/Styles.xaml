@@ -437,6 +437,12 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
+    <Style x:Key="UnboldSmallRedErrorLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource ErrorTextColors}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontAttributes" Value="None" />
+    </Style>
+
     <Style x:Key="UnboldSmallLabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="14" />

@@ -1,11 +1,14 @@
+using MyPadelApp.ViewModels;
+
 namespace MyPadelApp.Views;
 
 public partial class PasswordChangedPage : ContentPage
 {
-	public PasswordChangedPage()
+	public PasswordChangedPage(PasswordChangedViewModel passwordChangedViewModel)
 	{
 		InitializeComponent();
-	}
+        BindingContext = passwordChangedViewModel;
+    }
 
     private void OnPasswordEyeClicked(object sender, EventArgs e)
     {
@@ -17,10 +20,5 @@ public partial class PasswordChangedPage : ContentPage
     {
         confirmpasswordEntry.IsPassword = !confirmpasswordEntry.IsPassword;
         confirmpasswordImage.Source = confirmpasswordEntry.IsPassword ? "closeeye" : "openeye";
-    }
-
-    private async void OnPasswordChange(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("//HomePage");
     }
 }

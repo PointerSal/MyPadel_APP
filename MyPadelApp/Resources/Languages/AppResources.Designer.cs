@@ -70,6 +70,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must accept all the required terms and conditions, privacy policy, and marketing preferences..
+        /// </summary>
+        internal static string AcceptConditions {
+            get {
+                return ResourceManager.GetString("AcceptConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I accept the terms and conditions..
         /// </summary>
         internal static string AcceptTerms {
@@ -513,6 +522,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm password is required..
+        /// </summary>
+        internal static string ConfirmPasswordRequired {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Padel field 2.
         /// </summary>
         internal static string CourtName {
@@ -639,6 +657,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Email.
+        /// </summary>
+        internal static string EmailInvalid {
+            get {
+                return ResourceManager.GetString("EmailInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         internal static string EmailLabel {
@@ -662,6 +689,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string EmailPlaceholder {
             get {
                 return ResourceManager.GetString("EmailPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is required.
+        /// </summary>
+        internal static string EmailRequired {
+            get {
+                return ResourceManager.GetString("EmailRequired", resourceCulture);
             }
         }
         
@@ -816,6 +852,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string Instruction {
             get {
                 return ResourceManager.GetString("Instruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Italian phone number format. Example of valid formats:\n- Landline: +39 06 1234567 (Rome)\n- Mobile: +39 345 1234567.
+        /// </summary>
+        internal static string InvalidNumber {
+            get {
+                return ResourceManager.GetString("InvalidNumber", resourceCulture);
             }
         }
         
@@ -983,6 +1028,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name is required..
+        /// </summary>
+        internal static string NameRequired {
+            get {
+                return ResourceManager.GetString("NameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancellation Policy.
         /// </summary>
         internal static string NewCancellationPolicy {
@@ -1031,6 +1085,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OR.
         /// </summary>
         internal static string Or {
@@ -1045,6 +1108,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string OrLabel {
             get {
                 return ResourceManager.GetString("OrLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OTP is requried.
+        /// </summary>
+        internal static string OTPRequired {
+            get {
+                return ResourceManager.GetString("OTPRequired", resourceCulture);
             }
         }
         
@@ -1148,6 +1220,42 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password is requried.
+        /// </summary>
+        internal static string PasswordRequired {
+            get {
+                return ResourceManager.GetString("PasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords do not match..
+        /// </summary>
+        internal static string PasswordsDoNotMatch {
+            get {
+                return ResourceManager.GetString("PasswordsDoNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must include an uppercase letter, a lowercase letter, a number, a special character, and be at least 6 characters long..
+        /// </summary>
+        internal static string PasswordStrengthRequired {
+            get {
+                return ResourceManager.GetString("PasswordStrengthRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password has been updated successfully.
+        /// </summary>
+        internal static string PasswordUpdated {
+            get {
+                return ResourceManager.GetString("PasswordUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pay.
         /// </summary>
         internal static string PayButtonText {
@@ -1243,6 +1351,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string PhoneNumberPrompt {
             get {
                 return ResourceManager.GetString("PhoneNumberPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone Number is required..
+        /// </summary>
+        internal static string PhoneNumberRequired {
+            get {
+                return ResourceManager.GetString("PhoneNumberRequired", resourceCulture);
             }
         }
         
@@ -1563,11 +1680,29 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        internal static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Surname.
         /// </summary>
         internal static string SurnamePlaceholder {
             get {
                 return ResourceManager.GetString("SurnamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surname is required..
+        /// </summary>
+        internal static string SurnameRequired {
+            get {
+                return ResourceManager.GetString("SurnameRequired", resourceCulture);
             }
         }
         

@@ -60,6 +60,7 @@
     <Color x:Key="BlackTextColors">Black</Color>
     <Color x:Key="BlueTextColors">#24a9ff</Color>
     <Color x:Key="TooMuchLightPurpleTextColors">#7fccfe</Color>
+    <Color x:Key="ErrorTextColors">#ff3131</Color>
     
     <!--PlaceHolder Colors-->
     <Color x:Key="DefaultPlaceholderColors">White</Color>

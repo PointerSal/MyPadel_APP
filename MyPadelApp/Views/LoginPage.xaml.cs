@@ -1,17 +1,15 @@
 using LocalizationResourceManager.Maui;
+using MyPadelApp.ViewModels;
 using System.Globalization;
 
 namespace MyPadelApp.Views;
 
 public partial class LoginPage : ContentPage
 {
-    public LoginPage()
+    public LoginPage(LoginViewModel loginViewModel)
 	{
         InitializeComponent();
-    }
-    private async void OnLoginClicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("//HomePage");
+        BindingContext = loginViewModel;
     }
 
     private void passwordImage_Clicked(object sender, EventArgs e)
@@ -19,10 +17,4 @@ public partial class LoginPage : ContentPage
         passwordEntry.IsPassword = !passwordEntry.IsPassword;
         passwordImage.Source = passwordEntry.IsPassword ? "closeeye" : "openeye";
     }
-
-    private async void OnResetPasswordClicked(object sender, TappedEventArgs e)
-    {
-        await Navigation.PushAsync(new ResetPasswordOTPPage());
-    }
-
 }

@@ -1,10 +1,18 @@
+using MyPadelApp.ViewModels;
+
 namespace MyPadelApp.Views;
 
 public partial class ResetPasswordOTPPage : ContentPage
 {
-	public ResetPasswordOTPPage()
+    #region Properties
+
+    ResetPasswordOTPViewModel _resetPasswordOTPViewModel;
+
+    #endregion
+    public ResetPasswordOTPPage(ResetPasswordOTPViewModel resetPasswordOTPViewModel)
 	{
 		InitializeComponent();
+        BindingContext = _resetPasswordOTPViewModel = resetPasswordOTPViewModel; 
     }
 
     private void OnTextChanged(object sender, TextChangedEventArgs e)
@@ -14,11 +22,11 @@ public partial class ResetPasswordOTPPage : ContentPage
             if (!string.IsNullOrEmpty(currentEntry.Text))
             {
                 currentEntry.Text = currentEntry.Text.Substring(0, 1);
+                _resetPasswordOTPViewModel.UserData.OTP = entry1.Text + entry2.Text + entry3.Text + entry4.Text + entry5.Text;
                 MoveToNextEntry(currentEntry);
             }
         }
     }
-
     private void MoveToNextEntry(Entry currentEntry)
     {
         if (currentEntry == entry1) entry2.Focus();
@@ -30,10 +38,5 @@ public partial class ResetPasswordOTPPage : ContentPage
             entry5.Unfocus();
             entry5.HideSoftInputAsync(System.Threading.CancellationToken.None);
         }
-    }
-
-    private async void OnConfirmClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new PasswordChangedPage());
     }
 }
