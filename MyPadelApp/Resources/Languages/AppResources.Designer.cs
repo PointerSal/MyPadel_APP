@@ -747,6 +747,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The final step!.
         /// </summary>
         internal static string FinalStepHeading {
@@ -1640,6 +1649,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string SendCodeButton {
             get {
                 return ResourceManager.GetString("SendCodeButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wents wrong.
+        /// </summary>
+        internal static string SomethingWrong {
+            get {
+                return ResourceManager.GetString("SomethingWrong", resourceCulture);
             }
         }
         

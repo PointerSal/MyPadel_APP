@@ -22,7 +22,7 @@ public partial class ResetPasswordOTPPage : ContentPage
             if (!string.IsNullOrEmpty(currentEntry.Text))
             {
                 currentEntry.Text = currentEntry.Text.Substring(0, 1);
-                _resetPasswordOTPViewModel.UserData.OTP = entry1.Text + entry2.Text + entry3.Text + entry4.Text + entry5.Text;
+                _resetPasswordOTPViewModel.UserData.otp = entry1.Text + entry2.Text + entry3.Text + entry4.Text + entry5.Text;
                 MoveToNextEntry(currentEntry);
             }
         }

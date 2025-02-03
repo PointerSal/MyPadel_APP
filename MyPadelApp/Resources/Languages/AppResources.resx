@@ -728,4 +728,13 @@ To register your new FIT card.</value>
 	<data name="InvalidNumber" xml:space="preserve">
     <value>Invalid Italian phone number format. Example of valid formats:\n- Landline: +39 06 1234567 (Rome)\n- Mobile: +39 345 1234567</value>
   </data>
+	<data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+	<data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+	<data name="SomethingWrong" xml:space="preserve">
+    <value>Something wents wrong</value>
+  </data>
 </root>

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
              x:Class="MyPadelApp.Views.RegisterPage"
+             xmlns:Loader="clr-namespace:MyPadelApp.Controls"
              BackgroundColor="Black"
              Shell.TabBarIsVisible="False"
              Shell.NavBarIsVisible="False"
@@ -15,6 +16,7 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
+    <Grid>
     <Grid RowDefinitions="Auto,*,Auto" Margin="20">
         <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
         <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="40" Margin="0,30">
@@ -24,25 +26,25 @@
             </StackLayout>
             <StackLayout Spacing="5">
                 <Grid>
-                    <Entry Text="{Binding UserData.Name}" Placeholder="{localization:Translate EnterName}" Style="{StaticResource EntryStyle}" Keyboard="Email"/>
+                    <Entry Text="{Binding UserData.name}" Placeholder="{localization:Translate EnterName}" Style="{StaticResource EntryStyle}" Keyboard="Email"/>
                     <BoxView Style="{StaticResource BoxViewStyle}"/>
                 </Grid>
                 <Label Text="{Binding NameError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasNameError}" />
 
                 <Grid>
-                    <Entry Text="{Binding UserData.Surname}" Placeholder="{localization:Translate EnterSurname}" Style="{StaticResource EntryStyle}" Keyboard="Email"/>
+                    <Entry Text="{Binding UserData.surname}" Placeholder="{localization:Translate EnterSurname}" Style="{StaticResource EntryStyle}" Keyboard="Email"/>
                     <BoxView Style="{StaticResource BoxViewStyle}"/>
                 </Grid>
                 <Label Text="{Binding SurnameError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasSurnameError}" />
 
                 <Grid>
-                    <Entry Text="{Binding UserData.Email}" Placeholder="{localization:Translate EnterEmail}" Style="{StaticResource EntryStyle}" Keyboard="Email"/>
+                    <Entry Text="{Binding UserData.email}" Placeholder="{localization:Translate EnterEmail}" Style="{StaticResource EntryStyle}" Keyboard="Email"/>
                     <BoxView Style="{StaticResource BoxViewStyle}"/>
                 </Grid>
                 <Label Text="{Binding EmailError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasEmailError}" />
 
                 <Grid>
-                    <Entry Text="{Binding UserData.Password}" x:Name="passwordEntry" Placeholder="{localization:Translate EnterPassword}" Style="{StaticResource EntryStyle}" Keyboard="Default" IsPassword="True"/>
+                    <Entry Text="{Binding UserData.password}" x:Name="passwordEntry" Placeholder="{localization:Translate EnterPassword}" Style="{StaticResource EntryStyle}" Keyboard="Default" IsPassword="True"/>
                     <ImageButton x:Name="passwordImage" Source="closeeye.png" Style="{StaticResource PasswordImageStyle}" Clicked="passwordImage_Clicked">
                         <ImageButton.Triggers>
                             <DataTrigger TargetType="ImageButton" Binding="{Binding IsPassword, Source={x:Reference passwordEntry}}" Value="True">
@@ -88,5 +90,7 @@
             </Grid>
         </StackLayout>
         <Button Grid.Row="2" Text="{localization:Translate CreateAccount}" Style="{StaticResource BlueButtonStyle}" Command="{Binding RegisterCommand}"/>
+    </Grid>
+        <Loader:ActivityIndicator Grid.RowSpan="3" IsVisible="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>

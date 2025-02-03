@@ -1,5 +1,4 @@
-﻿using Android.Service.Autofill;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MyPadelApp.Helpers;
 using MyPadelApp.Resources.Languages;
@@ -47,8 +46,8 @@ namespace MyPadelApp.ViewModels
         {
             try
             {
-                (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid(UserData.Cells);
-                (HasOTPError, OTPError) = FieldValidations.IsFieldNotEmpty(UserData.OTP, AppResources.OTPRequired);
+                (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid(UserData.cell);
+                (HasOTPError, OTPError) = FieldValidations.IsFieldNotEmpty(UserData.otp, AppResources.OTPRequired);
 
                 if (!HasPhoneError && !HasOTPError)
                     await Shell.Current.GoToAsync("FinalStepPage");

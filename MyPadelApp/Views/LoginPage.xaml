@@ -11,10 +11,6 @@
              Style="{StaticResource DefaultContentPage}"
              Title="">
 
-    <ContentPage.BindingContext>
-        <viewmodels:LoginViewModel />
-    </ContentPage.BindingContext>
-
     <Grid RowDefinitions="Auto,*,Auto">
         <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
             <Label Text="{localization:Translate LogoText}" 
@@ -25,12 +21,12 @@
             <Label Text="{localization:Translate EmailPasswordInstruction}" Style="{StaticResource LabelStyle}" />
             <StackLayout Spacing="5">
                 <Grid>
-                    <Entry Text="{Binding UserData.Email}" Placeholder="{localization:Translate EmailPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Email" />
+                    <Entry Text="{Binding UserData.email}" Placeholder="{localization:Translate EmailPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Email" />
                     <BoxView Style="{StaticResource BoxViewStyle}" />
                 </Grid>
                 <Label Text="{Binding EmailError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasEmailError}" />
                 <Grid>
-                    <Entry Text="{Binding UserData.Password}" x:Name="passwordEntry" Placeholder="{localization:Translate PasswordLoginPlaceholder}" Style="{StaticResource EntryStyle}" IsPassword="True" />
+                    <Entry Text="{Binding UserData.password}" x:Name="passwordEntry" Placeholder="{localization:Translate PasswordLoginPlaceholder}" Style="{StaticResource EntryStyle}" IsPassword="True" />
                     <ImageButton x:Name="passwordImage" Source="closeeye.png" Style="{StaticResource PasswordImageStyle}" Clicked="passwordImage_Clicked">
                         <ImageButton.Triggers>
                             <DataTrigger TargetType="ImageButton" Binding="{Binding IsPassword}" Value="True">

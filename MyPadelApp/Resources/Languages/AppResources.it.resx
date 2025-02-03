@@ -698,4 +698,13 @@ Per registrare la tua nuova tessera FIT.</value>
 	<data name="InvalidNumber" xml:space="preserve">
     <value>Formato de número de teléfono italiano no válido. Ejemplo de formatos válidos:\n- Teléfono fijo: +39 06 1234567 (Roma)\n- Móvil: +39 345 1234567</value>
   </data>
+	<data name="Error" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+	<data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+	<data name="SomethingWrong" xml:space="preserve">
+    <value>Qualcosa è andato storto</value>
+  </data>
 </root>
