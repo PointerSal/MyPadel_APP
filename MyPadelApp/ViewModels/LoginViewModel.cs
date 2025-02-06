@@ -58,9 +58,26 @@ namespace MyPadelApp.ViewModels
                     {
                         Utils.GetUser = null;
                         Utils.GetUser = JsonSerializer.Deserialize<User>(response.data.ToString());
-                        await SecureStorage.Default.SetAsync("username", Utils.GetUser.email);
-                        await SecureStorage.Default.SetAsync("Password", Utils.GetUser.password);
-                        await Shell.Current.GoToAsync("//Home");
+                        Utils.GetUser.password = UserData.password;
+                        if (Utils.GetUser.isEmailVerified == true && Utils.GetUser.isPhoneVerified == true)
+                        {
+                            await SecureStorage.Default.SetAsync("username", Utils.GetUser.email);
+                            await SecureStorage.Default.SetAsync("Password", Utils.GetUser.password);
+                            await Shell.Current.GoToAsync("//Home");
+                        }
+                        else if(Utils.GetUser.isEmailVerified == false)
+                        {
+                            var Data = new User { email = UserData.email };
+                            response = await _authServices.ResendOTP(Data);
+                            if (response != null && response.code.Equals("0000"))
+                                await Shell.Current.GoToAsync("ResendEmailPage");
+                            else if (response != null)
+                                await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
+                            else
+                                await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
+                        }
+                        else if (Utils.GetUser.isEmailVerified == true && Utils.GetUser.isPhoneVerified == false)
+                            await Shell.Current.GoToAsync("RegistrationResendOTPPage");
                     }
                     else if (response != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);

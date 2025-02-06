@@ -737,4 +737,10 @@ To register your new FIT card.</value>
 	<data name="SomethingWrong" xml:space="preserve">
     <value>Something wents wrong</value>
   </data>
+	<data name="EmailResent" xml:space="preserve">
+    <value>Email OTP has been resent successfully</value>
+  </data>
+	<data name="PhoneResent" xml:space="preserve">
+    <value>Phone OTP has been resent successfully</value>
+  </data>
 </root>

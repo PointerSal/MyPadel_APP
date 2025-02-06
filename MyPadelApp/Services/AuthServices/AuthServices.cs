@@ -23,9 +23,22 @@ namespace MyPadelApp.Services.AuthServices
         {
             return await httpClientService.PostAsync("auth/verify-email", user, false);
         }
+        
+        public async Task<GeneralResponse> VerifyPhone(User user)
+        {
+            return await httpClientService.PostAsync("auth/verify-phone", user, false);
+        }
         public async Task<GeneralResponse> ResetPassword(User user)
         {
             return await httpClientService.PostAsync("auth/reset-password", user, false);
+        }
+        public async Task<GeneralResponse> ResendOTP(User user)
+        {
+            return await httpClientService.PostAsync("auth/resendEmail-otp", user, false);
+        }
+        public async Task<GeneralResponse> ResendPhoneOTP(User user)
+        {
+            return await httpClientService.PostAsync("auth/resendPhone-otp", user, false);
         }
     }
 }

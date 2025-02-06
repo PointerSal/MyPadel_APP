@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             xmlns:Loader="clr-namespace:MyPadelApp.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MyPadelApp.Views.ResendEmailPage"
              BackgroundColor="Black"
@@ -13,15 +14,39 @@
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing"/>
     </ContentPage.Behaviors>
-    
-    <Grid RowDefinitions="Auto,*,Auto" Margin="20">
-        <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
 
-        <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="5" Margin="0,30">
-            <Label Text="{localization:Translate AlmostThere}" Style="{StaticResource LabelStyleHorizontalStart}" />
-            <Label Text="{localization:Translate ResendemailMessage}" Style="{StaticResource LabelStyleHorizontalStart}"/>
-        </StackLayout>
+    <Grid>
+        <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="20">
+            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
 
-        <Button Grid.Row="2" Text="{localization:Translate ReSendButton}" Command="{Binding ResendEmailCommand}" Style="{StaticResource TransparentButtonStyle}"/>
+            <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="5" Margin="0,30">
+                <Label Text="{localization:Translate AlmostThere}" Style="{StaticResource LabelStyleHorizontalStart}" />
+                <Label Text="{localization:Translate ResendemailMessage}" Style="{StaticResource LabelStyleHorizontalStart}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Spacing="7">
+                <Grid ColumnDefinitions="*,*,*,*,*" HeightRequest="70" ColumnSpacing="15">
+                    <Border Style="{StaticResource VerificationCodeBorder}">
+                        <Entry x:Name="entry1" Style="{StaticResource VerificationCodeEntryStyle}" TextChanged="OnTextChanged" />
+                    </Border>
+                    <Border Grid.Column="1" Style="{StaticResource VerificationCodeBorder}">
+                        <Entry x:Name="entry2" Style="{StaticResource VerificationCodeEntryStyle}" TextChanged="OnTextChanged"/>
+                    </Border>
+                    <Border Grid.Column="2" Style="{StaticResource VerificationCodeBorder}">
+                        <Entry x:Name="entry3" Style="{StaticResource VerificationCodeEntryStyle}" TextChanged="OnTextChanged" />
+                    </Border>
+                    <Border Grid.Column="3" Style="{StaticResource VerificationCodeBorder}">
+                        <Entry x:Name="entry4" Style="{StaticResource VerificationCodeEntryStyle}" TextChanged="OnTextChanged"  />
+                    </Border>
+                    <Border Grid.Column="4" Style="{StaticResource VerificationCodeBorder}">
+                        <Entry x:Name="entry5" Style="{StaticResource VerificationCodeEntryStyle}" TextChanged="OnTextChanged"/>
+                    </Border>
+                </Grid>
+                <Label Text="{Binding OTPError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasOTPError}" />
+            </StackLayout>
+            <Button Grid.Row="3" Text="{localization:Translate ConfirmCode}" Command="{Binding VerifyEmailCommand}" Style="{StaticResource BlueButtonStyle}"/>
+            <Button Grid.Row="4" Text="{localization:Translate ReSendButton}" Command="{Binding ResendEmailCommand}" Style="{StaticResource TransparentButtonStyle}" Margin="0,10"/>
+        </Grid>
+        <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>

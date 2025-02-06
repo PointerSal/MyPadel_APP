@@ -702,6 +702,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email OTP has been resent successfully.
+        /// </summary>
+        internal static string EmailResent {
+            get {
+                return ResourceManager.GetString("EmailResent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter your details below..
         /// </summary>
         internal static string EnterDetails {
@@ -1369,6 +1378,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string PhoneNumberRequired {
             get {
                 return ResourceManager.GetString("PhoneNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone OTP has been resent successfully.
+        /// </summary>
+        internal static string PhoneResent {
+            get {
+                return ResourceManager.GetString("PhoneResent", resourceCulture);
             }
         }
         

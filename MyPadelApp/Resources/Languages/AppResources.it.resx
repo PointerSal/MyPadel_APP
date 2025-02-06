@@ -707,4 +707,13 @@ Per registrare la tua nuova tessera FIT.</value>
 	<data name="SomethingWrong" xml:space="preserve">
     <value>Qualcosa è andato storto</value>
   </data>
+    <data name="EmailResent" xml:space="preserve">
+    <value>El correo electrónico se ha reenviado correctamente</value>
+  </data>
+	<data name="EmailResent" xml:space="preserve">
+    <value>La OTP de correo electrónico se ha reenviado correctamente</value>
+  </data>
+	<data name="PhoneResent" xml:space="preserve">
+    <value>La OTP del teléfono se ha reenviado correctamente</value>
+  </data>
 </root>

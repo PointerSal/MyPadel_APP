@@ -31,10 +31,10 @@ namespace MyPadelApp.Models
         public string? otp { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public bool? flagmailverified { get; set; }
+        public bool? isEmailVerified { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public bool? flagphoneverified { get; set; }
+        public bool? isPhoneVerified { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? flagactive { get; set; }

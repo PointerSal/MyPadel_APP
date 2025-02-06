@@ -86,6 +86,7 @@ namespace MyPadelApp.ViewModels
                     {
                         Utils.GetUser = null;
                         Utils.GetUser = JsonSerializer.Deserialize<User>(response.data.ToString());
+                        Utils.GetUser.password = UserData.password;
                         await Shell.Current.GoToAsync("ResendEmailPage");
                     }
                     else if (response != null)
