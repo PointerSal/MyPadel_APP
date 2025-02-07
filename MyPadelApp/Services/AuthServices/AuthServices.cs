@@ -23,7 +23,6 @@ namespace MyPadelApp.Services.AuthServices
         {
             return await httpClientService.PostAsync("auth/verify-email", user, false);
         }
-        
         public async Task<GeneralResponse> VerifyPhone(User user)
         {
             return await httpClientService.PostAsync("auth/verify-phone", user, false);
@@ -39,6 +38,10 @@ namespace MyPadelApp.Services.AuthServices
         public async Task<GeneralResponse> ResendPhoneOTP(User user)
         {
             return await httpClientService.PostAsync("auth/resendPhone-otp", user, false);
+        }
+        public async Task<GeneralResponse> AddPhoneNumber(User user)
+        {
+            return await httpClientService.PostAsync("auth/add-phone-number", user, false);
         }
     }
 }

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MyPadelApp.Helpers;
 using MyPadelApp.Models;
+using MyPadelApp.Models.Responses;
 using MyPadelApp.Resources.Languages;
 using MyPadelApp.Services.AuthServices;
 using MyPadelApp.ViewModels.ViewBaseModel;
@@ -35,6 +36,8 @@ namespace MyPadelApp.ViewModels
         [ObservableProperty]
         public string _oTPError;
 
+        private int IsOTPAdded = 0;
+
         #endregion
 
         #region Commands
@@ -45,18 +48,46 @@ namespace MyPadelApp.ViewModels
             try
             {
                 IsBusy = true;
-                (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid(UserData.cell);
+                if (IsOTPAdded == 0)
+                    (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid(UserData.cell);
+                else
+                    HasPhoneError = false;
 
                 if (!HasPhoneError)
                 {
-                    var Data = new User { cell = UserData.cell };
-                    var response = await _authServices.ResendPhoneOTP(Data);
+                    var response = new GeneralResponse();
+                    if(IsOTPAdded == 1)
+                    {
+                        var Data = new User { email = Utils.GetUser.email };
+                        response = await _authServices.ResendPhoneOTP(Data);
+                    }
+                    else
+                    {
+                        var Data = new User { cell = UserData.cell, email = Utils.GetUser.email };
+                        response = await _authServices.AddPhoneNumber(Data);
+                    }
+
+                    if (response.code.Equals("1003"))
+                    {
+                        if (IsOTPAdded == 0)
+                            IsOTPAdded = 1;
+
+                        await SendCode();
+                        return;
+                    }
+
                     if (response != null && response.code.Equals("0000"))
+                    {
+                        if (IsOTPAdded == 0)
+                            IsOTPAdded = 1;
                         await Shell.Current.DisplayAlert(AppResources.Success, AppResources.PhoneResent, AppResources.OK);
+                    }
                     else if (response != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
+
+                    
                 }
             }
             catch { }

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             xmlns:Loader="clr-namespace:MyPadelApp.Controls"
              x:Class="MyPadelApp.Views.RegistrationResendOTPPage"
              BackgroundColor="Black"
              Shell.TabBarIsVisible="False"
@@ -17,7 +18,7 @@
             </StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand">
                 <Grid>
-                    <Entry Text="{Binding UserData.Cells}" MaxLength="13" Placeholder="+39" Style="{StaticResource EntryStyle}" Keyboard="Telephone"/>
+                    <Entry Text="{Binding UserData.cell}" MaxLength="13" Placeholder="+39" Style="{StaticResource EntryStyle}" Keyboard="Telephone"/>
                     <BoxView Style="{StaticResource BoxViewStyle}"/>
                 </Grid>
                 <Label Text="{Binding PhoneError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasPhoneError}" />
@@ -30,7 +31,7 @@
             </StackLayout>
             
             <StackLayout Spacing="7">
-                <Grid ColumnDefinitions="*,*,*,*,*" HeightRequest="70" ColumnSpacing="15">
+                <Grid ColumnDefinitions="*,*,*,*,*,*" HeightRequest="70" ColumnSpacing="5">
                 <Border Style="{StaticResource VerificationCodeBorder}">
                     <Entry x:Name="entry1" Style="{StaticResource VerificationCodeEntryStyle}" TextChanged="OnTextChanged" />
                 </Border>
@@ -46,7 +47,10 @@
                 <Border Grid.Column="4" Style="{StaticResource VerificationCodeBorder}">
                     <Entry x:Name="entry5" Style="{StaticResource VerificationCodeEntryStyle}" TextChanged="OnTextChanged"/>
                 </Border>
-            </Grid>
+                    <Border Grid.Column="5" Style="{StaticResource VerificationCodeBorder}">
+                        <Entry x:Name="entry6" Style="{StaticResource VerificationCodeEntryStyle}" TextChanged="OnTextChanged"/>
+                    </Border>
+                </Grid>
             <Label Text="{Binding OTPError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasOTPError}" />
         </StackLayout>
         </StackLayout>
@@ -55,5 +59,6 @@
             <Label Text="{localization:Translate OrLabel}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="18"/>
             <Button Text="{localization:Translate SendCode}" Style="{StaticResource BlueButtonStyle}" Command="{Binding SendCodeCommand}"/>
         </StackLayout>
+        <Loader:ActivityIndicator Grid.RowSpan="3" IsVisible="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>

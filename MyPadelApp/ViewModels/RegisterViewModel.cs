@@ -95,7 +95,7 @@ namespace MyPadelApp.ViewModels
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
                 }
             }
-            catch { }
+            catch(Exception ex) { }
             IsBusy = false;
         }
 

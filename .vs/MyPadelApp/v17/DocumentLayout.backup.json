@@ -3,12 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\viewmodels\\resetpasswordotpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\viewmodels\\resetpasswordotpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\viewmodels\\registrationresendotpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\viewmodels\\registrationresendotpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\views\\registrationresendotppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\views\\registrationresendotppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\views\\registrationresendotppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\views\\registrationresendotppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\views\\resendemailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\views\\resendemailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\views\\resetpasswordotppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\views\\resetpasswordotppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\views\\resendemailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\views\\resendemailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\views\\resetpasswordotppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\views\\resetpasswordotppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\services\\authservices\\authservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\services\\authservices\\authservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\services\\httpclientservices\\httpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\services\\httpclientservices\\httpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\services\\httpclientservices\\ihttpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\services\\httpclientservices\\ihttpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\models\\responses\\generalresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\models\\responses\\generalresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,28 +82,171 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ResetPasswordOTPViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\ResetPasswordOTPViewModel.cs",
-              "RelativeDocumentMoniker": "MyPadelApp\\ViewModels\\ResetPasswordOTPViewModel.cs",
-              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\ResetPasswordOTPViewModel.cs*",
-              "RelativeToolTip": "MyPadelApp\\ViewModels\\ResetPasswordOTPViewModel.cs*",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAwDIAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\RegisterViewModel.cs*",
+              "RelativeToolTip": "MyPadelApp\\ViewModels\\RegisterViewModel.cs*",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAQwFkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T18:23:53.542Z",
+              "WhenOpened": "2025-02-07T18:01:45.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegistrationResendOTPViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\RegistrationResendOTPViewModel.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\ViewModels\\RegistrationResendOTPViewModel.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\RegistrationResendOTPViewModel.cs*",
+              "RelativeToolTip": "MyPadelApp\\ViewModels\\RegistrationResendOTPViewModel.cs*",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAnwEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T17:49:43.499Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RegistrationResendOTPViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\RegistrationResendOTPViewModel.cs",
-              "RelativeDocumentMoniker": "MyPadelApp\\ViewModels\\RegistrationResendOTPViewModel.cs",
-              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\RegistrationResendOTPViewModel.cs",
-              "RelativeToolTip": "MyPadelApp\\ViewModels\\RegistrationResendOTPViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "RegistrationResendOTPPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\RegistrationResendOTPPage.xaml.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\Views\\RegistrationResendOTPPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\RegistrationResendOTPPage.xaml.cs",
+              "RelativeToolTip": "MyPadelApp\\Views\\RegistrationResendOTPPage.xaml.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAYwCIAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T18:23:48.26Z",
+              "WhenOpened": "2025-02-07T17:45:39.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "MyPadelApp\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAtwEwAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T17:33:37.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ResendEmailPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\ResendEmailPage.xaml",
+              "RelativeDocumentMoniker": "MyPadelApp\\Views\\ResendEmailPage.xaml",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\ResendEmailPage.xaml",
+              "RelativeToolTip": "MyPadelApp\\Views\\ResendEmailPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-07T17:46:47.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegistrationResendOTPPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\RegistrationResendOTPPage.xaml",
+              "RelativeDocumentMoniker": "MyPadelApp\\Views\\RegistrationResendOTPPage.xaml",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\RegistrationResendOTPPage.xaml",
+              "RelativeToolTip": "MyPadelApp\\Views\\RegistrationResendOTPPage.xaml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-07T17:45:23.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ResendEmailPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\ResendEmailPage.xaml.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\Views\\ResendEmailPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\ResendEmailPage.xaml.cs",
+              "RelativeToolTip": "MyPadelApp\\Views\\ResendEmailPage.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA1wBQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T17:47:01.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ResetPasswordOTPPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\ResetPasswordOTPPage.xaml.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\Views\\ResetPasswordOTPPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\ResetPasswordOTPPage.xaml.cs",
+              "RelativeToolTip": "MyPadelApp\\Views\\ResetPasswordOTPPage.xaml.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAYwB0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T17:44:45.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ResetPasswordOTPPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\ResetPasswordOTPPage.xaml",
+              "RelativeDocumentMoniker": "MyPadelApp\\Views\\ResetPasswordOTPPage.xaml",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\ResetPasswordOTPPage.xaml",
+              "RelativeToolTip": "MyPadelApp\\Views\\ResetPasswordOTPPage.xaml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACIAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-07T17:44:31.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HttpClientService.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Services\\HttpClientServices\\HttpClientService.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\Services\\HttpClientServices\\HttpClientService.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Services\\HttpClientServices\\HttpClientService.cs",
+              "RelativeToolTip": "MyPadelApp\\Services\\HttpClientServices\\HttpClientService.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwDkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T17:39:23.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IHttpClientService.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Services\\HttpClientServices\\IHttpClientService.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\Services\\HttpClientServices\\IHttpClientService.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Services\\HttpClientServices\\IHttpClientService.cs",
+              "RelativeToolTip": "MyPadelApp\\Services\\HttpClientServices\\IHttpClientService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T17:39:21.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AuthServices.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Services\\AuthServices\\AuthServices.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\Services\\AuthServices\\AuthServices.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Services\\AuthServices\\AuthServices.cs",
+              "RelativeToolTip": "MyPadelApp\\Services\\AuthServices\\AuthServices.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T17:39:14.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GeneralResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Models\\Responses\\GeneralResponse.cs",
+              "RelativeDocumentMoniker": "MyPadelApp\\Models\\Responses\\GeneralResponse.cs",
+              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Models\\Responses\\GeneralResponse.cs",
+              "RelativeToolTip": "MyPadelApp\\Models\\Responses\\GeneralResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T17:37:54.621Z",
               "EditorCaption": ""
             }
           ]

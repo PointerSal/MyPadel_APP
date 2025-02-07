@@ -8,8 +8,8 @@ namespace MyPadelApp.Models.Responses
 {
     public class GeneralResponse
     {
-        public string code { get; set; } = "0002";
-        public string message { get; set; } = "";
+        public string? code { get; set; }
+        public string? message { get; set; } = "";
         public object? data { get; set; }
     }
 }
