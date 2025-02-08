@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace MyPadelApp.ViewModels
 {
-    public partial class RegistrationResendOTPViewModel : BaseViewModel
+    public partial class RegistrationResendOTPViewModel : BaseViewModel, IQueryAttributable
     {
         #region Services
 
@@ -36,7 +36,10 @@ namespace MyPadelApp.ViewModels
         [ObservableProperty]
         public string _oTPError;
 
-        private int IsOTPAdded = 0;
+        [ObservableProperty]
+        public bool _isOTPSend;
+
+        private string Type;
 
         #endregion
 
@@ -48,46 +51,23 @@ namespace MyPadelApp.ViewModels
             try
             {
                 IsBusy = true;
-                if (IsOTPAdded == 0)
-                    (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid(UserData.cell);
-                else
-                    HasPhoneError = false;
+                (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid("+39" + UserData.cell);
 
                 if (!HasPhoneError)
                 {
                     var response = new GeneralResponse();
-                    if(IsOTPAdded == 1)
-                    {
-                        var Data = new User { email = Utils.GetUser.email };
-                        response = await _authServices.ResendPhoneOTP(Data);
-                    }
-                    else
-                    {
-                        var Data = new User { cell = UserData.cell, email = Utils.GetUser.email };
-                        response = await _authServices.AddPhoneNumber(Data);
-                    }
-
-                    if (response.code.Equals("1003"))
-                    {
-                        if (IsOTPAdded == 0)
-                            IsOTPAdded = 1;
-
-                        await SendCode();
-                        return;
-                    }
+                    var Data = new User { cell = "+39" + UserData.cell, email = Utils.GetUser.email };
+                    response = await _authServices.AddPhoneNumber(Data);
 
                     if (response != null && response.code.Equals("0000"))
                     {
-                        if (IsOTPAdded == 0)
-                            IsOTPAdded = 1;
+                        IsOTPSend = true;
                         await Shell.Current.DisplayAlert(AppResources.Success, AppResources.PhoneResent, AppResources.OK);
                     }
                     else if (response != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
-
-                    
                 }
             }
             catch { }
@@ -99,12 +79,14 @@ namespace MyPadelApp.ViewModels
         {
             try
             {
-                (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid(UserData.cell);
+                (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid("+39" + UserData.cell);
                 (HasOTPError, OTPError) = FieldValidations.IsFieldNotEmpty(UserData.otp, AppResources.OTPRequired);
 
                 if (!HasPhoneError && !HasOTPError)
                 {
-                    var response = await _authServices.VerifyPhone(UserData);
+                    IsBusy = true;
+                    var Data = new User { otp = UserData.otp, cell = "+39" + UserData.cell };
+                    var response = await _authServices.VerifyPhone(Data);
                     if (response != null && response.code.Equals("0000"))
                     {
                         Utils.GetUser.isPhoneVerified = true;
@@ -117,6 +99,7 @@ namespace MyPadelApp.ViewModels
                 }
             }
             catch { }
+            IsBusy = false;
         }
 
         #endregion
@@ -125,6 +108,28 @@ namespace MyPadelApp.ViewModels
         public RegistrationResendOTPViewModel(IAuthServices authServices)
         {
             _authServices = authServices;
+        }
+
+        #endregion
+
+        #region Methods
+        public async void OnBack()
+        {
+            if (IsOTPSend)
+                IsOTPSend = false;
+            else
+            {
+                if (Type.Equals("login"))
+                    await Shell.Current.GoToAsync("..");
+                else
+                    await Shell.Current.GoToAsync("../..");
+            }
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if(query !=null && query.Any())
+                Type = (string)query["type"];
         }
 
         #endregion

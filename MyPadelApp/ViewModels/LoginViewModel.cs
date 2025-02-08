@@ -63,7 +63,8 @@ namespace MyPadelApp.ViewModels
                         {
                             await SecureStorage.Default.SetAsync("username", Utils.GetUser.email);
                             await SecureStorage.Default.SetAsync("Password", Utils.GetUser.password);
-                            await Shell.Current.GoToAsync("//Home");
+                            //await Shell.Current.GoToAsync("//Home");
+                            await Shell.Current.DisplayAlert("Success", "Account login successfully", "OK");
                         }
                         else if(Utils.GetUser.isEmailVerified == false)
                         {
@@ -77,7 +78,10 @@ namespace MyPadelApp.ViewModels
                                 await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
                         }
                         else if (Utils.GetUser.isEmailVerified == true && Utils.GetUser.isPhoneVerified == false)
-                            await Shell.Current.GoToAsync("RegistrationResendOTPPage");
+                            await Shell.Current.GoToAsync("RegistrationResendOTPPage", true, new Dictionary<string, object>
+                            {
+                                {"type", "login" }
+                            });
                     }
                     else if (response != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);

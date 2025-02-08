@@ -36,6 +36,9 @@ namespace MyPadelApp.ViewModels
         [ObservableProperty]
         public string _oTPError;
 
+        [ObservableProperty]
+        public bool _isOTPSend;
+
         #endregion
 
         #region Commands
@@ -53,7 +56,10 @@ namespace MyPadelApp.ViewModels
                     var Data = new User { email = UserData.email };
                     var response = await _authServices.ResendOTP(Data);
                     if (response != null && response.code.Equals("0000"))
+                    {
+                        IsOTPSend = true;
                         await Shell.Current.DisplayAlert(AppResources.Success, AppResources.EmailResent, AppResources.OK);
+                    }
                     else if (response != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
@@ -79,6 +85,7 @@ namespace MyPadelApp.ViewModels
                     if (response != null && response.code.Equals("0000"))
                     {
                         Utils.GetUser = null;
+                        Utils.GetUser = new User();
                         Utils.GetUser.email = UserData.email;
                         await Shell.Current.GoToAsync("PasswordChangedPage");
                     }
@@ -98,6 +105,18 @@ namespace MyPadelApp.ViewModels
         public ResetPasswordOTPViewModel(IAuthServices authServices)
         {
             _authServices = authServices;
+        }
+
+        #endregion
+
+        #region Methods
+
+        public async void OnBack()
+        {
+            if (IsOTPSend)
+                IsOTPSend = false;
+            else
+                await Shell.Current.GoToAsync("..");
         }
 
         #endregion

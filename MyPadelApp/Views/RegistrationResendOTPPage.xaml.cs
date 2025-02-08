@@ -15,6 +15,12 @@ public partial class RegistrationResendOTPPage : ContentPage
         BindingContext = _registrationResendOTPViewModel = registrationResendOTPViewModel;
     }
 
+    protected override bool OnBackButtonPressed()
+    {
+        _registrationResendOTPViewModel.OnBack();
+        return true;
+    }
+
     private void OnTextChanged(object sender, TextChangedEventArgs e)
     {
         if (sender is Entry currentEntry)

@@ -10,6 +10,12 @@ public partial class ResendEmailPage : ContentPage
 		InitializeComponent();
         BindingContext = _resendEmailViewModel = resendEmailViewModel;
     }
+
+    protected override bool OnBackButtonPressed()
+    {
+        _resendEmailViewModel.OnBack();
+        return true;
+    }
     private void OnTextChanged(object sender, TextChangedEventArgs e)
     {
         if (sender is Entry currentEntry)

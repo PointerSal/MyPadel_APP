@@ -14,7 +14,11 @@ public partial class ResetPasswordOTPPage : ContentPage
 		InitializeComponent();
         BindingContext = _resetPasswordOTPViewModel = resetPasswordOTPViewModel; 
     }
-
+    protected override bool OnBackButtonPressed()
+    {
+        _resetPasswordOTPViewModel.OnBack();
+        return true;
+    }
     private void OnTextChanged(object sender, TextChangedEventArgs e)
     {
         if (sender is Entry currentEntry)

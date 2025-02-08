@@ -56,17 +56,19 @@ namespace MyPadelApp.ViewModels
                 {
                     IsBusy = true;
                     UserData.email = Utils.GetUser.email;
-                    var response = await _authServices.ResetPassword(UserData);
+                    var Data = new { newPassword = UserData.password, email = UserData.email };
+                    var response = await _authServices.ResetPassword(Data);
                     if (response != null && response.code.Equals("0000"))
                     {
                         var APIResponse = await _authServices.Login(UserData);
-                        if (APIResponse != null && response.code.Equals("0000"))
-                            Utils.GetUser = JsonSerializer.Deserialize<User>(response.data.ToString());
+                        if (APIResponse != null && APIResponse.code.Equals("0000"))
+                            Utils.GetUser = JsonSerializer.Deserialize<User>(APIResponse.data.ToString());
                         Utils.GetUser.password = UserData.password;
                         await SecureStorage.Default.SetAsync("username", Utils.GetUser.email);
                         await SecureStorage.Default.SetAsync("Password", Utils.GetUser.password);
                         await Shell.Current.DisplayAlert(AppResources.Success, AppResources.PasswordUpdated, AppResources.OK);
-                        await Shell.Current.GoToAsync("//Home");
+                        await Shell.Current.GoToAsync("../..");
+                        //await Shell.Current.GoToAsync("//Home");
                     }
                     else if (response != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);

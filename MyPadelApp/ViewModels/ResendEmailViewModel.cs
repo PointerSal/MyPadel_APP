@@ -57,7 +57,10 @@ namespace MyPadelApp.ViewModels
                     if (response != null && response.code.Equals("0000"))
                     {
                         Utils.GetUser.isEmailVerified = true;
-                        await Shell.Current.GoToAsync("RegistrationResendOTPPage");
+                        await Shell.Current.GoToAsync("RegistrationResendOTPPage",true, new Dictionary<string,object>
+                        {
+                            {"type", "registration" }
+                        });
                     }
                     else if (response != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
@@ -88,14 +91,9 @@ namespace MyPadelApp.ViewModels
             IsBusy = false;
         }
 
-        [RelayCommand]
-        public async Task Back()
+        public async void OnBack()
         {
-            try
-            {
-                await Shell.Current.GoToAsync("..");
-            }
-            catch { }
+          await Shell.Current.GoToAsync("..");
         }
 
         #endregion
