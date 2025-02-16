@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
              x:Class="MyPadelApp.Views.MyProfilePage"
+             xmlns:viewmodel="clr-namespace:MyPadelApp.ViewModels"
+             x:DataType="viewmodel:MyProfileViewModel"
              BackgroundColor="{StaticResource SecondaryColor}"
              Shell.TabBarIsVisible="True"
              Shell.NavBarIsVisible="False"
@@ -22,7 +24,7 @@
                     <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
                 </Grid>
                 <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="ProfileInformationPage"/>
                 </Border.GestureRecognizers>
             </Border>
             <Border Style="{StaticResource MenuBoxBorder}">
@@ -32,7 +34,7 @@
                     <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
                 </Grid>
                 <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                    <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="FITCardPage"/>
                 </Border.GestureRecognizers>
             </Border>
             <Border Style="{StaticResource MenuBoxBorder}">
@@ -42,7 +44,7 @@
                     <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
                 </Grid>
                 <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                    <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="MedicalCertificatePage"/>
                 </Border.GestureRecognizers>
             </Border>
             <Border Style="{StaticResource MenuBoxBorder}">
@@ -52,7 +54,7 @@
                     <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
                 </Grid>
                 <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                    <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="PaymentMethodPage"/>
                 </Border.GestureRecognizers>
             </Border>
             <Border Style="{StaticResource MenuBoxBorder}">
@@ -62,11 +64,11 @@
                     <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
                 </Grid>
                 <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4"/>
+                    <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="AccountDeletionPage"/>
                 </Border.GestureRecognizers>
             </Border>
         </StackLayout>
 
-        <Button Grid.Row="2" Text="Logout" Style="{StaticResource TransparentButtonStyle}" Margin="20" Clicked="Button_Clicked"/>
+        <Button Grid.Row="2" Text="Logout" Style="{StaticResource TransparentButtonStyle}" Margin="20" Command="{Binding LogoutCommand}"/>
     </Grid>
 </ContentPage>

@@ -1,14 +1,12 @@
+using MyPadelApp.ViewModels;
+
 namespace MyPadelApp.Views;
 
 public partial class CancelBookingPage : ContentPage
 {
-	public CancelBookingPage()
+	public CancelBookingPage(CancelBookingViewModel cancelBookingViewModel)
 	{
 		InitializeComponent();
-	}
-
-    private async void ImageButton_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PopToRootAsync(true);
+        BindingContext = cancelBookingViewModel;
     }
 }

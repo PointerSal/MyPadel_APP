@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
              x:Class="MyPadelApp.Views.MedicalCertificatePage"
+             xmlns:Loader="clr-namespace:MyPadelApp.Controls"
+             xmlns:viewmodels="clr-namespace:MyPadelApp.ViewModels"
+             x:DataType="viewmodels:FITCardViewModel"
              BackgroundColor="{StaticResource SecondaryColor}"
              Shell.TabBarIsVisible="True"
              Shell.NavBarIsVisible="False"
@@ -14,22 +17,22 @@
             <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
         </Grid>
         <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="40" Margin="20">
-            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Clicked="ImageButton_Clicked"/>
+            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
             <StackLayout Spacing="5">
                 <Label Text="{localization:Translate CertificateReminder}" Style="{StaticResource SmallBoldStyleHorizontalStart}"/>
                 <Label>
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{localization:Translate CertificateDescription}" Style="{StaticResource LargeSpanWhiteFullyUnbold}"/>
+                            <Span Text="{localization:Translate CertificateDescription}" Style="{StaticResource LargeSpanWhiteUnbold}"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
             </StackLayout>
             <StackLayout Spacing="5" Margin="0,40,0,0">
-                <Grid>
-                    <DatePicker Style="{StaticResource GeneralDatePicker}" />
+                <StackLayout>
+                    <Label Text="{Binding Card.expiryDate}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
                     <BoxView Style="{StaticResource BoxViewStyle}"/>
-                </Grid>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </Grid>

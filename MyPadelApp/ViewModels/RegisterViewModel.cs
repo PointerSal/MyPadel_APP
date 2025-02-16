@@ -82,14 +82,15 @@ namespace MyPadelApp.ViewModels
                 {
                     IsBusy = true;
                     var response = await _authServices.RegisterUser(UserData);
-                    if (response != null && response.code.Equals("0000"))
+                    if (response != null && response.code !=null && response.code.Equals("0000"))
                     {
                         Utils.GetUser = null;
                         Utils.GetUser = JsonSerializer.Deserialize<User>(response.data.ToString());
+                        Preferences.Default.Set("Token", Utils.GetUser.token);
                         Utils.GetUser.password = UserData.password;
                         await Shell.Current.GoToAsync("ResendEmailPage");
                     }
-                    else if (response != null)
+                    else if (response != null && response.code !=null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);

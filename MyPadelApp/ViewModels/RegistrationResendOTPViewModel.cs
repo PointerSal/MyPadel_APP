@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace MyPadelApp.ViewModels
 {
-    public partial class RegistrationResendOTPViewModel : BaseViewModel, IQueryAttributable
+    public partial class RegistrationResendOTPViewModel : BaseViewModel
     {
         #region Services
 
@@ -39,8 +39,6 @@ namespace MyPadelApp.ViewModels
         [ObservableProperty]
         public bool _isOTPSend;
 
-        private string Type;
-
         #endregion
 
         #region Commands
@@ -59,12 +57,12 @@ namespace MyPadelApp.ViewModels
                     var Data = new User { cell = "+39" + UserData.cell, email = Utils.GetUser.email };
                     response = await _authServices.AddPhoneNumber(Data);
 
-                    if (response != null && response.code.Equals("0000"))
+                    if (response != null && response.code !=null && response.code.Equals("0000"))
                     {
                         IsOTPSend = true;
                         await Shell.Current.DisplayAlert(AppResources.Success, AppResources.PhoneResent, AppResources.OK);
                     }
-                    else if (response != null)
+                    else if (response != null && response.code !=null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
@@ -87,12 +85,12 @@ namespace MyPadelApp.ViewModels
                     IsBusy = true;
                     var Data = new User { otp = UserData.otp, cell = "+39" + UserData.cell };
                     var response = await _authServices.VerifyPhone(Data);
-                    if (response != null && response.code.Equals("0000"))
+                    if (response != null && response.code !=null && response.code.Equals("0000"))
                     {
                         Utils.GetUser.isPhoneVerified = true;
-                        await Shell.Current.GoToAsync("FinalStepPage");
+                        await Shell.Current.GoToAsync("../FinalStepPage");
                     }
-                    else if (response != null)
+                    else if (response != null && response.code !=null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
@@ -119,17 +117,12 @@ namespace MyPadelApp.ViewModels
                 IsOTPSend = false;
             else
             {
-                if (Type.Equals("login"))
-                    await Shell.Current.GoToAsync("..");
-                else
-                    await Shell.Current.GoToAsync("../..");
+                await Shell.Current.GoToAsync("..");
+                //if (Type.Equals("login"))
+                //    await Shell.Current.GoToAsync("..");
+                //else
+                //    await Shell.Current.GoToAsync("../..");
             }
-        }
-
-        public void ApplyQueryAttributes(IDictionary<string, object> query)
-        {
-            if(query !=null && query.Any())
-                Type = (string)query["type"];
         }
 
         #endregion

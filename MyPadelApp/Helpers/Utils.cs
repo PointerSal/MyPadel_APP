@@ -10,5 +10,8 @@ namespace MyPadelApp.Helpers
     public class Utils
     {
         public static User GetUser { get; set; } = null;
+        public static bool IsUserLogin { get; set; } = false;
+        public static bool IsHomeUpdated { get; set; } = true;
+        public static bool IsBookingPageUpdated { get; set; } = false;
     }
 }

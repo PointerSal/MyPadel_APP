@@ -201,6 +201,9 @@ Ricordati di rinnovare la tua tessera prima che scada, accedi alla sezione “Te
   <data name="CancellationPolicy" xml:space="preserve">
     <value>Politica di annullamento</value>
   </data>
+  <data name="PayOnline" xml:space="preserve">
+    <value>Paga en línea</value>
+  </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Resetta Password</value>
   </data>
@@ -681,39 +684,123 @@ Per registrare la tua nuova tessera FIT.</value>
     <value>La contraseña se ha actualizado correctamente</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>DE ACUERDO</value>
+    <value>OK</value>
   </data>
   <data name="AcceptConditions" xml:space="preserve">
     <value>Debe aceptar todos los términos y condiciones requeridos, la política de privacidad y las preferencias de marketing.</value>
   </data>
-	<data name="NameRequired" xml:space="preserve">
+  <data name="NameRequired" xml:space="preserve">
     <value>El nombre es obligatorio.</value>
   </data>
-	<data name="SurnameRequired" xml:space="preserve">
+  <data name="SurnameRequired" xml:space="preserve">
     <value>El apellido es obligatorio.</value>
   </data>
-	<data name="PhoneNumberRequired" xml:space="preserve">
+  <data name="PhoneNumberRequired" xml:space="preserve">
     <value>El número de teléfono es obligatorio.</value>
   </data>
-	<data name="InvalidNumber" xml:space="preserve">
+  <data name="InvalidNumber" xml:space="preserve">
     <value>Formato de número de teléfono italiano no válido. Ejemplo de formatos válidos:\n- Teléfono fijo: +39 06 1234567 (Roma)\n- Móvil: +39 345 1234567</value>
   </data>
-	<data name="Error" xml:space="preserve">
+  <data name="Error" xml:space="preserve">
     <value>Errore</value>
   </data>
-	<data name="OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-	<data name="SomethingWrong" xml:space="preserve">
+  <data name="SomethingWrong" xml:space="preserve">
     <value>Qualcosa è andato storto</value>
   </data>
-    <data name="EmailResent" xml:space="preserve">
-    <value>El correo electrónico se ha reenviado correctamente</value>
-  </data>
-	<data name="EmailResent" xml:space="preserve">
+  <data name="EmailResent" xml:space="preserve">
     <value>La OTP de correo electrónico se ha reenviado correctamente</value>
   </data>
-	<data name="PhoneResent" xml:space="preserve">
+  <data name="PhoneResent" xml:space="preserve">
     <value>La OTP del teléfono se ha reenviado correctamente</value>
+  </data>
+  <data name="NotSupported" xml:space="preserve">
+    <value>No compatible</value>
+  </data>
+  <data name="NotSupportedCamera" xml:space="preserve">
+    <value>La captura no es compatible con este dispositivo.</value>
+  </data>
+  <data name="PermissionDenied" xml:space="preserve">
+    <value>Permiso denegado</value>
+  </data>
+  <data name="PermissionNotGranted" xml:space="preserve">
+    <value>Permiso de cámara o almacenamiento no concedido</value>
+  </data>
+  <data name="NoFileChosen" xml:space="preserve">
+    <value>No se ha elegido ningún archivo.</value>
+  </data>
+  <data name="FailCapturePhoto" xml:space="preserve">
+    <value>No se pudo capturar la foto.</value>
+  </data>
+  <data name="CardNumberRequired" xml:space="preserve">
+    <value>Se requiere número de tarjeta.</value>
+  </data>
+  <data name="ExpiryDateRequired" xml:space="preserve">
+    <value>La fecha de vencimiento debe ser futura.</value>
+  </data>
+  <data name="MedicalCertificateDateRequired" xml:space="preserve">
+    <value>Se requiere fecha del certificado médico.</value>
+  </data>
+  <data name="MedicalCertificateRequired" xml:space="preserve">
+    <value>Se requiere certificado médico.</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Masculino</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Femenino</value>
+  </data>
+  <data name="MunicipalityPlaceholder" xml:space="preserve">
+    <value>Municipio</value>
+  </data>
+  <data name="InvalidBrithDate" xml:space="preserve">
+    <value>Fecha de nacimiento no válida</value>
+  </data>
+  <data name="GenderSelected" xml:space="preserve">
+    <value>Se debe seleccionar el género</value>
+  </data>
+  <data name="AddressRequired" xml:space="preserve">
+    <value>Se requiere dirección.</value>
+  </data>
+  <data name="PostalCodeRequired" xml:space="preserve">
+    <value>Se requiere código postal.</value>
+  </data>
+  <data name="Invalidpostalcode" xml:space="preserve">
+    <value>El código postal debe ser numérico y tener entre 5 y 10 caracteres.</value>
+  </data>
+  <data name="MunicipalityRequried" xml:space="preserve">
+    <value>Se requiere municipio.</value>
+  </data>
+  <data name="Invalidcardnumber" xml:space="preserve">
+    <value>El número de tarjeta debe tener 16 dígitos.</value>
+  </data>
+  <data name="InvalidCertificateDate" xml:space="preserve">
+    <value>La fecha del certificado médico no puede ser futura.</value>
+  </data>
+  <data name="PaymentMethodSelected" xml:space="preserve">
+    <value>Se debe seleccionar el método de pago</value>
+  </data>
+  <data name="OneSelected" xml:space="preserve">
+    <value>Uno de ellos debe ser seleccionado.</value>
+  </data>
+  <data name="TermsAndConditionAgree" xml:space="preserve">
+    <value>Se deben acordar los términos y condiciones.</value>
+  </data>
+  <data name="AccountDeleted" xml:space="preserve">
+    <value>Your account has been deleted successfully</value>
+  </data>
+  <data name="CampoPadel" xml:space="preserve">
+    <value>Campo Padel </value>
+  </data>
+  <data name="NoDataFound" xml:space="preserve">
+    <value>No se encontraron datos</value>
+  </data>
+  <data name="BookingCanceled" xml:space="preserve">
+    <value>Tu reserva ha sido cancelada exitosamente</value>
+  </data>
+  <data name="SoccerText" xml:space="preserve">
+    <value>Soccer</value>
+  </data>
+  <data name="Cricket" xml:space="preserve">
+    <value>Cricket</value>
   </data>
 </root>

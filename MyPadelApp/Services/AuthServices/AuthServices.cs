@@ -21,23 +21,31 @@ namespace MyPadelApp.Services.AuthServices
         }
         public async Task<GeneralResponse> VerifyEmail(User user)
         {
-            return await httpClientService.PostAsync("auth/verify-email", user, false);
+            return await httpClientService.PostAsync("auth/verify-email", user, true);
         }
         public async Task<GeneralResponse> VerifyPhone(User user)
         {
-            return await httpClientService.PostAsync("auth/verify-phone", user, false);
+            return await httpClientService.PostAsync("auth/verify-phone", user, true);
         }
         public async Task<GeneralResponse> ResetPassword(object user)
         {
             return await httpClientService.PostAsync("auth/reset-password", user, false);
         }
+        public async Task<GeneralResponse> UpdatePassword(object user)
+        {
+            return await httpClientService.PutAsync("auth/update-password", user, true);
+        }
         public async Task<GeneralResponse> ResendOTP(User user)
         {
-            return await httpClientService.PostAsync("auth/resendEmail-otp", user, false);
+            return await httpClientService.PostAsync("auth/resendEmail-otp", user, true);
         }
         public async Task<GeneralResponse> AddPhoneNumber(User user)
         {
-            return await httpClientService.PostAsync("auth/add-phone-number", user, false);
+            return await httpClientService.PostAsync("auth/add-phone-number", user, true);
+        }
+        public async Task<GeneralResponse> DeleteAccount(User user)
+        {
+            return await httpClientService.DeleteAsync("auth/delete-account", user, true);
         }
     }
 }

@@ -58,19 +58,19 @@ namespace MyPadelApp.ViewModels
                     UserData.email = Utils.GetUser.email;
                     var Data = new { newPassword = UserData.password, email = UserData.email };
                     var response = await _authServices.ResetPassword(Data);
-                    if (response != null && response.code.Equals("0000"))
+                    if (response != null && response.code !=null && response.code.Equals("0000"))
                     {
                         var APIResponse = await _authServices.Login(UserData);
-                        if (APIResponse != null && APIResponse.code.Equals("0000"))
+                        if (APIResponse != null && APIResponse.code !=null && APIResponse.code.Equals("0000"))
                             Utils.GetUser = JsonSerializer.Deserialize<User>(APIResponse.data.ToString());
                         Utils.GetUser.password = UserData.password;
-                        await SecureStorage.Default.SetAsync("username", Utils.GetUser.email);
-                        await SecureStorage.Default.SetAsync("Password", Utils.GetUser.password);
+                        Preferences.Default.Set("username", Utils.GetUser.email);
+                        Preferences.Default.Set("Password", Utils.GetUser.password);
                         await Shell.Current.DisplayAlert(AppResources.Success, AppResources.PasswordUpdated, AppResources.OK);
-                        await Shell.Current.GoToAsync("../..");
-                        //await Shell.Current.GoToAsync("//Home");
+                        //await Shell.Current.GoToAsync("../..");
+                        await Shell.Current.GoToAsync("//HomePage");
                     }
-                    else if (response != null)
+                    else if (response != null && response.code !=null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);

@@ -1,18 +1,12 @@
+using MyPadelApp.ViewModels;
+
 namespace MyPadelApp.Views;
 
 public partial class HistoryBookingSummaryPage : ContentPage
 {
-	public HistoryBookingSummaryPage()
+	public HistoryBookingSummaryPage(HistoryBookingSummaryViewModel historyBookingSummaryViewModel)
 	{
 		InitializeComponent();
-	}
-
-    private async void OnBackClicked(object sender, EventArgs e)
-    {
-        await Navigation.PopToRootAsync();
-    }
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new CancelBookingPage());
+        BindingContext = historyBookingSummaryViewModel;
     }
 }

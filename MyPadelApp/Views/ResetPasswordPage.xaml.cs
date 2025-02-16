@@ -1,10 +1,13 @@
+using MyPadelApp.ViewModels;
+
 namespace MyPadelApp.Views;
 
 public partial class ResetPasswordPage : ContentPage
 {
-	public ResetPasswordPage()
+	public ResetPasswordPage(ResetPasswordViewModel resetPasswordViewModel)
 	{
 		InitializeComponent();
+        BindingContext = resetPasswordViewModel;
 	}
     private void OnCurrentPasswordEyeClicked(object sender, EventArgs e)
     {

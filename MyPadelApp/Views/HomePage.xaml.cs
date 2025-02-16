@@ -1,135 +1,72 @@
+using LocalizationResourceManager.Maui;
 using Microsoft.Maui.Controls;
 using MyPadelApp.Models;
+using MyPadelApp.ViewModels;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace MyPadelApp.Views;
 
-public partial class HomePage : ContentPage, INotifyPropertyChanged
+public partial class HomePage : ContentPage
 {
-    private bool IsClicked { get; set; } = false;
-    private ObservableCollection<CalendarItem> _CalendarItems;
-    public ObservableCollection<CalendarItem> CalendarItems
+    HomeViewModel _homeViewModel;
+    public HomePage(HomeViewModel homeViewModel, ILocalizationResourceManager localizationResourceManager)
     {
-        get => _CalendarItems;
-        set
-        {
-            _CalendarItems = value;
-            OnPropertyChanged();
-        }
-    }
-    private ObservableCollection<TimeSlot> _TimeSlots;
-    public ObservableCollection<TimeSlot> TimeSlots
-    {
-        get => _TimeSlots;
-        set
-        {
-            _TimeSlots = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private ObservableCollection<TimeSlot> _TimeSlots2;
-    public ObservableCollection<TimeSlot> TimeSlots2
-    {
-        get => _TimeSlots2;
-        set
-        {
-            _TimeSlots2 = value;
-            OnPropertyChanged();
-        }
-    }
-    public HomePage()
-    {
+        if (string.IsNullOrEmpty(Preferences.Default.Get("username", string.Empty)) || string.IsNullOrEmpty(Preferences.Default.Get("Password", string.Empty)))
+            Navigation.PushAsync(new SelectionPage(localizationResourceManager));
+       
         InitializeComponent();
-        BindingContext = this;
-        CalendarItems = new ObservableCollection<CalendarItem>();
-        GenerateCalendarForYear();
-        GenerateTimeSlots();
+        BindingContext = _homeViewModel = homeViewModel;
     }
 
-    private void GenerateTimeSlots()
+    protected override void OnAppearing()
     {
-        TimeSlots = new ObservableCollection<TimeSlot>();
-
-        DateTime startTime = new DateTime(1, 1, 1, 1, 0, 0); 
-        DateTime endTime = new DateTime(1, 1, 1, 23, 0, 0); 
-        int a = 0;
-
-        while (startTime <= endTime)
-        {
-            a++;
-            TimeSlots.Add(new TimeSlot
-            {
-                Time = startTime, 
-                Status = a==5? "Prenotato" : "",
-            });
-            startTime = startTime.AddMinutes(30);
-            if (a == 5)
-                a = 0;
-        }
-
-        TimeSlots2 = TimeSlots;
+        base.OnAppearing();
+        _homeViewModel.InitializeData( );
     }
 
-    private void GenerateCalendarForYear()
-    {
-        try
-        {
-            CalendarItems.Clear();
-            var startDate = DateTime.Today;
-            var endDate = startDate.AddYears(1);
-
-            for (var date = startDate; date < endDate; date = date.AddDays(1))
-            {
-                CalendarItems.Add(new CalendarItem
-                {
-                    Date = date,
-                    Day = date.ToString("ddd"),
-                    MonthName = date.ToString("MMM")
-                });
-            }
-        }
-        catch
-        {
-        }
-    }
     private void OnBorderTapped(object sender, TappedEventArgs e)
     {
         PadelBorder.BackgroundColor = Colors.Transparent;
         TennisBorder.BackgroundColor = Colors.Transparent;
+        SoccerBorder.BackgroundColor = Colors.Transparent;
+        CricketBorder.BackgroundColor = Colors.Transparent;
 
         if (sender == PadelBorder)
         {
             PadelBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
+            _homeViewModel.CurrentField = 1;
         }
         else if (sender == TennisBorder)
         {
             TennisBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
+            _homeViewModel.CurrentField = 2;
         }
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
-    {
-        if (!IsClicked)
+        else if (sender == SoccerBorder)
         {
-            IsClicked = true;
-            var tappedSlot = (e as TappedEventArgs)?.Parameter as TimeSlot;
-
-            if (tappedSlot == null)
-                return;
-
-            if (!tappedSlot.Status.Equals("Prenotato"))
-                await Navigation.PushAsync(new BookingSummaryPage());
-
-            IsClicked = false;
+            SoccerBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
+            _homeViewModel.CurrentField = 3;
         }
+        else if (sender == CricketBorder)
+        {
+            CricketBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
+            _homeViewModel.CurrentField = 4;
+        }
+
+        _homeViewModel.GenerateTimeSlots();
+    }
+
+    private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        try
+        {
+            var selectedDate = (CalendarItem)e.CurrentSelection.FirstOrDefault();
+            _homeViewModel.SelectedDate = selectedDate.Date;
+            _homeViewModel.GenerateTimeSlots();
+            await Task.Delay(2000);
+            CalendarCollectionView.ScrollTo(_homeViewModel.SelectedCalender, position: ScrollToPosition.Center, animate: false);
+        }
+        catch { }
     }
 }

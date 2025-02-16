@@ -54,42 +54,42 @@ namespace MyPadelApp.ViewModels
                 {
                     IsBusy = true;
                     var response = await _authServices.Login(UserData);
-                    if (response != null && response.code.Equals("0000"))
+                    if (response != null && response.code != null && response.code.Equals("0000"))
                     {
                         Utils.GetUser = null;
                         Utils.GetUser = JsonSerializer.Deserialize<User>(response.data.ToString());
                         Utils.GetUser.password = UserData.password;
-                        if (Utils.GetUser.isEmailVerified == true && Utils.GetUser.isPhoneVerified == true)
+                        Preferences.Default.Set("Token", Utils.GetUser.token);
+                        response = new Models.Responses.GeneralResponse();
+                        if (Utils.GetUser.isEmailVerified == true && Utils.GetUser.isPhoneVerified == true && Utils.GetUser.isFitMember == true)
                         {
-                            await SecureStorage.Default.SetAsync("username", Utils.GetUser.email);
-                            await SecureStorage.Default.SetAsync("Password", Utils.GetUser.password);
-                            //await Shell.Current.GoToAsync("//Home");
-                            await Shell.Current.DisplayAlert("Success", "Account login successfully", "OK");
+                            Preferences.Default.Set("username", Utils.GetUser.email);
+                            Preferences.Default.Set("Password", Utils.GetUser.password);
+                            await Shell.Current.GoToAsync("//HomePage");
                         }
-                        else if(Utils.GetUser.isEmailVerified == false)
+                        else if (Utils.GetUser.isEmailVerified == false)
                         {
                             var Data = new User { email = UserData.email };
                             response = await _authServices.ResendOTP(Data);
-                            if (response != null && response.code.Equals("0000"))
+                            if (response != null && response.code != null && response.code.Equals("0000"))
                                 await Shell.Current.GoToAsync("ResendEmailPage");
-                            else if (response != null)
+                            else if (response != null && response.code != null)
                                 await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                             else
                                 await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
                         }
-                        else if (Utils.GetUser.isEmailVerified == true && Utils.GetUser.isPhoneVerified == false)
-                            await Shell.Current.GoToAsync("RegistrationResendOTPPage", true, new Dictionary<string, object>
-                            {
-                                {"type", "login" }
-                            });
+                        else if (Utils.GetUser.isPhoneVerified == false)
+                            await Shell.Current.GoToAsync("RegistrationResendOTPPage");
+                        else if (Utils.GetUser.isFitMember == false)
+                            await Shell.Current.GoToAsync("FinalStepPage");
                     }
-                    else if (response != null)
+                    else if (response != null && response.code != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
                 }
             }
-            catch { }
+            catch(Exception ex) { }
             IsBusy = false;
         }
 

@@ -3,39 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyPadelApp.Views.AlreadyFITCardPage"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
+             xmlns:Loader="clr-namespace:MyPadelApp.Controls"
+             xmlns:viewmodels="clr-namespace:MyPadelApp.ViewModels"
+             x:DataType="viewmodels:AlreadyFITCardViewModel"
              BackgroundColor="Black"
              Shell.TabBarIsVisible="False"
              Shell.NavBarIsVisible="False"
              Style="{StaticResource DefaultContentPage}"
              Title="">
 
-    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="20" RowSpacing="20">
-        <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Clicked="OnBackClicked"/>
-        <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="40" Margin="0,30">
-            <StackLayout Spacing="5">
-                <Label Text="{localization:Translate Question}" Style="{StaticResource LabelStyleHorizontalStart}"/>
-                <Label Text="{localization:Translate Instruction}" Style="{StaticResource LabelStyleHorizontalStart}"/>
+    <Grid>
+        <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="20" RowSpacing="20">
+            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
+            <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="40" Margin="0,30">
+                <StackLayout Spacing="5">
+                    <Label Text="{localization:Translate Question}" Style="{StaticResource LabelStyleHorizontalStart}"/>
+                    <Label Text="{localization:Translate Instruction}" Style="{StaticResource LabelStyleHorizontalStart}"/>
+                </StackLayout>
+                <StackLayout Spacing="5">
+                    <Grid>
+                        <Entry Text="{Binding CardModel.CardNumber}" Placeholder="{localization:Translate CardNumberPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" MaxLength="16"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Label Text="{Binding CardNumberError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCardNumberError}" />
+                    <Grid>
+                        <DatePicker Date="{Binding CardModel.ExpiryDate}"  Style="{StaticResource GeneralDatePicker}"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Label Text="{Binding ExpiryDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasExpiryDateError}" />
+                    <Grid>
+                        <DatePicker Date="{Binding CardModel.MedicalCertificateDate}" Style="{StaticResource GeneralDatePicker}"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Label Text="{Binding CertificateDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCertificateDateError}" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="{localization:Translate UploadMedicalCertificate}" Style="{StaticResource SmallUnBoldStyleHorizontalStart}"/>
+                        <ImageButton Grid.Column="1" Source="camera" Style="{StaticResource CameraImageStyle}" Command="{Binding OpenCameraCommand}"/>
+                    </Grid>
+                    <Label Text="{Binding UploadCertificateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasUploadCertificateError}" />
+                </StackLayout>
             </StackLayout>
-            <StackLayout Spacing="5">
-                <Grid>
-                    <Entry Placeholder="{localization:Translate CardNumberPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
-                    <BoxView Style="{StaticResource BoxViewStyle}"/>
-                </Grid>
-                <Grid>
-                    <DatePicker Style="{StaticResource GeneralDatePicker}"/>
-                    <BoxView Style="{StaticResource BoxViewStyle}"/>
-                </Grid>
-                <Grid>
-                    <DatePicker Style="{StaticResource GeneralDatePicker}"/>
-                    <BoxView Style="{StaticResource BoxViewStyle}"/>
-                </Grid>
-                <Grid ColumnDefinitions="*,Auto">
-                    <Label Text="{localization:Translate UploadMedicalCertificate}" Style="{StaticResource SmallUnBoldStyleHorizontalStart}"/>
-                    <ImageButton Grid.Column="1" Source="camera" Style="{StaticResource CameraImageStyle}" Clicked="OnCameraClicked"/>
-                </Grid>
-            </StackLayout>
-        </StackLayout>
-        <Button Grid.Row="2" Text="{localization:Translate RequestNewCard}" Style="{StaticResource TransparentButtonStyle}" Clicked="OnNewCardClicked"/>
-        <Button Grid.Row="3" Text="{localization:Translate CreateAccount}" Style="{StaticResource BlueButtonStyle}" Clicked="OnAddCardClicked"/>
+            <Button Grid.Row="2" Text="{localization:Translate RequestNewCard}" Style="{StaticResource TransparentButtonStyle}" Command="{Binding NewCardCommand}"/>
+            <Button Grid.Row="3" Text="{localization:Translate AddCard}" Style="{StaticResource BlueButtonStyle}" Command="{Binding AddCardCommand}"/>
+        </Grid>
+        <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>

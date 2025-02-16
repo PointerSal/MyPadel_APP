@@ -1,14 +1,12 @@
+using MyPadelApp.ViewModels;
+
 namespace MyPadelApp.Views;
 
 public partial class PaymentBookingSummary : ContentPage
 {
-	public PaymentBookingSummary()
+	public PaymentBookingSummary(PaymentBookingSummaryViewModel paymentBookingSummaryViewModel)
 	{
 		InitializeComponent();
-	}
-
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-		await Navigation.PopToRootAsync(true);
+		BindingContext = paymentBookingSummaryViewModel;
     }
 }

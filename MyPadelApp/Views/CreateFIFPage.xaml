@@ -3,72 +3,140 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
              x:Class="MyPadelApp.Views.CreateFIFPage"
+             xmlns:Loader="clr-namespace:MyPadelApp.Controls"
+             xmlns:viewmodels="clr-namespace:MyPadelApp.ViewModels"
+             x:DataType="viewmodels:CreateFIFViewModel"
+             xmlns:Converters ="clr-namespace:MyPadelApp.Converters"
              BackgroundColor="Black"
              Shell.TabBarIsVisible="False"
              Shell.NavBarIsVisible="False"
              Title="{localization:Translate PageTitle}"
-             Style="{StaticResource DefaultContentPage}">
+             Style="{StaticResource DefaultContentPage}"
+             x:Name="this">
 
-    <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="20" RowSpacing="20">
-        <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Clicked="OnBackClicked"/>
-        <ScrollView Grid.Row="1" Orientation="Vertical">
-            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="10" Margin="0,0,0,10">
-                <StackLayout Spacing="5">
-                    <Label Text="{localization:Translate RegistrationHeading}" Style="{StaticResource LabelStyleHorizontalStart}" />
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{localization:Translate RegistrationDescription}" Style="{StaticResource SmallUnBoldStyleHorizontalStart}" />
-                                <Span Text=" " Style="{StaticResource SmallUnBoldStyleHorizontalStart}" />
-                                <Span Text="{localization:Translate RegistrationFooter}" Style="{StaticResource SmallSpanWhitebold}" TextDecorations="Underline"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </StackLayout>
-                <StackLayout Spacing="5">
-                    <Grid>
-                        <Entry Placeholder="{localization:Translate NamePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
-                        <BoxView Style="{StaticResource BoxViewStyle}"/>
-                    </Grid>
-                    <Grid>
-                        <Entry Placeholder="{localization:Translate SurnamePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
-                        <BoxView Style="{StaticResource BoxViewStyle}"/>
-                    </Grid>
-                    <Grid>
-                        <Entry Placeholder="{localization:Translate GenderPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
-                        <BoxView Style="{StaticResource BoxViewStyle}"/>
-                    </Grid>
-                    <Grid>
-                        <Entry Placeholder="{localization:Translate CardNumberPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
-                        <BoxView Style="{StaticResource BoxViewStyle}"/>
-                    </Grid>
-                    <Grid>
-                        <Entry Placeholder="{localization:Translate AddressPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
-                        <BoxView Style="{StaticResource BoxViewStyle}"/>
-                    </Grid>
-                    <Grid>
-                        <Entry Placeholder="{localization:Translate ZipCodePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
-                        <BoxView Style="{StaticResource BoxViewStyle}"/>
-                    </Grid>
-                    <Grid>
-                        <Entry Placeholder="{localization:Translate CityPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
-                        <BoxView Style="{StaticResource BoxViewStyle}"/>
-                    </Grid>
-                    <Grid ColumnDefinitions="*,Auto">
-                        <Label Text="{localization:Translate UploadMedicalCertificate}" Style="{StaticResource LabelStyleHorizontalStart}"/>
-                        <ImageButton Grid.Column="1" Source="camera" Style="{StaticResource CameraImageStyle}" Clicked="OnCameraClicked"/>
-                    </Grid>
-                </StackLayout>
-                <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converters:SelectedPaymentColorConverter x:Key="SelectedPaymentColorConverter"/>
+            <Style TargetType="Grid">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource BlueTextColors}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid RowDefinitions="Auto,*,Auto,Auto" Margin="20" RowSpacing="20">
+            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
+            <ScrollView Grid.Row="1" Orientation="Vertical">
+                <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="10" Margin="0,0,0,10">
                     <StackLayout Spacing="5">
-                        <Label Text="{localization:Translate PaymentMethodHeading}" Style="{StaticResource SmallSpanWhitebold}"/>
-                        <Label Text="{localization:Translate PaymentOptionPayPal}" Style="{StaticResource SmallSpanWhitebold}"/>
-                        <Label Text="{localization:Translate PaymentOptionCreditCard}" Style="{StaticResource SmallSpanLightBluebold}"/>
-                        <Label Text="{localization:Translate PaymentOptionSatispay}" Style="{StaticResource SmallSpanWhitebold}"/>
+                        <Label Text="{localization:Translate RegistrationHeading}" Style="{StaticResource LabelStyleHorizontalStart}" />
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{localization:Translate RegistrationDescription}" Style="{StaticResource SmallUnBoldStyleHorizontalStart}" />
+                                    <Span Text=" " Style="{StaticResource SmallUnBoldStyleHorizontalStart}" />
+                                    <Span Text="{localization:Translate RegistrationFooter}" Style="{StaticResource SmallSpanWhitebold}" TextDecorations="Underline"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </StackLayout>
-                </Border>
-            </StackLayout>
-        </ScrollView>
-        <Button Grid.Row="3" Text="{localization:Translate ProceedPayment}" Style="{StaticResource BlueButtonStyle}" Clicked="OnConfirmClicked"/>
+                    <StackLayout Spacing="5">
+                        <Grid>
+                            <Entry Text="{Binding CardModel.FirstName}" Placeholder="{localization:Translate NamePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding FirstNameError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasFirstNameError}" />
+
+                        <Grid>
+                            <Entry Text="{Binding CardModel.LastName}" Placeholder="{localization:Translate SurnamePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding LastNameError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasLastNameError}" />
+
+                        <Grid>
+                            <DatePicker Date="{Binding CardModel.BirthDate}"  Style="{StaticResource GeneralDatePicker}"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding BirthDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding BirthDateError}" />
+
+                        <Grid Margin="0,-20,0,0">
+                            <Picker ItemsSource="{Binding Gender}" SelectedItem="{Binding CardModel.Gender, Mode=TwoWay}"  Title="{localization:Translate GenderPlaceholder}" Style="{StaticResource PickerStyle}"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding GenderError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasGenderError}" />
+
+                        <Grid>
+                            <Entry Text="{Binding CardModel.Address}" Placeholder="{localization:Translate AddressPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding AddressError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasAddressError}" />
+
+                        <Grid>
+                            <Entry Text="{Binding CardModel.PostalCode}" Placeholder="{localization:Translate ZipCodePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" MaxLength="10"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding ZipCodeError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasZipCodeError}" />
+
+                        <Grid>
+                            <Entry Text="{Binding CardModel.Municipality}" Placeholder="{localization:Translate MunicipalityPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding MunicipalityError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasMunicipalityError}" />
+                        
+                        <Grid>
+                            <Entry Text="{Binding CardModel.CardNumber}" Placeholder="{localization:Translate CardNumberPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" MaxLength="16"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding CardNumberError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCardNumberError}" />
+
+                        <Grid>
+                            <DatePicker Date="{Binding CardModel.ExpiryDate}"  Style="{StaticResource GeneralDatePicker}"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding ExpiryDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasExpiryDateError}" />
+                        
+                        <Grid>
+                            <DatePicker Date="{Binding CardModel.MedicalCertificateDate}" Style="{StaticResource GeneralDatePicker}"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding CertificateDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCertificateDateError}" />
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{localization:Translate UploadMedicalCertificate}" Style="{StaticResource LabelStyleHorizontalStart}"/>
+                            <ImageButton Grid.Column="1" Source="camera" Style="{StaticResource CameraImageStyle}" Command="{Binding OpenCameraCommand}"/>
+                        </Grid>
+                        <Label Text="{Binding UploadCertificateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasUploadCertificateError}" />
+                    </StackLayout>
+                    <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                        <StackLayout Spacing="5">
+                            <Label Text="{localization:Translate PaymentMethodHeading}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                            <CollectionView ItemsSource="{Binding PaymentMethods}" SelectionMode="Single" SelectedItem="{Binding SelectedPaymentMethod}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Label Text="{Binding .,StringFormat='• {0:F2}'}" Style="{StaticResource SmallBoldLabelStyle}" Padding="0,5"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Label Text="{Binding PaymentmethodError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasPaymentmethodError}" />
+                        </StackLayout>
+                    </Border>
+                </StackLayout>
+            </ScrollView>
+            <Button Grid.Row="3" Text="{localization:Translate ProceedPayment}" Style="{StaticResource BlueButtonStyle}" Command="{Binding AddCardCommand}"/>
+        </Grid>
+        <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>

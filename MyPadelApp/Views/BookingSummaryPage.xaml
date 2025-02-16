@@ -3,82 +3,122 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
              x:Class="MyPadelApp.Views.BookingSummaryPage"
+             xmlns:Loader="clr-namespace:MyPadelApp.Controls"
+             xmlns:Converters ="clr-namespace:MyPadelApp.Converters"
+             xmlns:viewmodels="clr-namespace:MyPadelApp.ViewModels"
+             x:DataType="viewmodels:BookingSummaryViewModel"
              BackgroundColor="{StaticResource SecondaryColor}"
              Shell.TabBarIsVisible="True"
              Shell.NavBarIsVisible="False"
              Title="">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="10">
-        <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
-            <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
-            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
-        </Grid>
-        <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Padding="20,5">
-            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Clicked="OnBackClicked"/>
-            <Label Grid.Column="1" Text="{localization:Translate BookingSummaryTitle}" Style="{StaticResource LargeLabelStyleCenter}" FontFamily=""/>
-        </Grid>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converters:SelectedPaymentColorConverter x:Key="SelectedPaymentColorConverter"/>
+            <Style TargetType="Grid">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource BlueTextColors}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-        <Border Grid.Row="2" Style="{StaticResource MenuBoxBorder}">
-            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
-                <Label Grid.Row="0" Text="{localization:Translate Padel}" Style="{StaticResource SmallBoldLabelStyleHorizontalStart}"/>
-                <Label Grid.Row="1" Text="{localization:Translate CampoPadel2}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
+    <Grid>
+        <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="10">
+            <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
+                <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+                <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+            </Grid>
+            <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Padding="20,5">
+                <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
+                <Label Grid.Column="1" Text="{localization:Translate BookingSummaryTitle}" Style="{StaticResource LargeLabelStyleCenter}" FontFamily=""/>
+            </Grid>
 
-                <Image Grid.RowSpan="2" Source="tennis" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="EndAndExpand"/>
-                <Grid Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*" Margin="0,10,0,0">
-                    <Label Grid.Row="0" Grid.Column="0" Text="{localization:Translate Date}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
-                    <Label Grid.Row="1" Grid.Column="0" Text="15 nov" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+            <Border Grid.Row="2" Style="{StaticResource MenuBoxBorder}">
+                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+                    <Label Grid.Row="0" Text="{Binding Booking.sportType}" Style="{StaticResource SmallBoldLabelStyleHorizontalStart}"/>
+                    <Label Grid.Row="1" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{localization:Translate CampoPadel}" Style="{StaticResource SmallSpanWhitebold}"/>
+                                <Span Text="{Binding Booking.fieldId}" Style="{StaticResource SmallSpanWhitebold}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Image Grid.RowSpan="2" Source="tennis" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="EndAndExpand"/>
+                    <Grid Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*" Margin="0,20,0,0">
+                        <Label Grid.Row="0" Grid.Column="0" Text="{localization:Translate Date}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding Booking.date, StringFormat='{0:dd MMM}'}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
 
-                    <Label Grid.Row="0" Grid.Column="1" Text="{localization:Translate Time}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="11:15" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{localization:Translate Time}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Booking.timeSlot}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
 
-                    <Label Grid.Row="0" Grid.Column="2" Text="{localization:Translate Duration}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
-                    <Label Grid.Row="1" Grid.Column="2" Text="90 min" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="0" Grid.Column="2" Text="{localization:Translate Duration}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                        <Label Grid.Row="1" Grid.Column="2" Text="{Binding Duration,StringFormat='{0} min'}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
 
-                    <Label Grid.Row="0" Grid.Column="3" Text="{localization:Translate Price}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
-                    <Label Grid.Row="1" Grid.Column="3" Text="44€" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="0" Grid.Column="3" Text="{localization:Translate Price}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
+                        <Label Grid.Row="1" Grid.Column="3" Text="{Binding Amount,StringFormat='{0:F0}€'}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Border>
-
-        <StackLayout Grid.Row="3" Margin="20,0" Spacing="20">
-            <Label Text="{localization:Translate SelectDuration}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
-            <Grid ColumnDefinitions="Auto,Auto,Auto" ColumnSpacing="10">
-                <Border Style="{StaticResource BlueChipBorder}" Padding="20,5" x:Name="min60Border">
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnBorderTapped"/>
-                    </Border.GestureRecognizers>
-                    <Label Text="{localization:Translate Min60}" Style="{StaticResource TooMicroAlginCenter}" />
-                </Border>
-                <Border Grid.Column="1" Style="{StaticResource TransparentChipBorder}" Padding="20,5" x:Name="min90Border">
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnBorderTapped"/>
-                    </Border.GestureRecognizers>
-                    <Label Text="{localization:Translate Min90}" Style="{StaticResource TooMicroAlginCenter}" />
-                </Border>
-                <Border Grid.Column="2" Style="{StaticResource TransparentChipBorder}" Padding="20,5" x:Name="min120Border">
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnBorderTapped"/>
-                    </Border.GestureRecognizers>
-                    <Label Text="{localization:Translate Min120}" Style="{StaticResource TooMicroAlginCenter}" />
-                </Border>
-            </Grid>
-
-            <Border Style="{StaticResource NoMarginMenuBoxBorder}">
-                <StackLayout Spacing="5">
-                    <Label Text="{localization:Translate PaymentMethod}" Style="{StaticResource SmallBoldLabelStyle}"/>
-                    <Label Text="{localization:Translate PaymentOptionCash}" Style="{StaticResource SmallBoldLabelStyle}"/>
-                    <Label Text="{localization:Translate PaymentOptionPayPal}" Style="{StaticResource SmallBoldLabelStyle}"/>
-                    <Label Text="{localization:Translate PaymentOptionCreditCard}" Style="{StaticResource SmallBlueBoldLabelStyle}"/>
-                </StackLayout>
             </Border>
 
-            <Border Style="{StaticResource NoMarginMenuBoxBorder}">
-                <StackLayout Spacing="5">
-                    <Label Text="{localization:Translate CancellationPolicy}" Style="{StaticResource SmallBoldLabelStyle}"/>
-                    <Label Text="{localization:Translate CancellationDetails}" Style="{StaticResource UnboldSmallLabelStyle}"/>
-                </StackLayout>
-            </Border>
-        </StackLayout>
-        <Button Grid.Row="4" Text="{localization:Translate PayOnline}" Style="{StaticResource BlueButtonStyle}" Clicked="Button_Clicked" Margin="20"/>
+            <StackLayout Grid.Row="3" Margin="20,0" Spacing="20">
+                <Label Text="{localization:Translate SelectDuration}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
+                <Grid ColumnDefinitions="Auto,Auto,Auto" ColumnSpacing="10">
+                    <Border Style="{StaticResource TransparentChipBorder}" Padding="20,5" x:Name="min60Border">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="{localization:Translate Min60}" Style="{StaticResource TooMicroAlginCenter}" />
+                    </Border>
+                    <Border Grid.Column="1" Style="{StaticResource TransparentChipBorder}" Padding="20,5" x:Name="min90Border">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="{localization:Translate Min90}" Style="{StaticResource TooMicroAlginCenter}" />
+                    </Border>
+                    <Border Grid.Column="2" Style="{StaticResource TransparentChipBorder}" Padding="20,5" x:Name="min120Border">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="{localization:Translate Min120}" Style="{StaticResource TooMicroAlginCenter}" />
+                    </Border>
+                </Grid>
+
+                <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                    <StackLayout Spacing="5">
+                        <Label Text="{localization:Translate PaymentMethodHeading}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                        <CollectionView ItemsSource="{Binding PaymentMethods}" SelectionMode="Single" SelectedItem="{Binding SelectedPaymentMethod}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Label Text="{Binding .,StringFormat='• {0:F2}'}" Style="{StaticResource SmallBoldLabelStyle}" Padding="0,5"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Label Text="{Binding PaymentmethodError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasPaymentmethodError}" />
+                    </StackLayout>
+                </Border>
+
+                <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                    <StackLayout Spacing="5">
+                        <Label Text="{localization:Translate CancellationPolicy}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                        <Label Text="{localization:Translate CancellationDetails}" Style="{StaticResource UnboldSmallLabelStyle}"/>
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+            <Button Grid.Row="4" Text="{localization:Translate PayOnline}" Style="{StaticResource BlueButtonStyle}" Command="{Binding PayCommand}" Margin="20"/>
+        </Grid>
+        <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>

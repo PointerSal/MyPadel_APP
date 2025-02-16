@@ -1,14 +1,13 @@
+using MyPadelApp.ViewModels;
+
 namespace MyPadelApp.Views;
 
 public partial class AccountDeletionPage : ContentPage
 {
-	public AccountDeletionPage()
+	public AccountDeletionPage(AccountDeletionViewModel accountDeletionViewModel)
 	{
 		InitializeComponent();
-	}
-    private async void ImageButton_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PopToRootAsync(true);
+        BindingContext = accountDeletionViewModel;
     }
     private void OnCurrentPasswordEyeClicked(object sender, EventArgs e)
     {

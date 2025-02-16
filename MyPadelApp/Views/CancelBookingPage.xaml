@@ -3,21 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
              x:Class="MyPadelApp.Views.CancelBookingPage"
+             xmlns:Loader="clr-namespace:MyPadelApp.Controls"
+             xmlns:viewmodels="clr-namespace:MyPadelApp.ViewModels"
+             x:DataType="viewmodels:CancelBookingViewModel"
              BackgroundColor="{StaticResource SecondaryColor}"
              Shell.TabBarIsVisible="True"
              Shell.NavBarIsVisible="False"
              Title="{localization:Translate PageTitle}">
 
-    <Grid RowDefinitions="Auto,Auto,*,Auto">
-        <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
-            <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoStyleHorizontalStart}"/>
-            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+    <Grid>
+        <Grid RowDefinitions="Auto,Auto,*,Auto">
+            <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
+                <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoStyleHorizontalStart}"/>
+                <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+            </Grid>
+            <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Padding="20">
+                <ImageButton Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
+                <Label Grid.Column="1" Text="{localization:Translate BookingSummaryTitle}" Style="{StaticResource LargeLabelStyleCenter}" />
+            </Grid>
+            <Label Grid.Row="2" Text="{localization:Translate CancelScreenDescription}" Style="{StaticResource VeryLargeLabelStyleHorizontalStart}" />
+            <Button Grid.Row="3" Text="{localization:Translate ConfirmButton}" Style="{StaticResource BlueButtonStyle}" Margin="20" Command="{Binding CancelBookingCommand}"/>
         </Grid>
-        <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Padding="20">
-            <ImageButton Style="{StaticResource BackButtonStyle}" Clicked="ImageButton_Clicked"/>
-            <Label Grid.Column="1" Text="{localization:Translate BookingSummaryTitle}" Style="{StaticResource LargeLabelStyleCenter}" />
-        </Grid>
-        <Label Grid.Row="2" Text="{localization:Translate CancelScreenDescription}" Style="{StaticResource VeryLargeLabelStyleHorizontalStart}" />
-        <Button Grid.Row="3" Text="{localization:Translate ConfirmButton}" Style="{StaticResource BlueButtonStyle}" Margin="20"/>
+        <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>

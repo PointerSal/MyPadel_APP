@@ -229,7 +229,7 @@ Remember to renew your card before it expires, access the "FIT card" section fro
     <value>Potrai disdire la prenotazione entro 24 ore prima utilizzando l’applicazione, successivamente dovrai necessariamente chiamare il centro</value>
   </data>
   <data name="PayOnline" xml:space="preserve">
-    <value>Paga Online (44€)</value>
+    <value>Paga Online</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Reset Password</value>
@@ -258,7 +258,7 @@ REFUND</value>
     <value>Name</value>
   </data>
   <data name="SurnamePlaceholder" xml:space="preserve">
-    <value>Surname</value>
+    <value>LastName</value>
   </data>
   <data name="GenderPlaceholder" xml:space="preserve">
     <value>Gender</value>
@@ -516,7 +516,7 @@ To register your new FIT card.</value>
     <value>Enter Email..</value>
   </data>
   <data name="EnterSurname" xml:space="preserve">
-    <value>Enter surname</value>
+    <value>Enter lastname</value>
   </data>
   <data name="EnterEmail" xml:space="preserve">
     <value>Enter email</value>
@@ -716,31 +716,118 @@ To register your new FIT card.</value>
   <data name="AcceptConditions" xml:space="preserve">
     <value>You must accept all the required terms and conditions, privacy policy, and marketing preferences.</value>
   </data>
-	<data name="NameRequired" xml:space="preserve">
+  <data name="NameRequired" xml:space="preserve">
     <value>Name is required.</value>
   </data>
-	<data name="SurnameRequired" xml:space="preserve">
-    <value>Surname is required.</value>
+  <data name="SurnameRequired" xml:space="preserve">
+    <value>Lastname is required.</value>
   </data>
-	<data name="PhoneNumberRequired" xml:space="preserve">
+  <data name="PhoneNumberRequired" xml:space="preserve">
     <value>Phone Number is required.</value>
   </data>
-	<data name="InvalidNumber" xml:space="preserve">
+  <data name="InvalidNumber" xml:space="preserve">
     <value>Invalid Italian phone number format. Example of valid formats:\n- Landline: +39 06 1234567 (Rome)\n- Mobile: +39 345 1234567</value>
   </data>
-	<data name="Error" xml:space="preserve">
+  <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
-	<data name="OK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-	<data name="SomethingWrong" xml:space="preserve">
+  <data name="SomethingWrong" xml:space="preserve">
     <value>Something wents wrong</value>
   </data>
-	<data name="EmailResent" xml:space="preserve">
+  <data name="EmailResent" xml:space="preserve">
     <value>Email OTP has been resent successfully</value>
   </data>
-	<data name="PhoneResent" xml:space="preserve">
+  <data name="PhoneResent" xml:space="preserve">
     <value>Phone OTP has been resent successfully</value>
+  </data>
+  <data name="NotSupported" xml:space="preserve">
+    <value>Not Supported</value>
+  </data>
+  <data name="NotSupportedCamera" xml:space="preserve">
+    <value>Capture is not supported on this device.</value>
+  </data>
+  <data name="PermissionDenied" xml:space="preserve">
+    <value>Permission Denied</value>
+  </data>
+  <data name="PermissionNotGranted" xml:space="preserve">
+    <value>Camera or Storage permission not granted</value>
+  </data>
+  <data name="NoFileChosen" xml:space="preserve">
+    <value>No file chosen.</value>
+  </data>
+  <data name="FailCapturePhoto" xml:space="preserve">
+    <value>Failed to capture photo.</value>
+  </data>
+  <data name="CardNumberRequired" xml:space="preserve">
+    <value>Card number is required.</value>
+  </data>
+  <data name="ExpiryDateRequired" xml:space="preserve">
+    <value>Expiry date must be in the future.</value>
+  </data>
+  <data name="MedicalCertificateDateRequired" xml:space="preserve">
+    <value>Medical certificate date is required.</value>
+  </data>
+  <data name="MedicalCertificateRequired" xml:space="preserve">
+    <value>Medical certificate is required.</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="MunicipalityPlaceholder" xml:space="preserve">
+    <value>Municipality</value>
+  </data>
+  <data name="InvalidBrithDate" xml:space="preserve">
+    <value>Invalid Brith Date</value>
+  </data>
+  <data name="GenderSelected" xml:space="preserve">
+    <value>Gender must be selected</value>
+  </data>
+  <data name="AddressRequired" xml:space="preserve">
+    <value>Address is required.</value>
+  </data>
+  <data name="PostalCodeRequired" xml:space="preserve">
+    <value>Postal code is required.</value>
+  </data>
+  <data name="Invalidpostalcode" xml:space="preserve">
+    <value>Postal code must be numeric and 5-10 characters long.</value>
+  </data>
+  <data name="MunicipalityRequried" xml:space="preserve">
+    <value>Municipality is required.</value>
+  </data>
+  <data name="Invalidcardnumber" xml:space="preserve">
+    <value>Card number must be 16 digits long.</value>
+  </data>
+  <data name="InvalidCertificateDate" xml:space="preserve">
+    <value>Medical certificate date cannot be in the future.</value>
+  </data>
+  <data name="PaymentMethodSelected" xml:space="preserve">
+    <value>PaymentMethod must be selected</value>
+  </data>
+  <data name="OneSelected" xml:space="preserve">
+    <value>One of them must be selected</value>
+  </data>
+  <data name="TermsAndConditionAgree" xml:space="preserve">
+    <value>Terms and condition must be agreed</value>
+  </data>
+  <data name="AccountDeleted" xml:space="preserve">
+    <value>Your account has been deleted successfully</value>
+  </data>
+  <data name="CampoPadel" xml:space="preserve">
+    <value>Padel Field </value>
+  </data>
+  <data name="NoDataFound" xml:space="preserve">
+    <value>No Data found</value>
+  </data>
+  <data name="BookingCanceled" xml:space="preserve">
+    <value>Your booking has been cancelled successfully</value>
+  </data>
+  <data name="SoccerText" xml:space="preserve">
+    <value>Soccer</value>
+  </data>
+  <data name="Cricket" xml:space="preserve">
+    <value>Cricket</value>
   </data>
 </root>

@@ -10,7 +10,7 @@ namespace MyPadelApp.Models
     public class User
     {
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public int? id { get; set; }
+        public string? id { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? name { get; set; }
@@ -35,6 +35,9 @@ namespace MyPadelApp.Models
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? isPhoneVerified { get; set; }
+        
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? isFitMember { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? flagactive { get; set; }

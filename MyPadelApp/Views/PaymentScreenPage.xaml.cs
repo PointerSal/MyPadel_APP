@@ -1,30 +1,20 @@
+using MyPadelApp.ViewModels;
 using System.Collections.ObjectModel;
 
 namespace MyPadelApp.Views;
 
 public partial class PaymentScreenPage : ContentPage
 {
-    private bool _IsHomeScreen;
-    public bool IsHomeScreen
-    {
-        get => _IsHomeScreen;
-        set
-        {
-            _IsHomeScreen = value;
-            OnPropertyChanged();
-        }
-    }
-    public PaymentScreenPage(bool IsHomeScreen = false)
+    public PaymentScreenPage(PaymentScreenViewModel paymentScreenViewModel)
 	{
 		InitializeComponent();
-        BindingContext = this;
-        this.IsHomeScreen = IsHomeScreen;
+        BindingContext = paymentScreenViewModel;
     }
-    private async void OnPayClicked(object sender, EventArgs e)
-    {
-        if(IsHomeScreen)
-            await Navigation.PushAsync(new PaymentBookingSummary());
-        else
-            await Navigation.PushAsync(new BookedFieldPage());
-    }
+    //private async void OnPayClicked(object sender, EventArgs e)
+    //{
+    //    if (IsHomeScreen)
+    //        await Shell.Current.GoToAsync("PaymentBookingSummary");
+    //    else
+    //        await Navigation.PushAsync(new BookedFieldPage());
+    //}
 }

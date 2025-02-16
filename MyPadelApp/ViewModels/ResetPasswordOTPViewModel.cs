@@ -55,12 +55,12 @@ namespace MyPadelApp.ViewModels
                 {
                     var Data = new User { email = UserData.email };
                     var response = await _authServices.ResendOTP(Data);
-                    if (response != null && response.code.Equals("0000"))
+                    if (response != null && response.code !=null && response.code.Equals("0000"))
                     {
                         IsOTPSend = true;
                         await Shell.Current.DisplayAlert(AppResources.Success, AppResources.EmailResent, AppResources.OK);
                     }
-                    else if (response != null)
+                    else if (response != null && response.code !=null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
@@ -82,14 +82,14 @@ namespace MyPadelApp.ViewModels
                 {
                     IsBusy = true;
                     var response = await _authServices.VerifyEmail(UserData);
-                    if (response != null && response.code.Equals("0000"))
+                    if (response != null && response.code !=null && response.code.Equals("0000"))
                     {
                         Utils.GetUser = null;
                         Utils.GetUser = new User();
                         Utils.GetUser.email = UserData.email;
                         await Shell.Current.GoToAsync("PasswordChangedPage");
                     }
-                    else if (response != null)
+                    else if (response != null && response.code !=null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);

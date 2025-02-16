@@ -1,14 +1,14 @@
+using MyPadelApp.ViewModels;
+
 namespace MyPadelApp.Views;
 
 public partial class BookingSummaryPage : ContentPage
 {
-	public BookingSummaryPage()
+    BookingSummaryViewModel _bookingSummaryViewModel;
+    public BookingSummaryPage(BookingSummaryViewModel bookingSummaryViewModel)
 	{
 		InitializeComponent();
-	}
-    private async void OnBackClicked(object sender, EventArgs e)
-    {
-        await Navigation.PopAsync(true);
+        BindingContext = _bookingSummaryViewModel = bookingSummaryViewModel;
     }
     private void OnBorderTapped(object sender, TappedEventArgs e)
     {
@@ -17,15 +17,22 @@ public partial class BookingSummaryPage : ContentPage
         min120Border.BackgroundColor = Colors.Transparent;
 
         if (sender == min60Border)
+        {
             min60Border.BackgroundColor = Color.FromArgb("#a4b0e7");
+            _bookingSummaryViewModel.SelectedTime = 2;
+        }
         else if (sender == min90Border)
+        {
             min90Border.BackgroundColor = Color.FromArgb("#a4b0e7");
+            _bookingSummaryViewModel.SelectedTime = 3;
+        }
         else if (sender == min120Border)
+        {
             min120Border.BackgroundColor = Color.FromArgb("#a4b0e7");
-    }
+            _bookingSummaryViewModel.SelectedTime = 4;
+        }
 
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new PaymentScreenPage(true));
+        _bookingSummaryViewModel.Amount = 44 * _bookingSummaryViewModel.SelectedTime;
+        _bookingSummaryViewModel.Duration = (30 * _bookingSummaryViewModel.SelectedTime);
     }
 }

@@ -14,7 +14,7 @@ namespace MyPadelApp.Services.HttpClientServices
     {
         #region Services
 
-        public string baseUrl = "https://f5f6-151-69-4-233.ngrok-free.app/api/";
+        public string baseUrl = "https://feee-151-69-4-233.ngrok-free.app/api/";
 
         #endregion
 
@@ -23,7 +23,6 @@ namespace MyPadelApp.Services.HttpClientServices
             try
             {
                 HttpClientHandler clientHandler = new HttpClientHandler();
-                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
 
                 clientHandler.SslProtocols = System.Security.Authentication.SslProtocols.Tls13;
                 clientHandler.AllowAutoRedirect = true;
@@ -32,17 +31,19 @@ namespace MyPadelApp.Services.HttpClientServices
                 {
                     DefaultRequestVersion = HttpVersion.Version30,
                     DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrHigher,
-                    Timeout = TimeSpan.FromSeconds(60)
+                    Timeout = TimeSpan.FromMinutes(2)
                 };
 
                 string NewUrl = baseUrl + url;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Clear();
 
                 if (isToken && await SecureStorage.Default.GetAsync("Token") != null && !string.IsNullOrEmpty(await SecureStorage.Default.GetAsync("Token")))
                     client.DefaultRequestHeaders.Add("Authorization", "Bearer " + await SecureStorage.Default.GetAsync("Token"));
 
                 client.DefaultRequestHeaders.ConnectionClose = false;
                 client.DefaultRequestHeaders.Add("Connection", "keep-alive");
-                client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
 
@@ -62,5 +63,237 @@ namespace MyPadelApp.Services.HttpClientServices
             }
             return new GeneralResponse();
         }
+        public async Task<GeneralResponse> PostMultipartAsync(string url, Dictionary<string, string> formData, string filePath, string fileFieldName, bool IsPost = true)
+        {
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+
+                using HttpClientHandler clientHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+                };
+
+                using HttpClient client = new HttpClient(clientHandler)
+                {
+                    DefaultRequestVersion = HttpVersion.Version20,
+                    DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrLower,
+                    Timeout = TimeSpan.FromMinutes(2)
+                };
+
+                string fullUrl = baseUrl + url;
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Clear();
+
+                string token = await SecureStorage.Default.GetAsync("Token");
+                if (!string.IsNullOrEmpty(token))
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                using MultipartFormDataContent form = new MultipartFormDataContent();
+
+                // Add form data
+                foreach (var entry in formData)
+                {
+                    form.Add(new StringContent(entry.Value), entry.Key);
+                }
+
+                // Handle file upload properly
+                StreamContent fileContent = null;
+                FileStream fileStream = null;
+
+                if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
+                {
+                    fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                    fileContent = new StreamContent(fileStream);
+                    fileContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+                    form.Add(fileContent, fileFieldName, Path.GetFileName(filePath));
+                }
+
+                HttpResponseMessage response;
+                if (IsPost)
+                    response = await client.PostAsync(fullUrl, form);
+                else
+                    response = await client.PatchAsync(fullUrl, form);
+
+                string responseString = await response.Content.ReadAsStringAsync();
+
+                // Ensure the stream is closed after the request is completed
+                fileStream?.Dispose();
+                fileContent?.Dispose();
+
+                return JsonSerializer.Deserialize<GeneralResponse>(responseString) ?? new GeneralResponse();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in PostMultipartAsync: {ex}");
+            }
+
+            return new GeneralResponse();
+        }
+
+        public async Task<GeneralResponse> PutAsync(string url, object data, bool isToken)
+        {
+            try
+            {
+                HttpClientHandler clientHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true,
+                    SslProtocols = System.Security.Authentication.SslProtocols.Tls13,
+                    AllowAutoRedirect = true,
+                    UseCookies = true
+                };
+
+                HttpClient client = new HttpClient(clientHandler)
+                {
+                    DefaultRequestVersion = HttpVersion.Version30,
+                    DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrHigher,
+                    Timeout = TimeSpan.FromSeconds(60)
+                };
+
+                string fullUrl = baseUrl + url;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Clear();
+
+                if (isToken)
+                {
+                    string token = await SecureStorage.Default.GetAsync("Token");
+                    if (!string.IsNullOrEmpty(token))
+                        client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                }
+
+                client.DefaultRequestHeaders.ConnectionClose = false;
+                client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+
+                StringContent stringContent = new StringContent("");
+                if (data != null)
+                {
+                    var jsonData = JsonSerializer.Serialize(data);
+                    stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                }
+
+                HttpResponseMessage httpResponse = await client.PutAsync(fullUrl, stringContent);
+                string responseContent = await httpResponse.Content.ReadAsStringAsync();
+                var response = JsonSerializer.Deserialize<GeneralResponse>(responseContent);
+                return response ?? new GeneralResponse();
+            }
+            catch (Exception ex)
+            {
+            }
+            return new GeneralResponse();
+        }
+
+        public async Task<GeneralResponse> DeleteAsync(string url, object data, bool isToken)
+        {
+            try
+            {
+                HttpClientHandler clientHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true,
+                    SslProtocols = System.Security.Authentication.SslProtocols.Tls13,
+                    AllowAutoRedirect = true,
+                    UseCookies = true
+                };
+
+                HttpClient client = new HttpClient(clientHandler)
+                {
+                    DefaultRequestVersion = HttpVersion.Version30,
+                    DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrHigher,
+                    Timeout = TimeSpan.FromSeconds(60)
+                };
+
+                string fullUrl = baseUrl + url;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Clear();
+
+                if (isToken)
+                {
+                    string token = await SecureStorage.Default.GetAsync("Token");
+                    if (!string.IsNullOrEmpty(token))
+                        client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                }
+
+                client.DefaultRequestHeaders.ConnectionClose = false;
+                client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+
+                // Convert payload to JSON string
+                StringContent stringContent = new StringContent(string.Empty);
+                if (data != null)
+                {
+                    string jsonData = JsonSerializer.Serialize(data);
+                    stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                }
+
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Delete,
+                    RequestUri = new Uri(fullUrl),
+                    Content = stringContent
+                };
+
+                HttpResponseMessage httpResponse = await client.SendAsync(request);
+                string responseContent = await httpResponse.Content.ReadAsStringAsync();
+                var response = JsonSerializer.Deserialize<GeneralResponse>(responseContent);
+                return response ?? new GeneralResponse();
+            }
+            catch (Exception ex)
+            {
+            }
+            return new GeneralResponse();
+        }
+        public async Task<GeneralResponse> GetAsync(string url, bool isToken)
+        {
+            try
+            {
+                HttpClientHandler clientHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true,
+                    SslProtocols = System.Security.Authentication.SslProtocols.Tls13,
+                    AllowAutoRedirect = true,
+                    UseCookies = true
+                };
+
+                HttpClient client = new HttpClient(clientHandler)
+                {
+                    DefaultRequestVersion = HttpVersion.Version30,
+                    DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrHigher,
+                    Timeout = TimeSpan.FromSeconds(60)
+                };
+
+                string fullUrl = baseUrl + url;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Clear();
+
+                if (isToken)
+                {
+                    string token = await SecureStorage.Default.GetAsync("Token");
+                    if (!string.IsNullOrEmpty(token))
+                        client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                }
+
+                client.DefaultRequestHeaders.ConnectionClose = false;
+                client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage httpResponse = await client.GetAsync(fullUrl);
+                string responseContent = await httpResponse.Content.ReadAsStringAsync();
+                var response = JsonSerializer.Deserialize<GeneralResponse>(responseContent);
+
+                return response ?? new GeneralResponse();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetAsync: {ex}");
+            }
+
+            return new GeneralResponse();
+        }
+
     }
 }

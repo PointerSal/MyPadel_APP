@@ -1,4 +1,5 @@
 using MyPadelApp.Models;
+using MyPadelApp.ViewModels;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,47 +9,20 @@ namespace MyPadelApp.Views;
 
 public partial class MatchHistoryPage : ContentPage, INotifyPropertyChanged
 {
-    private ObservableCollection<Item> _Items;
-    public ObservableCollection<Item> Items
-    {
-        get => _Items;
-        set
-        {
-            _Items = value;
-            OnPropertyChanged();
-        }
-    }
-    public MatchHistoryPage()
+    MatchHistoryViewModel _matchHistoryViewModel;
+    public MatchHistoryPage(MatchHistoryViewModel matchHistoryViewModel)
 	{
 		InitializeComponent();
-        BindingContext = this;
-
-        Items = new ObservableCollection<Item>
-        {
-            new Item
-            {
-                Title = "PADEL",
-                Subtitle = "Campo Padel 2",
-                Status = "Partita da giocare",
-                Date = "15 nov",
-                Time = "9:30",
-                Duration = "90 min",
-                Price = "44€"
-            },
-            new Item
-            {
-                Title = "TENNIS",
-                Subtitle = "Campo tennis terra rossa",
-                Status = "Partita da giocare",
-                Date = "18 nov",
-                Time = "20:00",
-                Duration = "60 min",
-                Price = "30€"
-            }
-        };
+        BindingContext = _matchHistoryViewModel = matchHistoryViewModel;
     }
 
-    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _matchHistoryViewModel.OnPageAppearing();
+    }
+
+    private void OnTabsClicked(object sender, TappedEventArgs e)
     {
         FirstBorder.BackgroundColor = Colors.Transparent;
         SecondBorder.BackgroundColor = Colors.Transparent;
@@ -57,25 +31,17 @@ public partial class MatchHistoryPage : ContentPage, INotifyPropertyChanged
         if (sender == FirstBorder)
         {
             FirstBorder.BackgroundColor = Color.FromArgb("#24a9ff");
+            _matchHistoryViewModel.TabChanged(1);
         }
         else if (sender == SecondBorder)
         {
             SecondBorder.BackgroundColor = Color.FromArgb("#24a9ff");
+            _matchHistoryViewModel.TabChanged(2);
         }
         else if (sender == ThirdBorder)
         {
             ThirdBorder.BackgroundColor = Color.FromArgb("#24a9ff");
+            _matchHistoryViewModel.TabChanged(3);
         }
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    private async void TapGestureRecognizer_Tapped_1(object sender, TappedEventArgs e)
-    {
-        await Navigation.PushAsync(new HistoryBookingSummaryPage());
     }
 }

@@ -1,3 +1,5 @@
+using MyPadelApp.Resources.Languages;
+
 namespace MyPadelApp.Views;
 
 public partial class FinalStepPage : ContentPage
@@ -23,11 +25,13 @@ public partial class FinalStepPage : ContentPage
 
     private async void OnConfirmClicked(object sender, EventArgs e)
     {
-        if (InnerBorder1.IsVisible)
-            await Navigation.PushAsync(new AlreadyFITCardPage());
+        if (!image1.IsVisible)
+            await Shell.Current.DisplayAlert(AppResources.Error, AppResources.TermsAndConditionAgree, AppResources.OK);
+        else if (InnerBorder1.IsVisible)
+            await Shell.Current.GoToAsync("AlreadyFITCardPage");
         else if (InnerBorder2.IsVisible)
-            await Navigation.PushAsync(new CreateFIFPage());
+            await Shell.Current.GoToAsync("CreateFIFPage");
         else
-            await Shell.Current.DisplayAlert("Errore", "Seleziona un'opzione", "OK"); ;
+            await Shell.Current.DisplayAlert(AppResources.Error, AppResources.OneSelected, AppResources.OK);
     }
 }
