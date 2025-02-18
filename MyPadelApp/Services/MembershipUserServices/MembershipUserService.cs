@@ -14,40 +14,40 @@ namespace MyPadelApp.Services.MembershipUserServices
 {
     public class MembershipUserService(IHttpClientService httpClientService) : IMembershipUserService
     {
-        public async Task<GeneralResponse> RegisterMemberShipUser(MembershipRequestModel membershipRequestModel, string filePath)
+        public async Task<GeneralResponse> RegisterMemberShipUser(MembershipRequestModel membershipRequestModel, string MedicalCertificate)
         {
-            Dictionary<string, string> formData = new Dictionary<string, string>
+            var data = new
             {
-                { "CardNumber", membershipRequestModel.CardNumber },
-                { "ExpiryDate", membershipRequestModel.ExpiryDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                { "MedicalCertificateDate", membershipRequestModel.MedicalCertificateDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                { "FirstName", membershipRequestModel.FirstName },
-                { "LastName", membershipRequestModel.LastName },
-                { "Gender", membershipRequestModel.Gender },
-                { "BirthDate", membershipRequestModel.BirthDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                { "Address", membershipRequestModel.Address },
-                { "PostalCode", membershipRequestModel.PostalCode },
-                { "Municipality", membershipRequestModel.Municipality },
-                { "PaymentMethod", membershipRequestModel.PaymentMethod },
-                { "Email",Utils.GetUser.email }
+                cardNumber = membershipRequestModel.CardNumber,
+                expiryDate = membershipRequestModel.ExpiryDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                medicalCertificateDate = membershipRequestModel.MedicalCertificateDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                medicalCertificate = MedicalCertificate,
+                firstName = membershipRequestModel.FirstName,
+                lastName = membershipRequestModel.LastName,
+                gender = membershipRequestModel.Gender,
+                birthDate = membershipRequestModel.BirthDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                address = membershipRequestModel.Address,
+                postalCode = membershipRequestModel.PostalCode,
+                municipality = membershipRequestModel.Municipality,
+                paymentMethod = membershipRequestModel.PaymentMethod,
+                email = Utils.GetUser.email
             };
 
-            string fileFieldName = "MedicalCertificate";
-            return await httpClientService.PostMultipartAsync("membershipuser/register", formData, filePath, fileFieldName);
+            return await httpClientService.PostAsync("membershipuser/register", data, true);
         }
 
-        public async Task<GeneralResponse> RegisterFitMemberShipUser(MembershipRequestModel membershipRequestModel, string filePath)
+        public async Task<GeneralResponse> RegisterFitMemberShipUser(MembershipRequestModel membershipRequestModel, string MedicalCertificate)
         {
-            Dictionary<string, string> formData = new Dictionary<string, string>
+            var data = new
             {
-                { "MembershipNumber", membershipRequestModel.CardNumber },
-                { "ExpiryDate", membershipRequestModel.ExpiryDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                { "MedicalCertificateDate", membershipRequestModel.MedicalCertificateDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                { "Email",Utils.GetUser.email }
+                membershipNumber = membershipRequestModel.CardNumber,
+                expiryDate = membershipRequestModel.ExpiryDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                medicalCertificateDate = membershipRequestModel.MedicalCertificateDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                medicalCertificate = MedicalCertificate,
+                email = Utils.GetUser.email
             };
 
-            string fileFieldName = "MedicalCertificate";
-            return await httpClientService.PostMultipartAsync("membershipuser/register/fit", formData, filePath, fileFieldName, false);
+            return await httpClientService.PostAsync("membershipuser/fit", data, true, false);
         }
         public async Task<GeneralResponse> CardDetails(string email)
         {

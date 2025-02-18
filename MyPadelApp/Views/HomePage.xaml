@@ -105,7 +105,7 @@
                                         Opacity="0.9"
                                         ZIndex="1"
                                         IsVisible="False">
-                                    <Label Text="{Binding Status}" Style="{StaticResource SmallLabelStyle}" Opacity="1" ZIndex="1"/>
+                                    <Label Text="{Binding Status}" Style="{StaticResource SmallLabelStyle}" FontSize="Micro" Opacity="1" ZIndex="1"/>
                                     <Border.Triggers>
                                         <DataTrigger TargetType="Border" Binding="{Binding Status}" Value="Prenotato">
                                             <Setter Property="IsVisible" Value="True"/>
@@ -131,7 +131,7 @@
                                     <Label Text="{Binding Time,StringFormat='{0:HH:mm}'}" Style="{StaticResource TooMicroBoldAlignCenter}"/>
                                 </Border>
                                 <Border Style="{StaticResource ScrollChartRedBoxBorder}" Padding="10" Opacity="0.9" ZIndex="1" IsVisible="False">
-                                    <Label Text="{Binding Status}" Style="{StaticResource SmallLabelStyle}" Opacity="1" ZIndex="1"/>
+                                    <Label Text="{Binding Status}" Style="{StaticResource SmallLabelStyle}" FontSize="Micro" Opacity="1" ZIndex="1"/>
                                     <Border.Triggers>
                                         <DataTrigger TargetType="Border" Binding="{Binding Status}" Value="Prenotato">
                                             <Setter Property="IsVisible" Value="True"/>

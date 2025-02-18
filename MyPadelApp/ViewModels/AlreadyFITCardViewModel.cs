@@ -66,7 +66,7 @@ namespace MyPadelApp.ViewModels
                     return;
 
                 IsBusy = true;
-                var response = await _membershipUserService.RegisterFitMemberShipUser(CardModel, CertificateFilePath);
+                var response = await _membershipUserService.RegisterFitMemberShipUser(CardModel, ImageToBase64.BytesToBase64(CardModel.MedicalCertificate));
                 if (response != null && response.code !=null && response.code.Equals("0000"))
                 {
                     Preferences.Default.Set("username", Utils.GetUser.email);
@@ -111,6 +111,15 @@ namespace MyPadelApp.ViewModels
                 }
 
                 CertificateFilePath = photo.FullPath;
+
+                using (var stream = await photo.OpenReadAsync())
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await stream.CopyToAsync(memoryStream);
+                        CardModel.MedicalCertificate = memoryStream.ToArray();
+                    }
+                }
 
                 UploadCertificateError = string.Empty;
                 HasUploadCertificateError = false;

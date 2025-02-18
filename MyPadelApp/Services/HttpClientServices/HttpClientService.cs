@@ -14,11 +14,11 @@ namespace MyPadelApp.Services.HttpClientServices
     {
         #region Services
 
-        public string baseUrl = "https://feee-151-69-4-233.ngrok-free.app/api/";
+        public string baseUrl = "http://ufficio.pointer.re.it:7070/api/";
 
         #endregion
 
-        public async Task<GeneralResponse> PostAsync(string url, object data, bool isToken)
+        public async Task<GeneralResponse> PostAsync(string url, object data, bool isToken, bool IsPost = true)
         {
             try
             {
@@ -53,7 +53,10 @@ namespace MyPadelApp.Services.HttpClientServices
                     stringContent = new StringContent(header_data, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage httpResponse;
-                httpResponse = header_data != null ? await client.PostAsync(baseUrl + url, stringContent) : await client.PostAsync(baseUrl + url, null);
+                if(IsPost)
+                    httpResponse = header_data != null ? await client.PostAsync(baseUrl + url, stringContent) : await client.PostAsync(baseUrl + url, null);
+                else
+                    httpResponse = header_data != null ? await client.PatchAsync(baseUrl + url, stringContent) : await client.PatchAsync(baseUrl + url, null);
                 var responseCon = await httpResponse.Content.ReadAsStringAsync();
                 var response = JsonSerializer.Deserialize<GeneralResponse>(responseCon);
                 return response != null ? response : new GeneralResponse();
@@ -63,73 +66,83 @@ namespace MyPadelApp.Services.HttpClientServices
             }
             return new GeneralResponse();
         }
-        public async Task<GeneralResponse> PostMultipartAsync(string url, Dictionary<string, string> formData, string filePath, string fileFieldName, bool IsPost = true)
-        {
-            try
-            {
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+        //public async Task<GeneralResponse> PostMultipartAsync(string url, Dictionary<string, string> formData, string filePath, string fileFieldName, bool IsPost = true)
+        //{
+        //    try
+        //    {
+        //        //System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
 
-                using HttpClientHandler clientHandler = new HttpClientHandler
-                {
-                    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-                };
+        //        //using HttpClientHandler clientHandler = new HttpClientHandler
+        //        //{
+        //        //    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+        //        //};
 
-                using HttpClient client = new HttpClient(clientHandler)
-                {
-                    DefaultRequestVersion = HttpVersion.Version20,
-                    DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrLower,
-                    Timeout = TimeSpan.FromMinutes(2)
-                };
+        //        using HttpClient client = new HttpClient();
 
-                string fullUrl = baseUrl + url;
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Clear();
+        //        string fullUrl = baseUrl + url;
+        //        client.DefaultRequestHeaders.Clear();
+        //        client.DefaultRequestHeaders.Accept.Clear();
 
-                string token = await SecureStorage.Default.GetAsync("Token");
-                if (!string.IsNullOrEmpty(token))
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        //        string token = await SecureStorage.Default.GetAsync("Token");
+        //        if (!string.IsNullOrEmpty(token))
+        //            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                using MultipartFormDataContent form = new MultipartFormDataContent();
+        //        using MultipartFormDataContent form = new MultipartFormDataContent();
 
-                // Add form data
-                foreach (var entry in formData)
-                {
-                    form.Add(new StringContent(entry.Value), entry.Key);
-                }
+        //        // Add form data
+        //        foreach (var entry in formData)
+        //        {
+        //            form.Add(new StringContent(entry.Value), entry.Key);
+        //        }
 
-                // Handle file upload properly
-                StreamContent fileContent = null;
-                FileStream fileStream = null;
+        //        // Handle file upload properly
+        //        StreamContent fileContent = null;
+        //        FileStream fileStream = null;
 
-                if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
-                {
-                    fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-                    fileContent = new StreamContent(fileStream);
-                    fileContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
-                    form.Add(fileContent, fileFieldName, Path.GetFileName(filePath));
-                }
+        //        if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
+        //        {
+        //            fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+        //            fileContent = new StreamContent(fileStream);
+        //            fileContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+        //            form.Add(fileContent, fileFieldName, Path.GetFileName(filePath));
+        //        }
 
-                HttpResponseMessage response;
-                if (IsPost)
-                    response = await client.PostAsync(fullUrl, form);
-                else
-                    response = await client.PatchAsync(fullUrl, form);
+        //        Console.WriteLine($"URL: {baseUrl}{url}");
+        //        Console.WriteLine($"Token: {token}");
+        //        foreach (var entry in formData)
+        //        {
+        //            Console.WriteLine($"Key: {entry.Key}, Value: {entry.Value}");
+        //        }
+        //        Console.WriteLine($"File Path: {filePath}");
 
-                string responseString = await response.Content.ReadAsStringAsync();
+        //        HttpResponseMessage response;
+        //        if (IsPost)
+        //            response = await client.PostAsync(fullUrl, form);
+        //        else
+        //        {
+        //            var request = new HttpRequestMessage(new HttpMethod("PATCH"), fullUrl)
+        //            {
+        //                Content = form
+        //            };
 
-                // Ensure the stream is closed after the request is completed
-                fileStream?.Dispose();
-                fileContent?.Dispose();
+        //            response = await client.SendAsync(request);
+        //        }
 
-                return JsonSerializer.Deserialize<GeneralResponse>(responseString) ?? new GeneralResponse();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in PostMultipartAsync: {ex}");
-            }
+        //        string responseString = await response.Content.ReadAsStringAsync();
 
-            return new GeneralResponse();
-        }
+        //        // Ensure the stream is closed after the request is completed
+        //        fileStream?.Dispose();
+        //        fileContent?.Dispose();
+
+        //        return JsonSerializer.Deserialize<GeneralResponse>(responseString) ?? new GeneralResponse();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error in PostMultipartAsync: {ex}");
+        //    }
+
+        //    return new GeneralResponse();
+        //}
 
         public async Task<GeneralResponse> PutAsync(string url, object data, bool isToken)
         {

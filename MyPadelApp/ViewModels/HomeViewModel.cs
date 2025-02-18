@@ -31,7 +31,7 @@ namespace MyPadelApp.ViewModels
         #region Properties
 
         private bool IsClicked { get; set; } = false;
-        private List<string> CurrentTimeList { get; set; } = new List<string>();
+        private List<Datum> CurrentTimeList { get; set; } = new List<Datum>();
         public DateTime SelectedDate = DateTime.Now;
         public int CurrentField = 1;
         public int SelectedTimeSlot = 1;
@@ -84,6 +84,7 @@ namespace MyPadelApp.ViewModels
                     return;
 
                 SelectedTimeSlot = 1;
+                SelectedDate = new DateTime(SelectedDate.Year,SelectedDate.Month,SelectedDate.Day,timeSlot.Time.Hour,timeSlot.Time.Minute,0);
                 var SportType = CurrentField switch
                 {
                     1 => AppResources.PadelText,
@@ -109,6 +110,7 @@ namespace MyPadelApp.ViewModels
                     return;
 
                 SelectedTimeSlot = 2;
+                SelectedDate = new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, timeSlot.Time.Hour, timeSlot.Time.Minute, timeSlot.Time.Second, 0);
                 var SportType = CurrentField switch
                 {
                     1 => AppResources.PadelText,
@@ -170,17 +172,21 @@ namespace MyPadelApp.ViewModels
                 }
 
                 if (!Utils.IsHomeUpdated)
-                    GenerateTimeSlots();
+                {
+                    await GenerateTimeSlots(1);
+                    await GenerateTimeSlots(2);
+                    Utils.IsHomeUpdated = true;
+                }
             }
             catch { }
         }
-        private async Task GetAvailableSlots()
+        private async Task GetAvailableSlots(int SelectedField)
         {
             try
             {
-                var response = await _bookingService.AvailableSlots(SelectedDate,CurrentField);
+                var response = await _bookingService.AvailableSlots(SelectedDate, SelectedField);
                 if (response != null && response.code != null && response.code.Equals("0000"))
-                    CurrentTimeList = JsonSerializer.Deserialize<List<string>>(response.data.ToString());
+                    CurrentTimeList = JsonSerializer.Deserialize<List<Datum>>(response.data.ToString());
                 else if (response != null && response.code != null)
                     await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                 else
@@ -189,31 +195,86 @@ namespace MyPadelApp.ViewModels
             catch { }
         }
 
-        public async void GenerateTimeSlots()
+        public async Task GenerateTimeSlots(int SelectedField)
         {
             IsBusy = true;
-            var TempSLots = new ObservableCollection<TimeSlot>();
-            DateTime startTime = new DateTime(1, 1, 1, 1, 0, 0);
-            DateTime endTime = new DateTime(1, 1, 1, 23, 0, 0);
+            var tempSlots = new ObservableCollection<TimeSlot>();
 
-            await GetAvailableSlots();
+            DateTime startTime = SelectedDate.Date.AddHours(1);
+            DateTime endTime = SelectedDate.Date.AddHours(23);
+
             while (startTime <= endTime)
             {
-                bool isBooked = CurrentTimeList?.Contains(startTime.ToString("HH:mm")) ?? false;
-                TempSLots.Add(new TimeSlot
+                tempSlots.Add(new TimeSlot
                 {
                     Time = startTime,
-                    Status = isBooked ? "Prenotato" : "",
+                    Status = ""
                 });
+
                 startTime = startTime.AddMinutes(30);
             }
 
-            TimeSlots2 = TimeSlots = new ObservableCollection<TimeSlot>();
-            TimeSlots2 = TimeSlots = TempSLots;
+            await GetAvailableSlots(SelectedField);
+            if (CurrentTimeList == null || !CurrentTimeList.Any())
+            {
+                AssignSlots(SelectedField, tempSlots);
+                return;
+            }
+
+            var selectedDay = CurrentTimeList.FirstOrDefault(d => d.date == SelectedDate.Date.ToString("yyyy-MM-dd"));
+
+            if (selectedDay != null)
+            {
+                var bookedSlots = selectedDay.slots
+                    .Select(s => new
+                    {
+                        Start = DateTime.Parse(s.startTime),
+                        End = DateTime.Parse(s.endTime)
+                    })
+                    .ToList();
+
+                var slotsToRemove = new List<TimeSlot>();
+
+                foreach (var booking in bookedSlots)
+                {
+                    foreach (var slot in tempSlots)
+                    {
+                        if (slot.Time >= booking.Start && slot.Time < booking.End)
+                        {
+                            slot.Status = "Prenotato";
+                            if (booking.End - booking.Start > TimeSpan.FromMinutes(30) && slot.Time > booking.Start)
+                            {
+                                slotsToRemove.Add(slot);
+                            }
+                        }
+                    }
+                }
+
+                foreach (var slot in slotsToRemove)
+                {
+                    tempSlots.Remove(slot);
+                }
+            }
+
+            AssignSlots(SelectedField, tempSlots);
+        }
+
+        private void AssignSlots(int SelectedField, ObservableCollection<TimeSlot> tempSlots)
+        {
+            if (SelectedField == 1)
+            {
+                TimeSlots = tempSlots;
+            }
+            else
+            {
+                TimeSlots2 = tempSlots;
+            }
+
             IsBusy = false;
         }
-    
-        private void GenerateCalendarForYears()
+
+
+        private async void GenerateCalendarForYears()
         {
             try
             {
@@ -233,6 +294,9 @@ namespace MyPadelApp.ViewModels
                     });
                 }
                 SelectedCalender = CalendarItems.FirstOrDefault(c => c.Date == today) ?? CalendarItems.FirstOrDefault();
+
+                await GenerateTimeSlots(1);
+                await GenerateTimeSlots(2);
             }
             catch
             {

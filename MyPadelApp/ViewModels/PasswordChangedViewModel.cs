@@ -1,5 +1,4 @@
-﻿using Android.Service.Autofill;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MyPadelApp.Helpers;
 using MyPadelApp.Models;
@@ -68,7 +67,7 @@ namespace MyPadelApp.ViewModels
                         Preferences.Default.Set("Password", Utils.GetUser.password);
                         await Shell.Current.DisplayAlert(AppResources.Success, AppResources.PasswordUpdated, AppResources.OK);
                         //await Shell.Current.GoToAsync("../..");
-                        await Shell.Current.GoToAsync("//HomePage");
+                        await Shell.Current.Navigation.PopToRootAsync(true);
                     }
                     else if (response != null && response.code !=null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);

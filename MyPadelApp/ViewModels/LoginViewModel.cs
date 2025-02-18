@@ -65,7 +65,7 @@ namespace MyPadelApp.ViewModels
                         {
                             Preferences.Default.Set("username", Utils.GetUser.email);
                             Preferences.Default.Set("Password", Utils.GetUser.password);
-                            await Shell.Current.GoToAsync("//HomePage");
+                            await Shell.Current.Navigation.PopToRootAsync(true);
                         }
                         else if (Utils.GetUser.isEmailVerified == false)
                         {

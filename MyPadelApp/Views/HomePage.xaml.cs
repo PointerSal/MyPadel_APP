@@ -26,7 +26,7 @@ public partial class HomePage : ContentPage
         _homeViewModel.InitializeData( );
     }
 
-    private void OnBorderTapped(object sender, TappedEventArgs e)
+    private async void OnBorderTapped(object sender, TappedEventArgs e)
     {
         PadelBorder.BackgroundColor = Colors.Transparent;
         TennisBorder.BackgroundColor = Colors.Transparent;
@@ -53,8 +53,6 @@ public partial class HomePage : ContentPage
             CricketBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
             _homeViewModel.CurrentField = 4;
         }
-
-        _homeViewModel.GenerateTimeSlots();
     }
 
     private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,7 +61,8 @@ public partial class HomePage : ContentPage
         {
             var selectedDate = (CalendarItem)e.CurrentSelection.FirstOrDefault();
             _homeViewModel.SelectedDate = selectedDate.Date;
-            _homeViewModel.GenerateTimeSlots();
+            await _homeViewModel.GenerateTimeSlots(1);
+            await _homeViewModel.GenerateTimeSlots(2);
             await Task.Delay(2000);
             CalendarCollectionView.ScrollTo(_homeViewModel.SelectedCalender, position: ScrollToPosition.Center, animate: false);
         }

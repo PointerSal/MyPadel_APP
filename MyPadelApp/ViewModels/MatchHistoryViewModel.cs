@@ -31,7 +31,7 @@ namespace MyPadelApp.ViewModels
         [ObservableProperty]
         public bool _isEmpty;
 
-        public List<Booking> TempList;
+        public BookingCategory AllBookings = new BookingCategory();
 
         private int ClickedTab = 1;
 
@@ -49,13 +49,13 @@ namespace MyPadelApp.ViewModels
                     var response = await _bookingService.BookingHistory(Utils.GetUser.email);
                     if (response != null && response.code != null && response.code.Equals("0000"))
                     {
-                        TempList = JsonSerializer.Deserialize<List<Booking>>(response.data.ToString());
+                        AllBookings = JsonSerializer.Deserialize<BookingCategory>(response.data.ToString());
                         if(ClickedTab == 1)
-                            BookingList = new ObservableCollection<Booking>(TempList.Where(e=>e.flagCanceled == false && e.flagBooked == true));
+                            BookingList = new ObservableCollection<Booking>(AllBookings.active);
                         else if (ClickedTab == 2)
-                            BookingList = new ObservableCollection<Booking>();
+                            BookingList = new ObservableCollection<Booking>(AllBookings.archived);
                         else if (ClickedTab == 3)
-                            BookingList = new ObservableCollection<Booking>(TempList.Where(e => e.flagCanceled == true && e.flagBooked == true));
+                            BookingList = new ObservableCollection<Booking>(AllBookings.canceled);
 
                         Utils.IsBookingPageUpdated = true;
                     }
@@ -75,11 +75,11 @@ namespace MyPadelApp.ViewModels
             {
                 ClickedTab = TabNumber;
                 if (ClickedTab == 1)
-                    BookingList = new ObservableCollection<Booking>(TempList.Where(e => e.flagCanceled == false && e.flagBooked == true));
+                    BookingList = new ObservableCollection<Booking>(AllBookings.active);
                 else if (ClickedTab == 2)
-                    BookingList = new ObservableCollection<Booking>();
+                    BookingList = new ObservableCollection<Booking>(AllBookings.archived);
                 else if (ClickedTab == 3)
-                    BookingList = new ObservableCollection<Booking>(TempList.Where(e => e.flagCanceled == true && e.flagBooked == true));
+                    BookingList = new ObservableCollection<Booking>(AllBookings.canceled);
             }
             catch { }
             IsEmpty = BookingList == null || BookingList.Count == 0;
