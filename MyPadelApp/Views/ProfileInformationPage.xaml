@@ -55,7 +55,7 @@
                 <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
                     <Image Source="security" HeightRequest="25"/>
                     <Label Grid.Column="1" Text="{localization:Translate SecurityLabel}" Style="{StaticResource TooMicroHorizontalStart}"/>
-                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource MinorSmallCricleImage}"/>
+                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
                 </Grid>
             </Border>
 
@@ -64,7 +64,7 @@
                 <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
                     <Image Source="question" HeightRequest="25"/>
                     <Label Grid.Column="1" Text="{localization:Translate HelpsContact}" Style="{StaticResource TooMicroHorizontalStart}"/>
-                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource MinorSmallCricleImage}"/>
+                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
                 </Grid>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="CompanyInfoPage"/>

@@ -424,7 +424,7 @@
         <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
-    
+
     <!--Custom Styles-->
 
     <!--Labels-->
@@ -471,7 +471,7 @@
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
-    
+
     <Style x:Key="LargeLabelStyleCenter" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="20" />
@@ -495,7 +495,7 @@
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontFamily" Value="" />
     </Style>
-    
+
     <Style x:Key="SmallBoldLabelStyleHorizontalStart" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="14" />
@@ -504,7 +504,7 @@
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
     </Style>
-    
+
     <Style x:Key="LabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="16" />
@@ -550,7 +550,7 @@
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
-    
+
     <Style x:Key="TooMicroHorizontalStart" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="11" />
@@ -560,7 +560,7 @@
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
     </Style>
-    
+
     <Style x:Key="TooMicroBoldAlignCenter" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="10" />
@@ -581,7 +581,7 @@
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
-    
+
     <Style x:Key="LabelStyleHorizontalStart" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="16" />
@@ -641,7 +641,7 @@
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
     </Style>
-    
+
     <Style x:Key="SmallBoldStyleHorizontalStart" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="16" />
@@ -650,7 +650,7 @@
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
     </Style>
-    
+
     <Style x:Key="VeryLargeBoldStyleAlignCenter" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="23" />
@@ -668,7 +668,7 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
     </Style>
-    
+
     <Style x:Key="MicroLabelStyleAlginCenter" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="13" />
@@ -689,7 +689,7 @@
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontAttributes" Value="None" />
     </Style>
-    
+
     <Style x:Key="LargeSpanWhiteUnbold" TargetType="Span">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="18" />
@@ -700,7 +700,7 @@
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
-    
+
     <Style x:Key="SpanWhiteUnbold" TargetType="Span">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
         <Setter Property="FontSize" Value="16" />
@@ -772,7 +772,7 @@
         <Setter Property="BorderColor" Value="{StaticResource DefaultBorderColor}" />
         <Setter Property="Padding" Value="0,20" />
     </Style>
-    
+
     <Style x:Key="RedButtonStyle" TargetType="Button">
         <Setter Property="BackgroundColor" Value="{StaticResource RedColorBackground}" />
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />
@@ -804,7 +804,7 @@
         <Setter Property="Margin" Value="0,0,0,10" />
     </Style>
 
-     <!--Border-->
+    <!--Border-->
     <Style x:Key="CheckboxCricleBorder" TargetType="Border">
         <Setter Property="Stroke" Value="{StaticResource WhiteBorderColor}" />
         <Setter Property="StrokeShape" Value="RoundRectangle 70" />
@@ -818,7 +818,7 @@
         <Setter Property="StrokeThickness" Value="1.5" />
         <Setter Property="BackgroundColor" Value="{StaticResource WhiteBackground}" />
     </Style>
-    
+
     <Style x:Key="MenuBoxBorder" TargetType="Border">
         <Setter Property="Stroke" Value="{StaticResource DefaultBorderColor}" />
         <Setter Property="BackgroundColor" Value="{StaticResource DefaultPageBackground}" />
@@ -832,14 +832,14 @@
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="10" />
     </Style>
-    
+
     <Style x:Key="BlueBorder" TargetType="Border">
         <Setter Property="Stroke" Value="{StaticResource WhiteBorderColor}" />
         <Setter Property="StrokeThickness" Value="2" />
         <Setter Property="BackgroundColor" Value="{StaticResource BlueColorBackground}" />
         <Setter Property="Padding" Value="10" />
     </Style>
-    
+
     <Style x:Key="BlueChipBorder" TargetType="Border">
         <Setter Property="Stroke" Value="{StaticResource WhiteBorderColor}" />
         <Setter Property="StrokeThickness" Value="2" />
@@ -902,12 +902,13 @@
         <Setter Property="Padding" Value="10" />
         <Setter Property="HorizontalOptions" Value="EndAndExpand" />
     </Style>
-    
+
     <Style x:Key="ArrowImageStyle" TargetType="ImageButton">
         <Setter Property="HeightRequest" Value="25" />
         <Setter Property="WidthRequest" Value="25" />
+        <Setter Property="Padding" Value="{OnPlatform iOS=10,Default=0}"/>
     </Style>
-    
+
     <Style x:Key="CameraImageStyle" TargetType="ImageButton">
         <Setter Property="HeightRequest" Value="28" />
         <Setter Property="WidthRequest" Value="28" />
@@ -971,7 +972,7 @@
             </VisualStateGroupList>
         </Setter>
     </Style>
-    
+
     <!--ContentPage-->
     <Style x:Key="DefaultContentPage" TargetType="ContentPage">
         <Setter Property="Background">

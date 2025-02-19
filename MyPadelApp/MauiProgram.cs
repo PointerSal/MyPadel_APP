@@ -23,9 +23,9 @@ namespace MyPadelApp
                 handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
                 if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Q)
                     handler.PlatformView.TextCursorDrawable.SetTint(Android.Graphics.Color.White);
-#elif __IOS__                 
-                    handler.PlatformView.BackgroundColor = UIKit.UIColor.White;                 
-                    handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.Line; 
+#elif __IOS__
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #endif
             });
 
@@ -36,8 +36,8 @@ namespace MyPadelApp
                 if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Q)
                     handler.PlatformView.TextCursorDrawable.SetTint(Android.Graphics.Color.White);
 #elif __IOS__
-                handler.PlatformView.BackgroundColor = UIKit.UIColor.White;
-                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.Line;
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #endif
             });
 
@@ -47,9 +47,9 @@ namespace MyPadelApp
                 handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
                 if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Q)
                     handler.PlatformView.TextCursorDrawable.SetTint(Android.Graphics.Color.White);
-#elif __IOS__                 
-                    handler.PlatformView.BackgroundColor = UIKit.UIColor.White;                 
-                    //handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.Line; 
+#elif __IOS__
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.White;
+                //handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.Line; 
 #endif
             });
 

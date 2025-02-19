@@ -18,136 +18,208 @@
         <local:StatusToColorConverter x:Key="StatusToColorConverter"/>
     </ContentPage.Resources>
 
-    <Grid>
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto" RowSpacing="10">
-            <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}"  Padding="20,5">
-                <Label Text="{localization:Translate LogoText}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
-                <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}"/>
-            </Grid>
-            <Label Grid.Row="1" Text="{localization:Translate WhenYouWantToPlay}" Style="{StaticResource VeryLargeBoldStyleAlignCenter}" Margin="20,0"/>
-            <CollectionView Grid.Row="2"
-                            x:Name="CalendarCollectionView"
-                            ItemsSource="{Binding CalendarItems}"
-                            SelectedItem="{Binding SelectedCalender}"
-                            Margin="20,0"
-                            SelectionMode="Single"
-                            SelectionChanged="CollectionView_SelectionChanged">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:CalendarItem">
-                        <Grid BackgroundColor="Transparent" Padding="0" Style="{StaticResource MyGrid}">
-                            <StackLayout Padding="5">
-                                <Label Text="{Binding Day}" Style="{StaticResource MicroLabelStyleAlginCenter}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-                                <Label Text="{Binding Date, StringFormat='{0:dd}'}" Style="{StaticResource LargeLabelBoldStyleCenter}"/>
-                                <Label Text="{Binding MonthName}" Style="{StaticResource MicroLabelStyleAlginCenter}" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-                                <Label Text="{Binding Date, StringFormat='{0:yyyy}'}" Style="{StaticResource SmallBoldLabelStyle}"/>
-                            </StackLayout>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <StackLayout Grid.Row="4" Spacing="10" Margin="20,0">
-                <Label Text="{localization:Translate SportText}" Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
-                <HorizontalStackLayout Spacing="10">
-                    <Border Style="{StaticResource BlueChipBorder}"
-                        Padding="20,5"
-                        x:Name="PadelBorder">
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnBorderTapped"/>
-                        </Border.GestureRecognizers>
-                        <Label Text="{localization:Translate PadelText}" Style="{StaticResource TooMicroAlginCenter}" />
-                    </Border>
-                    <Border Style="{StaticResource TransparentChipBorder}"
-                        Padding="20,5"
-                        x:Name="TennisBorder">
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnBorderTapped"/>
-                        </Border.GestureRecognizers>
-                        <Label Text="{localization:Translate TennisText}" Style="{StaticResource TooMicroAlginCenter}" />
-                    </Border>
-                    <Border Style="{StaticResource TransparentChipBorder}"
-                        Padding="20,5"
-                        x:Name="SoccerBorder">
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnBorderTapped"/>
-                        </Border.GestureRecognizers>
-                        <Label Text="{localization:Translate SoccerText}" Style="{StaticResource TooMicroAlginCenter}" />
-                    </Border>
-                    <Border Style="{StaticResource TransparentChipBorder}"
-                        Padding="20,5"
-                        x:Name="CricketBorder">
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnBorderTapped"/>
-                        </Border.GestureRecognizers>
-                        <Label Text="{localization:Translate Cricket}" Style="{StaticResource TooMicroAlginCenter}" />
-                    </Border>
-                </HorizontalStackLayout>
-                <Label Text="{localization:Translate WhichTimeSlotToPlay}" Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
-                <Label Text="{localization:Translate PadelCourt1}" Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
+    <ScrollView Orientation="Vertical">
+        <Grid>
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto"
+                    RowSpacing="10">
+                <Grid ColumnDefinitions="*,Auto"
+                        BackgroundColor="{StaticResource DefaultPageBackground}"
+                        Padding="20,5">
+                    <Label Text="{localization:Translate LogoText}"
+                            Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+                    <Image Grid.Column="1"
+                            Source="info.png"
+                            Style="{StaticResource SmallCricleImage}"/>
+                </Grid>
+                <Label Grid.Row="1"
+                        Text="{localization:Translate WhenYouWantToPlay}"
+                        Style="{StaticResource VeryLargeBoldStyleAlignCenter}"
+                        Margin="20,0"/>
+                <CollectionView Grid.Row="2"
+                                x:Name="CalendarCollectionView"
+                                ItemsSource="{Binding CalendarItems}"
+                                SelectedItem="{Binding SelectedCalender}"
+                                VerticalOptions="Start"
+                                Margin="20,0"
+                                HeightRequest="110"
+                                SelectionMode="Single"
+                                SelectionChanged="CollectionView_SelectionChanged">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                                ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:CalendarItem">
+                            <Grid BackgroundColor="Transparent"
+                                    VerticalOptions="Start"
+                                    RowSpacing="5"
+                                    Padding="0"
+                                    Style="{StaticResource MyGrid}"
+                                    RowDefinitions="Auto,Auto,Auto,Auto">
+                                <Label Text="{Binding Day}"
+                                            Style="{StaticResource MicroLabelStyleAlginCenter}"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Date, StringFormat='{0:dd}'}"
+                                        Grid.Row="1"
+                                            Style="{StaticResource LargeLabelBoldStyleCenter}"/>
+                                <Label Text="{Binding MonthName}"
+                                        Grid.Row="2"
+                                            Style="{StaticResource MicroLabelStyleAlginCenter}"
+                                            TextTransform="Uppercase"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Date, StringFormat='{0:yyyy}'}"
+                                        Grid.Row="3"
+                                            Style="{StaticResource SmallBoldLabelStyle}"
+                                            Margin="5"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <StackLayout Grid.Row="4"
+                        Spacing="10"
+                        Margin="20,0">
+                    <Label Text="{localization:Translate SportText}"
+                            Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
+                    <HorizontalStackLayout Spacing="10">
+                        <Border Style="{StaticResource BlueChipBorder}"
+                                Padding="20,5"
+                                x:Name="PadelBorder">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{localization:Translate PadelText}"
+                                    Style="{StaticResource TooMicroAlginCenter}"/>
+                        </Border>
+                        <Border Style="{StaticResource TransparentChipBorder}"
+                                Padding="20,5"
+                                x:Name="TennisBorder">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{localization:Translate TennisText}"
+                                    Style="{StaticResource TooMicroAlginCenter}"/>
+                        </Border>
+                        <Border Style="{StaticResource TransparentChipBorder}"
+                                Padding="20,5"
+                                x:Name="SoccerBorder">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{localization:Translate SoccerText}"
+                                    Style="{StaticResource TooMicroAlginCenter}"/>
+                        </Border>
+                        <Border Style="{StaticResource TransparentChipBorder}"
+                                Padding="20,5"
+                                x:Name="CricketBorder">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBorderTapped"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{localization:Translate Cricket}"
+                                    Style="{StaticResource TooMicroAlginCenter}"/>
+                        </Border>
+                    </HorizontalStackLayout>
+                    <Label Text="{localization:Translate WhichTimeSlotToPlay}"
+                            Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
+                    <Label Text="{localization:Translate PadelCourt1}"
+                            Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
 
-                <CollectionView ItemsSource="{Binding TimeSlots}">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="-3"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:TimeSlot">
-                            <Grid Margin="0,0,-3,0">
-                                <Border Style="{StaticResource ScrollChartBoxBorder}"
-                                        Padding="10"
-                                        Opacity="1"
-                                        ZIndex="1">
-                                    <Label Text="{Binding Time,StringFormat='{0:HH:mm}'}" Style="{StaticResource TooMicroBoldAlignCenter}"/>
-                                </Border>
-                                <Border Style="{StaticResource ScrollChartRedBoxBorder}"
-                                        Padding="10"
-                                        Opacity="0.9"
-                                        ZIndex="1"
-                                        IsVisible="False">
-                                    <Label Text="{Binding Status}" Style="{StaticResource SmallLabelStyle}" FontSize="Micro" Opacity="1" ZIndex="1"/>
-                                    <Border.Triggers>
-                                        <DataTrigger TargetType="Border" Binding="{Binding Status}" Value="Prenotato">
-                                            <Setter Property="IsVisible" Value="True"/>
-                                        </DataTrigger>
-                                    </Border.Triggers>
-                                </Border>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=BindingContext.Padel1Command}" CommandParameter="{Binding .}" />
-                                </Grid.GestureRecognizers>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <Label Text="{localization:Translate PadelCourt2}" Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
-                <CollectionView ItemsSource="{Binding TimeSlots2}">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="-3"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:TimeSlot">
-                            <Grid Margin="0,0,-3,0">
-                                <Border Style="{StaticResource ScrollChartBoxBorder}" Padding="10" Opacity="1" ZIndex="1">
-                                    <Label Text="{Binding Time,StringFormat='{0:HH:mm}'}" Style="{StaticResource TooMicroBoldAlignCenter}"/>
-                                </Border>
-                                <Border Style="{StaticResource ScrollChartRedBoxBorder}" Padding="10" Opacity="0.9" ZIndex="1" IsVisible="False">
-                                    <Label Text="{Binding Status}" Style="{StaticResource SmallLabelStyle}" FontSize="Micro" Opacity="1" ZIndex="1"/>
-                                    <Border.Triggers>
-                                        <DataTrigger TargetType="Border" Binding="{Binding Status}" Value="Prenotato">
-                                            <Setter Property="IsVisible" Value="True"/>
-                                        </DataTrigger>
-                                    </Border.Triggers>
-                                </Border>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=BindingContext.Padel2Command}" CommandParameter="{Binding .}" />
-                                </Grid.GestureRecognizers>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-            <Button Grid.Row="5" Text="{localization:Translate BookButton}"  Style="{StaticResource BlueButtonStyle}" IsVisible="False" Margin="20"/>
+                    <CollectionView ItemsSource="{Binding TimeSlots}" HeightRequest="40">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                                    ItemSpacing="0"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:TimeSlot">
+                                <Grid Margin="0,0,0,0">
+                                    <Border Style="{StaticResource ScrollChartBoxBorder}"
+                                            Padding="10"
+                                            Opacity="1"
+                                            ZIndex="1">
+                                        <Label Text="{Binding Time,StringFormat='{0:HH:mm}'}"
+                                                Style="{StaticResource TooMicroBoldAlignCenter}"/>
+                                    </Border>
+                                    <Border Style="{StaticResource ScrollChartRedBoxBorder}"
+                                            Padding="10"
+                                            Opacity="0.9"
+                                            ZIndex="1"
+                                            IsVisible="False">
+                                        <Label Text="{Binding Status}"
+                                                Style="{StaticResource SmallLabelStyle}"
+                                                FontSize="Micro"
+                                                Opacity="1"
+                                                ZIndex="1"/>
+                                        <Border.Triggers>
+                                            <DataTrigger TargetType="Border"
+                                                    Binding="{Binding Status}"
+                                                    Value="Prenotato">
+                                                <Setter Property="IsVisible"
+                                                        Value="True"/>
+                                            </DataTrigger>
+                                        </Border.Triggers>
+                                    </Border>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=BindingContext.Padel1Command}"
+                                                CommandParameter="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label Text="{localization:Translate PadelCourt2}"
+                            Style="{StaticResource boldSmallLabelStyleHorizontalStart}"/>
+                    <CollectionView ItemsSource="{Binding TimeSlots2}" HeightRequest="40">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                                    ItemSpacing="0"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:TimeSlot">
+                                <Grid Margin="0,0,0,0">
+                                    <Border Style="{StaticResource ScrollChartBoxBorder}"
+                                            Padding="10"
+                                            Opacity="1"
+                                            ZIndex="1">
+                                        <Label Text="{Binding Time,StringFormat='{0:HH:mm}'}"
+                                                Style="{StaticResource TooMicroBoldAlignCenter}"/>
+                                    </Border>
+                                    <Border Style="{StaticResource ScrollChartRedBoxBorder}"
+                                            Padding="10"
+                                            Opacity="0.9"
+                                            ZIndex="1"
+                                            IsVisible="False">
+                                        <Label Text="{Binding Status}"
+                                                Style="{StaticResource SmallLabelStyle}"
+                                                FontSize="Micro"
+                                                Opacity="1"
+                                                ZIndex="1"/>
+                                        <Border.Triggers>
+                                            <DataTrigger TargetType="Border"
+                                                    Binding="{Binding Status}"
+                                                    Value="Prenotato">
+                                                <Setter Property="IsVisible"
+                                                        Value="True"/>
+                                            </DataTrigger>
+                                        </Border.Triggers>
+                                    </Border>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=BindingContext.Padel2Command}"
+                                                CommandParameter="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <Button Grid.Row="5"
+                        Text="{localization:Translate BookButton}"
+                        Style="{StaticResource BlueButtonStyle}"
+                        IsVisible="False"
+                        Margin="20"/>
+            </Grid>
+            <Loader:ActivityIndicator Grid.RowSpan="4"
+                    IsVisible="{Binding IsBusy}"/>
         </Grid>
-        <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
-    </Grid>
+    </ScrollView>
 </ContentPage>

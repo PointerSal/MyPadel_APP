@@ -14,7 +14,7 @@ namespace MyPadelApp.Services.HttpClientServices
     {
         #region Services
 
-        public string baseUrl = "http://ufficio.pointer.re.it:7070/api/";
+        public string baseUrl = "https://c17c-103-189-68-70.ngrok-free.app/api/";
 
         #endregion
 
@@ -53,7 +53,7 @@ namespace MyPadelApp.Services.HttpClientServices
                     stringContent = new StringContent(header_data, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage httpResponse;
-                if(IsPost)
+                if (IsPost)
                     httpResponse = header_data != null ? await client.PostAsync(baseUrl + url, stringContent) : await client.PostAsync(baseUrl + url, null);
                 else
                     httpResponse = header_data != null ? await client.PatchAsync(baseUrl + url, stringContent) : await client.PatchAsync(baseUrl + url, null);
@@ -224,7 +224,7 @@ namespace MyPadelApp.Services.HttpClientServices
 
                 if (isToken)
                 {
-                    string token = Preferences.Default.Get("Token",string.Empty);
+                    string token = Preferences.Default.Get("Token", string.Empty);
                     if (!string.IsNullOrEmpty(token))
                         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 }

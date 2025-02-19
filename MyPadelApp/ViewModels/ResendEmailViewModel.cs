@@ -35,6 +35,16 @@ namespace MyPadelApp.ViewModels
         #region Commands
 
         [RelayCommand]
+        private async Task Back()
+        {
+            try
+            {
+                await Shell.Current.GoToAsync("..");
+            }
+            catch { }
+        }
+
+        [RelayCommand]
         private async void Appearing()
         {
             try
@@ -54,12 +64,12 @@ namespace MyPadelApp.ViewModels
                 {
                     UserData.email = Utils.GetUser.email;
                     var response = await _authServices.VerifyEmail(UserData);
-                    if (response != null && response.code !=null && response.code.Equals("0000"))
+                    if (response != null && response.code != null && response.code.Equals("0000"))
                     {
                         Utils.GetUser.isEmailVerified = true;
                         await Shell.Current.GoToAsync("../RegistrationResendOTPPage");
                     }
-                    else if (response != null && response.code !=null)
+                    else if (response != null && response.code != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                     else
                         await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
@@ -68,7 +78,7 @@ namespace MyPadelApp.ViewModels
             catch { }
             IsBusy = false;
         }
-        
+
         [RelayCommand]
         private async Task ResendEmail()
         {
@@ -77,9 +87,9 @@ namespace MyPadelApp.ViewModels
                 IsBusy = true;
                 var Data = new User { email = Utils.GetUser.email };
                 var response = await _authServices.ResendOTP(Data);
-                if (response != null && response.code !=null && response.code.Equals("0000"))
+                if (response != null && response.code != null && response.code.Equals("0000"))
                     await Shell.Current.DisplayAlert(AppResources.Success, AppResources.EmailResent, AppResources.OK);
-                else if (response != null && response.code !=null)
+                else if (response != null && response.code != null)
                     await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                 else
                     await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
@@ -90,7 +100,7 @@ namespace MyPadelApp.ViewModels
 
         public async void OnBack()
         {
-          await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("..");
         }
 
         #endregion

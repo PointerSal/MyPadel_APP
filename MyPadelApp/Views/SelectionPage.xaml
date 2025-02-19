@@ -9,7 +9,7 @@
              Title="">
 
     <Grid RowDefinitions="*,Auto" Margin="10,0,10,20">
-        <HorizontalStackLayout x:Name="horizontalswitch" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" FlowDirection="LeftToRight">
+        <HorizontalStackLayout x:Name="horizontalswitch" Spacing="5" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" FlowDirection="LeftToRight">
             <Label Text="English" Style="{StaticResource SmallLabelStyle}" VerticalOptions="CenterAndExpand">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference styleSwitch}, Path=IsToggled}" Value="true">

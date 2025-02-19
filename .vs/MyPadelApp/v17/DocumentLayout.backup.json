@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\services\\httpclientservices\\httpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\services\\httpclientservices\\httpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\views\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\views\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|c:\\users\\haider ali\\source\\repos\\mypadelapp\\mypadelapp\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E5D1585-61B8-4F7A-BC89-1A6F67527003}|MyPadelApp\\MyPadelApp.csproj|solutionrelative:mypadelapp\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,58 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "MyPadelApp\\ViewModels\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\LoginViewModel.cs",
-              "RelativeToolTip": "MyPadelApp\\ViewModels\\LoginViewModel.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAQwD0AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T14:44:12.298Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HomePage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\HomePage.xaml.cs",
-              "RelativeDocumentMoniker": "MyPadelApp\\Views\\HomePage.xaml.cs",
-              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Views\\HomePage.xaml.cs",
-              "RelativeToolTip": "MyPadelApp\\Views\\HomePage.xaml.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T14:40:33.065Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HomeViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\HomeViewModel.cs",
-              "RelativeDocumentMoniker": "MyPadelApp\\ViewModels\\HomeViewModel.cs",
-              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\ViewModels\\HomeViewModel.cs",
-              "RelativeToolTip": "MyPadelApp\\ViewModels\\HomeViewModel.cs",
-              "ViewState": "AgIAAAEBAAAAAAAAAAAqwBIBAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T14:40:05.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HttpClientService.cs",
-              "DocumentMoniker": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Services\\HttpClientServices\\HttpClientService.cs",
-              "RelativeDocumentMoniker": "MyPadelApp\\Services\\HttpClientServices\\HttpClientService.cs",
-              "ToolTip": "C:\\Users\\Haider Ali\\source\\repos\\MyPadelApp\\MyPadelApp\\Services\\HttpClientServices\\HttpClientService.cs*",
-              "RelativeToolTip": "MyPadelApp\\Services\\HttpClientServices\\HttpClientService.cs*",
-              "ViewState": "AgIAACEAAAAAAAAAAAAQwCkAAACcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T14:31:15.665Z",
-              "EditorCaption": ""
             }
           ]
         }

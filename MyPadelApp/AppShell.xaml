@@ -14,13 +14,13 @@
     Title="MyPadelApp">
 
     <TabBar>
-        <Tab Icon="chip" Title="{localization:Translate SearchField}">
+        <Tab FlyoutIcon="wall_icon.png" Icon="wall_icon.png" Title="{localization:Translate SearchField}">
             <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage"/>
         </Tab>
-        <Tab Icon="profile" Title="{localization:Translate MyProfile}">
+        <Tab FlyoutIcon="male_icon.png" Icon="male_icon.png" Title="{localization:Translate MyProfile}">
             <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}" Route="MyProfilePage"/>
         </Tab>
-        <Tab Icon="ball" Title="{localization:Translate MatchHistory}">
+        <Tab FlyoutIcon="ball_icon.png" Icon="ball_icon.png" Title="{localization:Translate MatchHistory}">
             <ShellContent ContentTemplate="{DataTemplate views:MatchHistoryPage}" Route="HistoryPage"/>
         </Tab>
     </TabBar>
