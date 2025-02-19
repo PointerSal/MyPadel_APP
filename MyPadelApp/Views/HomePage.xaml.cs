@@ -11,6 +11,7 @@ namespace MyPadelApp.Views;
 public partial class HomePage : ContentPage
 {
     HomeViewModel _homeViewModel;
+    private bool IsAppeared = false;
     public HomePage(HomeViewModel homeViewModel, ILocalizationResourceManager localizationResourceManager)
     {
         if (string.IsNullOrEmpty(Preferences.Default.Get("username", string.Empty)) || string.IsNullOrEmpty(Preferences.Default.Get("Password", string.Empty)))
@@ -23,7 +24,12 @@ public partial class HomePage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _homeViewModel.InitializeData( );
+        _homeViewModel.InitializeData();
+        if(!IsAppeared)
+        {
+            _homeViewModel.GenerateCalendarForYears();
+            IsAppeared=true;
+        }
     }
 
     private async void OnBorderTapped(object sender, TappedEventArgs e)

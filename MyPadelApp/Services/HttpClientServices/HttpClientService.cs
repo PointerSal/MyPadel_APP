@@ -39,8 +39,8 @@ namespace MyPadelApp.Services.HttpClientServices
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Clear();
 
-                if (isToken && await SecureStorage.Default.GetAsync("Token") != null && !string.IsNullOrEmpty(await SecureStorage.Default.GetAsync("Token")))
-                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + await SecureStorage.Default.GetAsync("Token"));
+                if (isToken && Preferences.Default.Get("Token", string.Empty) != null && !string.IsNullOrEmpty(Preferences.Default.Get("Token", string.Empty)))
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Preferences.Default.Get("Token", string.Empty));
 
                 client.DefaultRequestHeaders.ConnectionClose = false;
                 client.DefaultRequestHeaders.Add("Connection", "keep-alive");
@@ -170,7 +170,7 @@ namespace MyPadelApp.Services.HttpClientServices
 
                 if (isToken)
                 {
-                    string token = await SecureStorage.Default.GetAsync("Token");
+                    string token = Preferences.Default.Get("Token", string.Empty);
                     if (!string.IsNullOrEmpty(token))
                         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 }
@@ -224,7 +224,7 @@ namespace MyPadelApp.Services.HttpClientServices
 
                 if (isToken)
                 {
-                    string token = await SecureStorage.Default.GetAsync("Token");
+                    string token = Preferences.Default.Get("Token",string.Empty);
                     if (!string.IsNullOrEmpty(token))
                         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 }
@@ -285,7 +285,7 @@ namespace MyPadelApp.Services.HttpClientServices
 
                 if (isToken)
                 {
-                    string token = await SecureStorage.Default.GetAsync("Token");
+                    string token = Preferences.Default.Get("Token", string.Empty);
                     if (!string.IsNullOrEmpty(token))
                         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 }

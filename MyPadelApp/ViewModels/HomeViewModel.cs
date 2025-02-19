@@ -136,7 +136,6 @@ namespace MyPadelApp.ViewModels
             _bookingService = bookingService;
             _localizationResourceManager = localizationResourceManager;
             CalendarItems = new ObservableCollection<CalendarItem>();
-            GenerateCalendarForYears();
         }
 
         #endregion
@@ -273,8 +272,7 @@ namespace MyPadelApp.ViewModels
             IsBusy = false;
         }
 
-
-        private async void GenerateCalendarForYears()
+        public async void GenerateCalendarForYears()
         {
             try
             {

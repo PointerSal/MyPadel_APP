@@ -1,5 +1,4 @@
-﻿using Android.Accounts;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MyPadelApp.Models;
 using MyPadelApp.Resources.Languages;
