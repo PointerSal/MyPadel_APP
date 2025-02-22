@@ -31,6 +31,7 @@ namespace MyPadelApp
             Routing.RegisterRoute("BookingSummaryPage", typeof(BookingSummaryPage));   
             Routing.RegisterRoute("PaymentScreenPage", typeof(PaymentScreenPage));   
             Routing.RegisterRoute("PaymentBookingSummary", typeof(PaymentBookingSummary));   
+            Routing.RegisterRoute("FITPaymentPage", typeof(FITPaymentPage));   
         }
     }
 }

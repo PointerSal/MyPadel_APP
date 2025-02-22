@@ -32,7 +32,13 @@ public partial class BookingSummaryPage : ContentPage
             _bookingSummaryViewModel.SelectedTime = 4;
         }
 
-        _bookingSummaryViewModel.Amount = 44 * _bookingSummaryViewModel.SelectedTime;
         _bookingSummaryViewModel.Duration = (30 * _bookingSummaryViewModel.SelectedTime);
+
+        try
+        {
+            if (_bookingSummaryViewModel.bookingPricesList != null)
+                _bookingSummaryViewModel.Amount = (int)(_bookingSummaryViewModel.bookingPricesList.FirstOrDefault(e => e.duration == _bookingSummaryViewModel.Duration).price);
+        }
+        catch { }
     }
 }

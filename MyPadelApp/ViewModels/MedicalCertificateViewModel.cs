@@ -35,7 +35,6 @@ namespace MyPadelApp.ViewModels
         {
             try
             {
-
                 IsBusy = true;
                 var response = await _membershipUserService.ExpiryDate(Utils.GetUser.email);
                 if (response != null && response.code != null && response.code.Equals("0000"))

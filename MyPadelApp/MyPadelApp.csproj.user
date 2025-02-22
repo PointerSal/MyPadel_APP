@@ -46,6 +46,9 @@
     <MauiXaml Update="Views\FITCardPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\FITPaymentPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\HistoryBookingSummaryPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

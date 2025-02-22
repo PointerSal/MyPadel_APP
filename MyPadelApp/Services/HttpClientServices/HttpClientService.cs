@@ -14,7 +14,7 @@ namespace MyPadelApp.Services.HttpClientServices
     {
         #region Services
 
-        public string baseUrl = "https://c17c-103-189-68-70.ngrok-free.app/api/";
+        public string baseUrl = "http://ufficio.pointer.re.it:7070/api/";
 
         #endregion
 

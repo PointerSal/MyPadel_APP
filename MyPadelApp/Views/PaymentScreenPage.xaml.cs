@@ -10,11 +10,4 @@ public partial class PaymentScreenPage : ContentPage
 		InitializeComponent();
         BindingContext = paymentScreenViewModel;
     }
-    //private async void OnPayClicked(object sender, EventArgs e)
-    //{
-    //    if (IsHomeScreen)
-    //        await Shell.Current.GoToAsync("PaymentBookingSummary");
-    //    else
-    //        await Navigation.PushAsync(new BookedFieldPage());
-    //}
 }

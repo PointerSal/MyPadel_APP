@@ -459,7 +459,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Payment method:.
+        ///   Looks up a localized string similar to Payment method.
         /// </summary>
         internal static string ChooseDuration {
             get {

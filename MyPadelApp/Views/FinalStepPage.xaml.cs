@@ -25,13 +25,17 @@ public partial class FinalStepPage : ContentPage
 
     private async void OnConfirmClicked(object sender, EventArgs e)
     {
-        if (!image1.IsVisible)
-            await Shell.Current.DisplayAlert(AppResources.Error, AppResources.TermsAndConditionAgree, AppResources.OK);
-        else if (InnerBorder1.IsVisible)
-            await Shell.Current.GoToAsync("AlreadyFITCardPage");
-        else if (InnerBorder2.IsVisible)
-            await Shell.Current.GoToAsync("CreateFIFPage");
-        else
-            await Shell.Current.DisplayAlert(AppResources.Error, AppResources.OneSelected, AppResources.OK);
+        try
+        {
+            if (!image1.IsVisible)
+                await Shell.Current.DisplayAlert(AppResources.Error, AppResources.TermsAndConditionAgree, AppResources.OK);
+            else if (InnerBorder1.IsVisible)
+                await Shell.Current.GoToAsync("AlreadyFITCardPage");
+            else if (InnerBorder2.IsVisible)
+                await Shell.Current.GoToAsync("CreateFIFPage");
+            else
+                await Shell.Current.DisplayAlert(AppResources.Error, AppResources.OneSelected, AppResources.OK);
+        }
+        catch(Exception ex) { }
     }
 }

@@ -11,29 +11,32 @@
              Shell.NavBarIsVisible="False"
              Title="">
 
-    <Grid RowDefinitions="Auto,*">
-        <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
-            <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
-            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
-        </Grid>
-        <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="40" Margin="20">
-            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
-            <StackLayout Spacing="5">
-                <Label Text="{localization:Translate CertificateReminder}" Style="{StaticResource SmallBoldStyleHorizontalStart}"/>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{localization:Translate CertificateDescription}" Style="{StaticResource LargeSpanWhiteUnbold}"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </StackLayout>
-            <StackLayout Spacing="5" Margin="0,40,0,0">
-                <StackLayout>
-                    <Label Text="{Binding Card.expiryDate}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
-                    <BoxView Style="{StaticResource BoxViewStyle}"/>
+    <Grid>
+        <Grid RowDefinitions="Auto,*">
+            <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
+                <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+                <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+            </Grid>
+            <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="40" Margin="20">
+                <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>
+                <StackLayout Spacing="5">
+                    <Label Text="{localization:Translate CertificateReminder}" Style="{StaticResource SmallBoldStyleHorizontalStart}"/>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{localization:Translate CertificateDescription}" Style="{StaticResource LargeSpanWhiteUnbold}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <StackLayout Spacing="5" Margin="0,40,0,0">
+                    <StackLayout>
+                        <Label Text="{Binding Card.expiryDate}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </Grid>
+        <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>

@@ -4,12 +4,15 @@ using MyPadelApp.Helpers;
 using MyPadelApp.Models;
 using MyPadelApp.Resources.Languages;
 using MyPadelApp.Services.MembershipUserServices;
+using MyPadelApp.Services.PriceServices;
+using MyPadelApp.Services.StripeServices;
 using MyPadelApp.ViewModels.ViewBaseModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace MyPadelApp.ViewModels
@@ -18,7 +21,8 @@ namespace MyPadelApp.ViewModels
     {
         #region Services
 
-        private readonly IMembershipUserService _membershipUserService;
+        private readonly IStripeService _stripeService;
+        private readonly IPriceService _priceService;
 
         #endregion
 
@@ -116,6 +120,7 @@ namespace MyPadelApp.ViewModels
         private bool _hasUploadCertificateError;
 
         private string CertificateFilePath = "";
+        private BookingPrices bookingPrices = null;
 
         #endregion
 
@@ -131,19 +136,32 @@ namespace MyPadelApp.ViewModels
 
                 IsBusy = true;
                 CardModel.PaymentMethod = SelectedPaymentMethod;
-                var response = await _membershipUserService.RegisterMemberShipUser(CardModel, ImageToBase64.BytesToBase64(CardModel.MedicalCertificate));
-                if (response != null && response.code !=null && response.code.Equals("0000"))
-                {
-                    Preferences.Default.Set("username", Utils.GetUser.email);
-                    Preferences.Default.Set("Password", Utils.GetUser.password);
-                    await Shell.Current.GoToAsync("../../BookedFieldPage");
-                }
-                else if (response != null && response.code !=null)
-                    await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
+                bool IsSuccess = false;
+                if (bookingPrices == null)
+                    IsSuccess = await GetPrices();
                 else
-                    await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
+                    IsSuccess = true;
+
+                if (IsSuccess)
+                {
+                    var Data = new StripePayment { email = Utils.GetUser.email, amount = bookingPrices.fitMembershipFee };
+                    var response = await _stripeService.CheckoutSession(Data);
+                    if (response != null && response.code != null && response.code.Equals("0000"))
+                    {
+                        var result = JsonSerializer.Deserialize<PaymentResponse>(response.data.ToString());
+                        await Shell.Current.GoToAsync("FITPaymentPage", true, new Dictionary<string, object>
+                    {
+                        { "PaymentURL",result.sessionUrl },
+                        { "CurrentFIT",CardModel },
+                    });
+                    }
+                    else if (response != null && response.code != null)
+                        await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
+                    else
+                        await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
+                }
             }
-            catch (Exception ex) { }
+            catch(Exception ex) { }
             IsBusy = false;
         }
 
@@ -218,9 +236,39 @@ namespace MyPadelApp.ViewModels
         #endregion
 
         #region Constructor
-        public CreateFIFViewModel(IMembershipUserService membershipUserService)
+
+        public CreateFIFViewModel(IStripeService stripeService, IPriceService priceService)
         {
-            _membershipUserService = membershipUserService;
+            _stripeService = stripeService;
+            _priceService = priceService;
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                IsBusy = true;
+                await GetPrices();
+                IsBusy = false;
+            });
+        }
+
+        #endregion
+
+        #region Methods
+        public async Task<bool> GetPrices()
+        {
+            try
+            {
+                var response = await _priceService.FITMemberShipPrices();
+                if (response != null && response.code != null && response.code.Equals("0000"))
+                {
+                    bookingPrices = JsonSerializer.Deserialize<BookingPrices>(response.data.ToString());
+                    return true;
+                }
+                else if (response != null && response.code != null)
+                    await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
+                else
+                    await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
+            }
+            catch (Exception ex) { }
+            return false;
         }
 
         #endregion

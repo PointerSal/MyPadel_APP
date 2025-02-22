@@ -7,15 +7,9 @@
              BackgroundColor="Black"
              Shell.TabBarIsVisible="False"
              Shell.NavBarIsVisible="False"
+             Style="{StaticResource DefaultContentPage}"
              Title="">
-
-    <ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#404a36" Offset="0.1" />
-            <GradientStop Color="#869770" Offset="1.0" />
-        </LinearGradientBrush>
-    </ContentPage.Background>
-
+    
     <Grid>
         <Grid RowDefinitions="Auto,*,Auto" Margin="20">
             <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" Command="{Binding BackCommand}"/>

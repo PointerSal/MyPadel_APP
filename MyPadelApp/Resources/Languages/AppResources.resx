@@ -669,7 +669,7 @@ To register your new FIT card.</value>
     <value>• Cash</value>
   </data>
   <data name="ChooseDuration" xml:space="preserve">
-    <value>Payment method:</value>
+    <value>Payment method</value>
   </data>
   <data name="PadelText" xml:space="preserve">
     <value>Padel</value>

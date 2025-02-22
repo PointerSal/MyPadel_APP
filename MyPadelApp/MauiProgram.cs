@@ -6,6 +6,8 @@ using MyPadelApp.Services.AuthServices;
 using MyPadelApp.Services.BookingServices;
 using MyPadelApp.Services.HttpClientServices;
 using MyPadelApp.Services.MembershipUserServices;
+using MyPadelApp.Services.PriceServices;
+using MyPadelApp.Services.StripeServices;
 using MyPadelApp.ViewModels;
 using MyPadelApp.Views;
 
@@ -71,6 +73,8 @@ namespace MyPadelApp
             builder.Services.AddSingleton<IMembershipUserService, MembershipUserService>();
             builder.Services.AddSingleton<IAuthServices, AuthServices>();
             builder.Services.AddSingleton<IBookingService, BookingService>();
+            builder.Services.AddSingleton<IStripeService, StripeService>();
+            builder.Services.AddSingleton<IPriceService, PriceService>();
 
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<LoginPage>();
@@ -116,6 +120,8 @@ namespace MyPadelApp
             builder.Services.AddTransient<PaymentBookingSummaryViewModel>();
             builder.Services.AddTransient<PaymentScreenPage>();
             builder.Services.AddTransient<PaymentScreenViewModel>();
+            builder.Services.AddTransient<FITPaymentPage>();
+            builder.Services.AddTransient<FITPaymentViewModel>();
 
 #if DEBUG
             builder.Logging.AddDebug();
