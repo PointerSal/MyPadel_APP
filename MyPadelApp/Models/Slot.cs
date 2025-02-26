@@ -13,7 +13,7 @@ namespace MyPadelApp.Models
     }
     public class Datum
     {
-        public string? date { get; set; }
+        public string? fieldName { get; set; }
         public List<Slot>? slots { get; set; }
     }
 }

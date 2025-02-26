@@ -14,7 +14,6 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Converters:SelectedPaymentColorConverter x:Key="SelectedPaymentColorConverter"/>
             <Style TargetType="Grid">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
@@ -46,14 +45,7 @@
             <Border Grid.Row="2" Style="{StaticResource MenuBoxBorder}">
                 <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
                     <Label Grid.Row="0" Text="{Binding Booking.sportType}" Style="{StaticResource SmallBoldLabelStyleHorizontalStart}"/>
-                    <Label Grid.Row="1" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{localization:Translate CampoPadel}" Style="{StaticResource SmallSpanWhitebold}"/>
-                                <Span Text="{Binding Booking.fieldId}" Style="{StaticResource SmallSpanWhitebold}"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                    <Label Grid.Row="1" Text="{Binding CourtName}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
                     <Image Grid.RowSpan="2" Source="tennis" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="EndAndExpand"/>
                     <Grid Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*" Margin="0,20,0,0">
                         <Label Grid.Row="0" Grid.Column="0" Text="{localization:Translate Date}" Style="{StaticResource TooMicroUnBoldAlginCenter}"/>
@@ -74,7 +66,7 @@
             <StackLayout Grid.Row="3" Margin="20,0" Spacing="20">
                 <Label Text="{localization:Translate SelectDuration}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
                 <Grid ColumnDefinitions="Auto,Auto,Auto" ColumnSpacing="10">
-                    <Border Style="{StaticResource TransparentChipBorder}" Padding="20,5" x:Name="min60Border">
+                    <Border Style="{StaticResource BlueChipBorder}" Padding="20,5" x:Name="min60Border">
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnBorderTapped"/>
                         </Border.GestureRecognizers>
@@ -99,9 +91,11 @@
                         <Label Text="{localization:Translate PaymentMethodHeading}" Style="{StaticResource SmallBoldLabelStyle}"/>
                         <CollectionView ItemsSource="{Binding PaymentMethods}" SelectionMode="Single" SelectedItem="{Binding SelectedPaymentMethod}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate>
+                                <DataTemplate x:DataType="x:String">
                                     <Grid>
-                                        <Label Text="{Binding .,StringFormat='• {0:F2}'}" Style="{StaticResource SmallBoldLabelStyle}" Padding="0,5"/>
+                                        <StackLayout>
+                                            <Label Text="{Binding .,StringFormat='• {0:F2}'}" Style="{StaticResource SmallBoldLabelStyle}" Padding="0,5"/>
+                                        </StackLayout>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>

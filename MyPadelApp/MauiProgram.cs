@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using MyPadelApp.Resources.Languages;
 using MyPadelApp.Services.AuthServices;
 using MyPadelApp.Services.BookingServices;
+using MyPadelApp.Services.DesktopCourtSportsServices;
 using MyPadelApp.Services.HttpClientServices;
 using MyPadelApp.Services.MembershipUserServices;
 using MyPadelApp.Services.PriceServices;
@@ -75,6 +76,7 @@ namespace MyPadelApp
             builder.Services.AddSingleton<IBookingService, BookingService>();
             builder.Services.AddSingleton<IStripeService, StripeService>();
             builder.Services.AddSingleton<IPriceService, PriceService>();
+            builder.Services.AddSingleton<IDesktopCourtSportsService, DesktopCourtSportsService>();
 
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<LoginPage>();

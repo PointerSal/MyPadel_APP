@@ -295,7 +295,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Riepilogo prenotazione.
+        ///   Looks up a localized string similar to Booking Summary.
         /// </summary>
         internal static string BookingSummary {
             get {
@@ -376,7 +376,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Potrai disdire la prenotazione entro 24 ore prima utilizzando l’applicazione, successivamente dovrai necessariamente chiamare il centro.
+        ///   Looks up a localized string similar to You can cancel your booking within 24 hours using the application, then you will have to call the centre.
         /// </summary>
         internal static string CancellationDetails {
             get {
@@ -612,7 +612,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Carta di credito / Bancomat.
+        ///   Looks up a localized string similar to Credit Card.
         /// </summary>
         internal static string CreditCard {
             get {
@@ -1896,7 +1896,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scegli la durata.
+        ///   Looks up a localized string similar to Select Duration.
         /// </summary>
         internal static string SelectDuration {
             get {

@@ -27,6 +27,9 @@ namespace MyPadelApp.ViewModels
         [ObservableProperty]
         public Booking _booking;
 
+        [ObservableProperty]
+        private string _courtName;
+
         #endregion
 
         #region Commands
@@ -80,6 +83,7 @@ namespace MyPadelApp.ViewModels
                 if (query != null)
                 {
                     Booking = (Booking)query["BookingData"];
+                    CourtName = (string)query["CourtName"];
                 }
             }
             catch { }

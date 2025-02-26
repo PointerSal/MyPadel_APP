@@ -6,6 +6,7 @@ using MyPadelApp.Models;
 using MyPadelApp.Resources.Languages;
 using MyPadelApp.Services.AuthServices;
 using MyPadelApp.Services.BookingServices;
+using MyPadelApp.Services.DesktopCourtSportsServices;
 using MyPadelApp.ViewModels.ViewBaseModel;
 using MyPadelApp.Views;
 using System;
@@ -23,6 +24,7 @@ namespace MyPadelApp.ViewModels
         #region Services
 
         private readonly ILocalizationResourceManager _localizationResourceManager;
+        private readonly IDesktopCourtSportsService _desktopCourtSportsService;
         private readonly IAuthServices _authServices;
         private readonly IBookingService _bookingService;
 
@@ -33,107 +35,72 @@ namespace MyPadelApp.ViewModels
         private bool IsClicked { get; set; } = false;
         private List<Datum> CurrentTimeList { get; set; } = new List<Datum>();
         public DateTime SelectedDate = DateTime.Now;
-        public int CurrentField = 1;
-        public int SelectedTimeSlot = 1;
+        //public int CurrentField = 1;
+        //public int SelectedTimeSlot = 1;
+        private List<BookingTypes> BookingTypesList { get; set; } = new List<BookingTypes>();
+
+        [ObservableProperty]
+        private ObservableCollection<Courts> _courtLists;
+
+        [ObservableProperty]
+        private Courts _selectedCourt;
 
         [ObservableProperty]
         public CalendarItem _selectedCalender;
 
-        private ObservableCollection<CalendarItem> _CalendarItems;
-        public ObservableCollection<CalendarItem> CalendarItems
-        {
-            get => _CalendarItems;
-            set
-            {
-                _CalendarItems = value;
-                OnPropertyChanged();
-            }
-        }
-        private ObservableCollection<TimeSlot> _TimeSlots;
-        public ObservableCollection<TimeSlot> TimeSlots
-        {
-            get => _TimeSlots;
-            set
-            {
-                _TimeSlots = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        public ObservableCollection<TimeSlot> _timeSlots;
 
-        private ObservableCollection<TimeSlot> _TimeSlots2;
-        public ObservableCollection<TimeSlot> TimeSlots2
-        {
-            get => _TimeSlots2;
-            set
-            {
-                _TimeSlots2 = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        public ObservableCollection<CalendarItem> _calendarItems;
 
         #endregion
 
         #region Commands
 
         [RelayCommand]
-        private async Task Padel1(TimeSlot timeSlot)
+        private async Task Padel1(TimeSlotDetails timeSlot)
         {
             try
             {
                 if (timeSlot == null || timeSlot.Status.Equals("Prenotato"))
                     return;
 
-                SelectedTimeSlot = 1;
-                SelectedDate = new DateTime(SelectedDate.Year,SelectedDate.Month,SelectedDate.Day,timeSlot.Time.Hour,timeSlot.Time.Minute,0);
-                var SportType = CurrentField switch
-                {
-                    1 => AppResources.PadelText,
-                    2 => AppResources.TennisText,
-                    3 => AppResources.SoccerText,
-                    4 => AppResources.Cricket,
-                    _ => ""
-                };
+                SelectedDate = new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, timeSlot.Time.Hour, timeSlot.Time.Minute, 0);
                 await Shell.Current.GoToAsync("BookingSummaryPage", true, new Dictionary<string, object>
                 {
-                    {"CurrentBooking",new Booking{ sportType = SportType, timeSlot = timeSlot.Time.ToString("HH:mm"), fieldId = SelectedTimeSlot,email = Utils.GetUser.email, date = SelectedDate } }
+                    {"CurrentBooking",new Booking{ sportType = SelectedCourt.SportName, timeSlot = timeSlot.Time.ToString("HH:mm"), fieldId = int.Parse(timeSlot.FieldName),email = Utils.GetUser.email, date = SelectedDate }}
+                    , { "BookingType", BookingTypesList.FirstOrDefault(e=>e.fieldType.Equals(timeSlot.FieldName) && e.sportsName.Equals(SelectedCourt.SportName)) }
                 });
             }
             catch { }
         }
 
         [RelayCommand]
-        private async Task Padel2(TimeSlot timeSlot)
+        private async Task SelectedCategory(Courts courts)
         {
             try
             {
-                if (timeSlot == null || timeSlot.Status.Equals("Prenotato"))
-                    return;
-
-                SelectedTimeSlot = 2;
-                SelectedDate = new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, timeSlot.Time.Hour, timeSlot.Time.Minute, timeSlot.Time.Second, 0);
-                var SportType = CurrentField switch
+                IsBusy = true;
+                SelectedCourt = courts;
+                foreach (var item in CourtLists)
                 {
-                    1 => AppResources.PadelText,
-                    2 => AppResources.TennisText,
-                    3 => AppResources.SoccerText,
-                    4 => AppResources.Cricket,
-                    _ => ""
-                };
-                await Shell.Current.GoToAsync("BookingSummaryPage", true, new Dictionary<string, object>
-                {
-                    {"CurrentBooking",new Booking{ sportType = SportType, timeSlot = timeSlot.Time.ToString("HH:mm"), fieldId = SelectedTimeSlot,email = Utils.GetUser.email, date = SelectedDate } }
-                });
+                    item.IsSelected = item.SportName.Equals(SelectedCourt.SportName);
+                }
+                await GenerateTimeSlots(courts.SportName);
             }
-            catch { }
+            catch(Exception ex) { }
+            IsBusy = false;
         }
 
         #endregion
 
         #region Constructor
-        public HomeViewModel(IAuthServices authServices, IBookingService bookingService, ILocalizationResourceManager localizationResourceManager)
+        public HomeViewModel(IAuthServices authServices, IBookingService bookingService, ILocalizationResourceManager localizationResourceManager, IDesktopCourtSportsService desktopCourtSportsService)
         {
             _authServices = authServices;
             _bookingService = bookingService;
+            _desktopCourtSportsService = desktopCourtSportsService;
             _localizationResourceManager = localizationResourceManager;
             CalendarItems = new ObservableCollection<CalendarItem>();
         }
@@ -172,14 +139,14 @@ namespace MyPadelApp.ViewModels
 
                 if (!Utils.IsHomeUpdated)
                 {
-                    await GenerateTimeSlots(1);
-                    await GenerateTimeSlots(2);
+                    await GetAllCourts();
+                    await GenerateTimeSlots(CourtLists.FirstOrDefault().SportName);
                     Utils.IsHomeUpdated = true;
                 }
             }
             catch { }
         }
-        private async Task GetAvailableSlots(int SelectedField)
+        private async Task GetAvailableSlots(string SelectedField)
         {
             try
             {
@@ -194,79 +161,104 @@ namespace MyPadelApp.ViewModels
             catch { }
         }
 
-        public async Task GenerateTimeSlots(int SelectedField)
+        private async Task GetAllCourts()
+        {
+            try
+            {
+                var response = await _desktopCourtSportsService.CourtSports();
+                if (response != null && response.code != null && response.code.Equals("0000"))
+                {
+                    var types = JsonSerializer.Deserialize<List<BookingTypes>>(response.data.ToString());
+                    if (types != null && types.Count > 0)
+                    {
+                        BookingTypesList = types;
+                        CourtLists = new ObservableCollection<Courts>(types.GroupBy(s => s.sportsName).Select(g => new Courts
+                        {
+                            SportName = g.Key,
+                            Fields = g.Select(s => s.fieldName).ToList()
+                        }).ToList());
+                        SelectedCourt = CourtLists.FirstOrDefault();
+                        CourtLists.FirstOrDefault().IsSelected = true;
+                    }
+                }
+                else if (response != null && response.code != null)
+                    await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
+                else
+                    await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
+            }
+            catch { }
+        }
+
+        public async Task GenerateTimeSlots(string SelectedField)
         {
             IsBusy = true;
-            var tempSlots = new ObservableCollection<TimeSlot>();
-
-            DateTime startTime = SelectedDate.Date.AddHours(1);
-            DateTime endTime = SelectedDate.Date.AddHours(23);
-
-            while (startTime <= endTime)
-            {
-                tempSlots.Add(new TimeSlot
-                {
-                    Time = startTime,
-                    Status = ""
-                });
-
-                startTime = startTime.AddMinutes(30);
-            }
-
+            var tempSlots = new TimeSlot();
             await GetAvailableSlots(SelectedField);
-            if (CurrentTimeList == null || !CurrentTimeList.Any())
+            TimeSlots = new ObservableCollection<TimeSlot>();
+
+            foreach (var item in CourtLists.FirstOrDefault(e => e.SportName.Equals(SelectedField)).Fields)
             {
-                AssignSlots(SelectedField, tempSlots);
-                return;
-            }
+                var CurrentCourts = BookingTypesList.FirstOrDefault(e => e.fieldName.Equals(item));
+                string timePart = CurrentCourts.openingHours.Split(' ')[1];
+                string[] times = timePart.Split('-');
 
-            var selectedDay = CurrentTimeList.FirstOrDefault(d => d.date == SelectedDate.Date.ToString("yyyy-MM-dd"));
+                DateTime startTime = SelectedDate.Date.AddHours(int.Parse(times[0].Split(':')[0]));
+                DateTime endTime = SelectedDate.Date.AddHours(int.Parse(times[1].Split(':')[0]));
 
-            if (selectedDay != null)
-            {
-                var bookedSlots = selectedDay.slots
-                    .Select(s => new
-                    {
-                        Start = DateTime.Parse(s.startTime),
-                        End = DateTime.Parse(s.endTime)
-                    })
-                    .ToList();
-
-                var slotsToRemove = new List<TimeSlot>();
-
-                foreach (var booking in bookedSlots)
+                tempSlots = new TimeSlot
                 {
-                    foreach (var slot in tempSlots)
+                    FieldName = item,
+                    TimeSlots = new ObservableCollection<TimeSlotDetails>()
+                };
+                while (startTime <= endTime)
+                {
+                    tempSlots.TimeSlots.Add(new TimeSlotDetails
                     {
-                        if (slot.Time >= booking.Start && slot.Time < booking.End)
+                        FieldName = CurrentCourts.fieldType,
+                        Time = startTime,
+                        Status = ""
+                    });
+                    startTime = startTime.AddMinutes(30);
+                }
+
+                if (CurrentTimeList == null || !CurrentTimeList.Any())
+                {
+                    TimeSlots.Add(tempSlots);
+                    continue;
+                }
+
+                var selectedDay = CurrentTimeList.FirstOrDefault(d => d.fieldName.Equals(item));
+                if (selectedDay != null)
+                {
+                    var bookedSlots = selectedDay.slots
+                        .Select(s => new
                         {
-                            slot.Status = "Prenotato";
-                            if (booking.End - booking.Start > TimeSpan.FromMinutes(30) && slot.Time > booking.Start)
+                            Start = DateTime.Parse(s.startTime),
+                            End = DateTime.Parse(s.endTime)
+                        })
+                        .ToList();
+
+                    var slotsToRemove = new List<TimeSlotDetails>();
+                    foreach (var booking in bookedSlots)
+                    {
+                        foreach (var slot in tempSlots.TimeSlots)
+                        {
+                            if (slot.Time >= booking.Start && slot.Time < booking.End)
                             {
-                                slotsToRemove.Add(slot);
+                                slot.Status = "Prenotato";
+                                if (booking.End - booking.Start > TimeSpan.FromMinutes(30) && slot.Time > booking.Start)
+                                    slotsToRemove.Add(slot);
                             }
                         }
                     }
+
+                    foreach (var slot in slotsToRemove)
+                    {
+                        tempSlots.TimeSlots.Remove(slot);
+                    }
                 }
 
-                foreach (var slot in slotsToRemove)
-                {
-                    tempSlots.Remove(slot);
-                }
-            }
-
-            AssignSlots(SelectedField, tempSlots);
-        }
-
-        private void AssignSlots(int SelectedField, ObservableCollection<TimeSlot> tempSlots)
-        {
-            if (SelectedField == 1)
-            {
-                TimeSlots = tempSlots;
-            }
-            else
-            {
-                TimeSlots2 = tempSlots;
+                TimeSlots.Add(tempSlots);
             }
 
             IsBusy = false;
@@ -293,8 +285,8 @@ namespace MyPadelApp.ViewModels
                 }
                 SelectedCalender = CalendarItems.FirstOrDefault(c => c.Date == today) ?? CalendarItems.FirstOrDefault();
 
-                await GenerateTimeSlots(1);
-                await GenerateTimeSlots(2);
+                await GetAllCourts();
+                await GenerateTimeSlots(CourtLists.FirstOrDefault().SportName);
             }
             catch
             {

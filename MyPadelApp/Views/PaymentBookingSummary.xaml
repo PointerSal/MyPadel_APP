@@ -21,14 +21,7 @@
             <Border Grid.Row="2" Style="{StaticResource MenuBoxBorder}">
                 <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
                     <Label Grid.Row="0" Text="{Binding Booking.sportType}" Style="{StaticResource SmallBoldLabelStyleHorizontalStart}"/>
-                    <Label Grid.Row="1" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{localization:Translate CampoPadel}" Style="{StaticResource SmallSpanWhitebold}"/>
-                                <Span Text="{Binding Booking.fieldId}" Style="{StaticResource SmallSpanWhitebold}"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                    <Label Grid.Row="1" Text="{Binding CourtName}" Style="{StaticResource UnboldSmallLabelStyleHorizontalStart}"/>
 
                     <Image Grid.RowSpan="2" Source="tennis" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="EndAndExpand"/>
                     <Grid Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*" Margin="0,20,0,0">

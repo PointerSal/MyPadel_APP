@@ -32,25 +32,30 @@ namespace MyPadelApp.ViewModels
         public Booking _booking;
 
         [ObservableProperty]
-        private int _amount = 44;
+        private int _amount = 0;
 
         [ObservableProperty]
-        private int _duration = 30;
+        private int _duration = 60;
 
         [ObservableProperty]
         private int _selectedTime = 1;
 
         [ObservableProperty]
         private string _selectedPaymentMethod;
+
+        private BookingTypes MySelectedBooking = new BookingTypes();
         public ObservableCollection<string> PaymentMethods { get; } = new()
         {
-            "PayPal",
-            "CreditCard",
-            "Satispay"
+            //"PayPal",
+            "CreditCard"
+            //"Satispay"
         };
 
         [ObservableProperty]
         private string _paymentmethodError;
+
+        [ObservableProperty]
+        private string _courtName;
 
         [ObservableProperty]
         private bool _hasPaymentmethodError;
@@ -68,34 +73,26 @@ namespace MyPadelApp.ViewModels
                 if (!ValidateFields())
                     return;
 
-                bool IsSuccess = false;
-                if (bookingPricesList == null)
-                    IsSuccess = await GetPrices();
-                else
-                    IsSuccess = true;
+                Booking.amount = Amount;
+                Booking.duration = Duration.ToString();
+                Booking.paymentMethod = SelectedPaymentMethod;
 
-                if (IsSuccess)
+                var Data = new StripePayment { email = Utils.GetUser.email, amount = Amount };
+                var response = await _stripeService.CheckoutSession(Data);
+                if (response != null && response.code != null && response.code.Equals("0000"))
                 {
-                    Booking.amount = Amount;
-                    Booking.duration = Duration.ToString();
-                    Booking.paymentMethod = SelectedPaymentMethod;
-
-                    var Data = new StripePayment { email = Utils.GetUser.email, amount = Amount };
-                    var response = await _stripeService.CheckoutSession(Data);
-                    if (response != null && response.code != null && response.code.Equals("0000"))
-                    {
-                        var result = JsonSerializer.Deserialize<PaymentResponse>(response.data.ToString());
-                        await Shell.Current.GoToAsync("FITPaymentPage", true, new Dictionary<string, object>
+                    var result = JsonSerializer.Deserialize<PaymentResponse>(response.data.ToString());
+                    await Shell.Current.GoToAsync("FITPaymentPage", true, new Dictionary<string, object>
                     {
                         { "PaymentURL",result.sessionUrl },
-                        { "CurrentBooking",Booking }
+                        { "CurrentBooking",Booking },
+                        { "CourtName",CourtName }
                     });
-                    }
-                    else if (response != null && response.code != null)
-                        await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
-                    else
-                        await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
                 }
+                else if (response != null && response.code != null)
+                    await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
+                else
+                    await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
             }
             catch { }
         }
@@ -116,37 +113,28 @@ namespace MyPadelApp.ViewModels
         public BookingSummaryViewModel(IStripeService stripeService, IPriceService priceService)
         {
             _stripeService = stripeService;
-            _priceService = priceService;   
-
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                IsBusy = true;
-                await GetPrices();
-                IsBusy = false;
-            });
+            _priceService = priceService;
+            SelectedPaymentMethod = "CreditCard";
         }
 
         #endregion
 
         #region Methods
-        public async Task<bool> GetPrices()
+        public void GetPrices()
         {
             try
             {
-                var response = await _priceService.BookingPrices();
-                if (response != null && response.code != null && response.code.Equals("0000"))
+                bookingPricesList = new List<BookingPrices>
                 {
-                    bookingPricesList = JsonSerializer.Deserialize<List<BookingPrices>>(response.data.ToString());
-                    Amount = (int)(bookingPricesList.FirstOrDefault(e => e.duration == 30).price);
-                    return true;
-                }
-                else if (response != null && response.code != null)
-                    await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
-                else
-                    await Shell.Current.DisplayAlert(AppResources.Error, AppResources.SomethingWrong, AppResources.OK);
+                    new BookingPrices { duration = MySelectedBooking.slot1Duration??0, price = MySelectedBooking.slot1Price??0},
+                    new BookingPrices { duration = MySelectedBooking.slot2Duration??0, price = MySelectedBooking.slot2Price??0},
+                    new BookingPrices { duration = MySelectedBooking.slot3Duration??0, price = MySelectedBooking.slot3Price??0}
+                };
+                CourtName = MySelectedBooking.fieldName;
+                Duration = bookingPricesList.FirstOrDefault().duration;
+                Amount = (int)(bookingPricesList.FirstOrDefault(e => e.duration == Duration).price);
             }
             catch (Exception ex) { }
-            return false;
         }
 
         #endregion
@@ -159,7 +147,8 @@ namespace MyPadelApp.ViewModels
                 if (query != null)
                 {
                     Booking = (Booking)query["CurrentBooking"];
-                    Duration = 30;
+                    MySelectedBooking = (BookingTypes)query["BookingType"];
+                    GetPrices();
                     query.Clear();
                 }
             }

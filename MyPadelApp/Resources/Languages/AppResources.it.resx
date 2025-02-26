@@ -183,6 +183,10 @@ Ricordati di rinnovare la tua tessera prima che scada, accedi alla sezione “Te
   <data name="Padel" xml:space="preserve">
     <value>Padel</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CampoPadel2" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Data</value>
   </data>
@@ -201,8 +205,11 @@ Ricordati di rinnovare la tua tessera prima che scada, accedi alla sezione “Te
   <data name="CancellationPolicy" xml:space="preserve">
     <value>Politica di annullamento</value>
   </data>
+  <data name="CancellationDetails" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="PayOnline" xml:space="preserve">
-    <value>Paga en línea</value>
+    <value>Paga in linea</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Resetta Password</value>
@@ -657,49 +664,49 @@ Per registrare la tua nuova tessera FIT.</value>
     <value>Storico partite</value>
   </data>
   <data name="EmailRequired" xml:space="preserve">
-    <value>El correo electrónico es obligatorio</value>
+    <value>L'e-mail è obbligatoria</value>
   </data>
   <data name="EmailInvalid" xml:space="preserve">
-    <value>Correo electrónico no válido</value>
+    <value>E-mail non valida</value>
   </data>
   <data name="PasswordRequired" xml:space="preserve">
-    <value>Se requiere contraseña</value>
+    <value>Se hai bisogno di una password</value>
   </data>
   <data name="OTPRequired" xml:space="preserve">
-    <value>Se requiere OTP</value>
+    <value>L'OTP è obbligatorioP</value>
   </data>
   <data name="PasswordStrengthRequired" xml:space="preserve">
-    <value>La contraseña debe incluir una letra mayúscula, una letra minúscula, un número, un carácter especial y tener al menos 6 caracteres.</value>
+    <value>La password deve includere una lettera maiuscola, una lettera minuscola, un numero, un carattere speciale ed essere composta da almeno 6 caratteri.</value>
   </data>
   <data name="ConfirmPasswordRequired" xml:space="preserve">
-    <value>Se requiere confirmar la contraseña.</value>
+    <value>È richiesta la conferma della password.</value>
   </data>
   <data name="PasswordsDoNotMatch" xml:space="preserve">
-    <value>Las contraseñas no coinciden.</value>
+    <value>Le password non corrispondono.</value>
   </data>
   <data name="Success" xml:space="preserve">
-    <value>Éxito</value>
+    <value>Successo</value>
   </data>
   <data name="PasswordUpdated" xml:space="preserve">
-    <value>La contraseña se ha actualizado correctamente</value>
+    <value>La password è stata aggiornata con successo</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="AcceptConditions" xml:space="preserve">
-    <value>Debe aceptar todos los términos y condiciones requeridos, la política de privacidad y las preferencias de marketing.</value>
+    <value>È necessario accettare tutti i termini e le condizioni richiesti, l'informativa sulla privacy e le preferenze di marketing.</value>
   </data>
   <data name="NameRequired" xml:space="preserve">
-    <value>El nombre es obligatorio.</value>
+    <value>Il nome è obbligatorio.</value>
   </data>
   <data name="SurnameRequired" xml:space="preserve">
-    <value>El apellido es obligatorio.</value>
+    <value>Il cognome è obbligatorio.</value>
   </data>
   <data name="PhoneNumberRequired" xml:space="preserve">
-    <value>El número de teléfono es obligatorio.</value>
+    <value>Il numero di telefono è obbligatorio.</value>
   </data>
   <data name="InvalidNumber" xml:space="preserve">
-    <value>Formato de número de teléfono italiano no válido. Ejemplo de formatos válidos:\n- Teléfono fijo: +39 06 1234567 (Roma)\n- Móvil: +39 345 1234567</value>
+    <value>Formato del numero di telefono italiano non valido. Esempio di formati validi:\n- Telefono fisso: +39 06 1234567 (Roma)\n- Cellulare: +39 345 1234567</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Errore</value>
@@ -708,99 +715,99 @@ Per registrare la tua nuova tessera FIT.</value>
     <value>Qualcosa è andato storto</value>
   </data>
   <data name="EmailResent" xml:space="preserve">
-    <value>La OTP de correo electrónico se ha reenviado correctamente</value>
+    <value>L'OTP dell'e-mail è stato inoltrato con successo</value>
   </data>
   <data name="PhoneResent" xml:space="preserve">
-    <value>La OTP del teléfono se ha reenviado correctamente</value>
+    <value>L'OTP del telefono è stato inoltrato con successo</value>
   </data>
   <data name="NotSupported" xml:space="preserve">
-    <value>No compatible</value>
+    <value>Non supportato</value>
   </data>
   <data name="NotSupportedCamera" xml:space="preserve">
-    <value>La captura no es compatible con este dispositivo.</value>
+    <value>L'acquisizione non è supportata su questo dispositivo.</value>
   </data>
   <data name="PermissionDenied" xml:space="preserve">
-    <value>Permiso denegado</value>
+    <value>Autorizzazione negata</value>
   </data>
   <data name="PermissionNotGranted" xml:space="preserve">
-    <value>Permiso de cámara o almacenamiento no concedido</value>
+    <value>Autorizzazione per fotocamera o archiviazione non concessa</value>
   </data>
   <data name="NoFileChosen" xml:space="preserve">
-    <value>No se ha elegido ningún archivo.</value>
+    <value>Nessun file è stato scelto.</value>
   </data>
   <data name="FailCapturePhoto" xml:space="preserve">
-    <value>No se pudo capturar la foto.</value>
+    <value>Impossibile acquisire la foto.</value>
   </data>
   <data name="CardNumberRequired" xml:space="preserve">
-    <value>Se requiere número de tarjeta.</value>
+    <value>Numero della carta richiesto.</value>
   </data>
   <data name="ExpiryDateRequired" xml:space="preserve">
-    <value>La fecha de vencimiento debe ser futura.</value>
+    <value>La data di scadenza deve essere futura.</value>
   </data>
   <data name="MedicalCertificateDateRequired" xml:space="preserve">
-    <value>Se requiere fecha del certificado médico.</value>
+    <value>Data del certificato medico richiesta.</value>
   </data>
   <data name="MedicalCertificateRequired" xml:space="preserve">
-    <value>Se requiere certificado médico.</value>
+    <value>Certificato medico richiesto.</value>
   </data>
   <data name="Male" xml:space="preserve">
-    <value>Masculino</value>
+    <value>Maschio</value>
   </data>
   <data name="Female" xml:space="preserve">
-    <value>Femenino</value>
+    <value>Femmina</value>
   </data>
   <data name="MunicipalityPlaceholder" xml:space="preserve">
-    <value>Municipio</value>
+    <value>Comune</value>
   </data>
   <data name="InvalidBrithDate" xml:space="preserve">
-    <value>Fecha de nacimiento no válida</value>
+    <value>Data di nascita non valida</value>
   </data>
   <data name="GenderSelected" xml:space="preserve">
-    <value>Se debe seleccionar el género</value>
+    <value>Il genere deve essere selezionato</value>
   </data>
   <data name="AddressRequired" xml:space="preserve">
-    <value>Se requiere dirección.</value>
+    <value>Indirizzo richiesto.</value>
   </data>
   <data name="PostalCodeRequired" xml:space="preserve">
-    <value>Se requiere código postal.</value>
+    <value>Codice postale richiesto.</value>
   </data>
   <data name="Invalidpostalcode" xml:space="preserve">
-    <value>El código postal debe ser numérico y tener entre 5 y 10 caracteres.</value>
+    <value>Il codice postale deve essere numerico e contenere tra 5 e 10 caratteri.</value>
   </data>
   <data name="MunicipalityRequried" xml:space="preserve">
-    <value>Se requiere municipio.</value>
+    <value>Comune richiesto.</value>
   </data>
   <data name="Invalidcardnumber" xml:space="preserve">
-    <value>El número de tarjeta debe tener 16 dígitos.</value>
+    <value>Il numero della carta deve essere composto da 16 cifre.</value>
   </data>
   <data name="InvalidCertificateDate" xml:space="preserve">
-    <value>La fecha del certificado médico no puede ser futura.</value>
+    <value>La data del certificato medico non può essere futura.</value>
   </data>
   <data name="PaymentMethodSelected" xml:space="preserve">
-    <value>Se debe seleccionar el método de pago</value>
+    <value>Il metodo di pagamento deve essere selezionato</value>
   </data>
   <data name="OneSelected" xml:space="preserve">
-    <value>Uno de ellos debe ser seleccionado.</value>
+    <value>È necessario selezionarne uno.</value>
   </data>
   <data name="TermsAndConditionAgree" xml:space="preserve">
-    <value>Se deben acordar los términos y condiciones.</value>
+    <value>Termini e condizioni devono essere concordati.</value>
   </data>
   <data name="AccountDeleted" xml:space="preserve">
-    <value>Your account has been deleted successfully</value>
+    <value>Il tuo account è stato eliminato con successo</value>
   </data>
   <data name="CampoPadel" xml:space="preserve">
     <value>Campo Padel </value>
   </data>
   <data name="NoDataFound" xml:space="preserve">
-    <value>No se encontraron datos</value>
+    <value>Non si trovano i dati</value>
   </data>
   <data name="BookingCanceled" xml:space="preserve">
-    <value>Tu reserva ha sido cancelada exitosamente</value>
+    <value>La tua prenotazione è stata cancellata in modo esatto</value>
   </data>
   <data name="SoccerText" xml:space="preserve">
-    <value>Soccer</value>
+    <value>Calcio</value>
   </data>
   <data name="Cricket" xml:space="preserve">
-    <value>Cricket</value>
+    <value>Grillo</value>
   </data>
 </root>

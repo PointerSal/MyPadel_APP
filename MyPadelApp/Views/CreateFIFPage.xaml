@@ -123,7 +123,7 @@
                             <Label Text="{localization:Translate PaymentMethodHeading}" Style="{StaticResource SmallBoldLabelStyle}"/>
                             <CollectionView ItemsSource="{Binding PaymentMethods}" SelectionMode="Single" SelectedItem="{Binding SelectedPaymentMethod}">
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate>
+                                    <DataTemplate x:DataType="x:String">
                                         <Grid>
                                             <Label Text="{Binding .,StringFormat='• {0:F2}'}" Style="{StaticResource SmallBoldLabelStyle}" Padding="0,5"/>
                                         </Grid>

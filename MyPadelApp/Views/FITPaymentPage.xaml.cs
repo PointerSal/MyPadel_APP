@@ -16,7 +16,7 @@ public partial class FITPaymentPage : ContentPage
     {
         try
         {
-            if (e.Url != null && !string.IsNullOrEmpty(e.Url) && e.Url.Contains("http://ufficio.pointer.re.it:7070/api/stripe/"))
+            if (e.Url != null && !string.IsNullOrEmpty(e.Url) && e.Url.Contains("http://ufficio.pointer.re.it:7070/api/stripe/success?session_id="))
             {
                 if (e.Url.Contains("success"))
                     await _fITPaymentViewModel.AddCard();
@@ -36,11 +36,16 @@ public partial class FITPaymentPage : ContentPage
         }
     }
 
-    private void OnWebNavigating(object sender, WebNavigatingEventArgs e)
+    private async void OnWebNavigating(object sender, WebNavigatingEventArgs e)
     {
         try
         {
             Loader.IsVisible = true;
+            if(e.Url.Equals("http://ufficio.pointer.re.it:7070/api/stripe/success"))
+            {
+                e.Cancel = true;
+                await Shell.Current.GoToAsync("..");
+            }
         }
         catch (Exception ex) { }
     }

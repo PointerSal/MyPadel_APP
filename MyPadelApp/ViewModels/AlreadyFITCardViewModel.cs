@@ -94,9 +94,9 @@ namespace MyPadelApp.ViewModels
                 }
 
                 var cameraStatus = await Permissions.RequestAsync<Permissions.Camera>();
-                var storageStatus = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                var mediaStatus = await Permissions.RequestAsync<Permissions.Media>();
 
-                if (cameraStatus != PermissionStatus.Granted || storageStatus != PermissionStatus.Granted)
+                if (cameraStatus != PermissionStatus.Granted || mediaStatus != PermissionStatus.Granted)
                 {
                     await Shell.Current.DisplayAlert(AppResources.PermissionDenied, AppResources.PermissionNotGranted, AppResources.OK);
                     return;
@@ -126,7 +126,7 @@ namespace MyPadelApp.ViewModels
             }
             catch (Exception ex)
             {
-                await Shell.Current.DisplayAlert(AppResources.Error, AppResources.FailCapturePhoto, AppResources.OK);
+                await Shell.Current.DisplayAlert(AppResources.Error, $"{AppResources.FailCapturePhoto}\n{ex.Message}", AppResources.OK);
             }
         }
 

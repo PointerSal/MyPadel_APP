@@ -10,9 +10,9 @@ namespace MyPadelApp.Services.BookingServices
 {
     public class BookingService(IHttpClientService httpClientService) : IBookingService
     {
-        public async Task<GeneralResponse> AvailableSlots(DateTime dateTime,int fieldId)
+        public async Task<GeneralResponse> AvailableSlots(DateTime dateTime,string SportName)
         {
-            return await httpClientService.GetAsync("booking/available-slots?Date=" + dateTime.ToString("yyyy-MM-dd") + "&FieldId=" + fieldId + "", true);
+            return await httpClientService.GetAsync("booking/available-slots?Date=" + dateTime.ToString("yyyy-MM-dd") + "&SportsName=" + SportName + "", true);
         }
         public async Task<GeneralResponse> BookingHistory(string email)
         {

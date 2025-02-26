@@ -21,45 +21,47 @@ public partial class HomePage : ContentPage
         BindingContext = _homeViewModel = homeViewModel;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
         _homeViewModel.InitializeData();
         if(!IsAppeared)
         {
             _homeViewModel.GenerateCalendarForYears();
-            IsAppeared=true;
+            await Task.Delay(2000);
+            CalendarCollectionView.ScrollTo(_homeViewModel.SelectedCalender, position: ScrollToPosition.Center, animate: false);
+            IsAppeared =true;
         }
     }
 
-    private async void OnBorderTapped(object sender, TappedEventArgs e)
-    {
-        PadelBorder.BackgroundColor = Colors.Transparent;
-        TennisBorder.BackgroundColor = Colors.Transparent;
-        SoccerBorder.BackgroundColor = Colors.Transparent;
-        CricketBorder.BackgroundColor = Colors.Transparent;
+    //private async void OnBorderTapped(object sender, TappedEventArgs e)
+    //{
+    //    PadelBorder.BackgroundColor = Colors.Transparent;
+    //    TennisBorder.BackgroundColor = Colors.Transparent;
+    //    SoccerBorder.BackgroundColor = Colors.Transparent;
+    //    CricketBorder.BackgroundColor = Colors.Transparent;
 
-        if (sender == PadelBorder)
-        {
-            PadelBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
-            _homeViewModel.CurrentField = 1;
-        }
-        else if (sender == TennisBorder)
-        {
-            TennisBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
-            _homeViewModel.CurrentField = 2;
-        }
-        else if (sender == SoccerBorder)
-        {
-            SoccerBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
-            _homeViewModel.CurrentField = 3;
-        }
-        else if (sender == CricketBorder)
-        {
-            CricketBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
-            _homeViewModel.CurrentField = 4;
-        }
-    }
+    //    if (sender == PadelBorder)
+    //    {
+    //        PadelBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
+    //        _homeViewModel.CurrentField = 1;
+    //    }
+    //    else if (sender == TennisBorder)
+    //    {
+    //        TennisBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
+    //        _homeViewModel.CurrentField = 2;
+    //    }
+    //    else if (sender == SoccerBorder)
+    //    {
+    //        SoccerBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
+    //        _homeViewModel.CurrentField = 3;
+    //    }
+    //    else if (sender == CricketBorder)
+    //    {
+    //        CricketBorder.BackgroundColor = Color.FromArgb("#a4b0e7");
+    //        _homeViewModel.CurrentField = 4;
+    //    }
+    //}
 
     private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -67,8 +69,7 @@ public partial class HomePage : ContentPage
         {
             var selectedDate = (CalendarItem)e.CurrentSelection.FirstOrDefault();
             _homeViewModel.SelectedDate = selectedDate.Date;
-            await _homeViewModel.GenerateTimeSlots(1);
-            await _homeViewModel.GenerateTimeSlots(2);
+            await _homeViewModel.GenerateTimeSlots(_homeViewModel.SelectedCourt.SportName);
             await Task.Delay(2000);
             CalendarCollectionView.ScrollTo(_homeViewModel.SelectedCalender, position: ScrollToPosition.Center, animate: false);
         }

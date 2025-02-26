@@ -36,6 +36,8 @@ namespace MyPadelApp.ViewModels
         [ObservableProperty]
         public Booking _booking = null;
 
+        private string CourtName = "";
+
         #endregion
 
         #region Commands
@@ -70,9 +72,10 @@ namespace MyPadelApp.ViewModels
                         Utils.IsHomeUpdated = false;
                         Utils.IsBookingPageUpdated = false;
                         await Shell.Current.GoToAsync("../../PaymentBookingSummary", true, new Dictionary<string, object>
-                    {
-                        { "BookingData",Booking }
-                    });
+                        {
+                            { "BookingData",Booking },
+                            { "CourtName",CourtName }
+                        });
                     }
                     else if (response != null && response.code != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
@@ -103,7 +106,10 @@ namespace MyPadelApp.ViewModels
                 if (query != null)
                 {
                     if(query.ContainsKey("CurrentBooking"))
+                    {
                         Booking = (Booking)query["CurrentBooking"];
+                        CourtName = (string)query["CourtName"];
+                    }
                     else if(query.ContainsKey("CurrentFIT"))
                         CardModel = (MembershipRequestModel)query["CurrentFIT"];
 

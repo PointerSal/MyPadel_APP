@@ -178,7 +178,7 @@ Remember to renew your card before it expires, access the "FIT card" section fro
     <value>LOGO</value>
   </data>
   <data name="BookingSummary" xml:space="preserve">
-    <value>Riepilogo prenotazione</value>
+    <value>Booking Summary</value>
   </data>
   <data name="Padel" xml:space="preserve">
     <value>PADEL</value>
@@ -199,7 +199,7 @@ Remember to renew your card before it expires, access the "FIT card" section fro
     <value>Price</value>
   </data>
   <data name="SelectDuration" xml:space="preserve">
-    <value>Scegli la durata</value>
+    <value>Select Duration</value>
   </data>
   <data name="Min60" xml:space="preserve">
     <value>60 min</value>
@@ -217,7 +217,7 @@ Remember to renew your card before it expires, access the "FIT card" section fro
     <value>PayPal</value>
   </data>
   <data name="CreditCard" xml:space="preserve">
-    <value>Carta di credito / Bancomat</value>
+    <value>Credit Card</value>
   </data>
   <data name="Satispay" xml:space="preserve">
     <value>Satispay</value>
@@ -226,7 +226,7 @@ Remember to renew your card before it expires, access the "FIT card" section fro
     <value>Cancellation Policy</value>
   </data>
   <data name="CancellationDetails" xml:space="preserve">
-    <value>Potrai disdire la prenotazione entro 24 ore prima utilizzando l’applicazione, successivamente dovrai necessariamente chiamare il centro</value>
+    <value>You can cancel your booking within 24 hours using the application, then you will have to call the centre</value>
   </data>
   <data name="PayOnline" xml:space="preserve">
     <value>Paga Online</value>

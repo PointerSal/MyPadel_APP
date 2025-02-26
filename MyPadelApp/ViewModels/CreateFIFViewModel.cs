@@ -95,9 +95,9 @@ namespace MyPadelApp.ViewModels
         public bool _hasMunicipalityError;
         public ObservableCollection<string> PaymentMethods { get; } = new()
         {
-            "PayPal",
-            "CreditCard",
-            "Satispay"
+            //"PayPal",
+            "CreditCard"
+            //"Satispay"
         };
 
         [ObservableProperty]
@@ -177,9 +177,9 @@ namespace MyPadelApp.ViewModels
                 }
 
                 var cameraStatus = await Permissions.RequestAsync<Permissions.Camera>();
-                var storageStatus = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                var mediaStatus = await Permissions.RequestAsync<Permissions.Media>();
 
-                if (cameraStatus != PermissionStatus.Granted || storageStatus != PermissionStatus.Granted)
+                if (cameraStatus != PermissionStatus.Granted || mediaStatus != PermissionStatus.Granted)
                 {
                     await Shell.Current.DisplayAlert(AppResources.PermissionDenied, AppResources.PermissionNotGranted, AppResources.OK);
                     return;
@@ -241,6 +241,8 @@ namespace MyPadelApp.ViewModels
         {
             _stripeService = stripeService;
             _priceService = priceService;
+            SelectedPaymentMethod = "CreditCard";
+
             MainThread.BeginInvokeOnMainThread(async () =>
             {
                 IsBusy = true;
