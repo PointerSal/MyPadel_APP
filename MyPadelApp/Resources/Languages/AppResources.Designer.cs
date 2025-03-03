@@ -70,7 +70,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must accept all the required terms and conditions, privacy policy, and marketing preferences..
+        ///   Looks up a localized string similar to You must accept all the required terms and conditions..
         /// </summary>
         internal static string AcceptConditions {
             get {

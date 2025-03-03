@@ -76,11 +76,12 @@ namespace MyPadelApp.ViewModels
                 (HasSurnameError, SurnameError) = FieldValidations.IsFieldNotEmpty(UserData.surname, AppResources.SurnameRequired);
                 (HasEmailError, EmailError) = FieldValidations.IsEmailValid(UserData.email);
                 (HasPasswordError, PasswordError) = FieldValidations.IsPasswordValid(UserData.password);
-                (HasCheckboxError, CheckboxError) = FieldValidations.ValidateCheckBoxes(IsTermsAccepted, IsPrivacyAccepted, IsMarketingAccepted);
+                (HasCheckboxError, CheckboxError) = FieldValidations.ValidateCheckBoxes(IsTermsAccepted);
 
                 if (!HasNameError && !HasSurnameError && !HasEmailError && !HasPasswordError && !HasCheckboxError)
                 {
                     IsBusy = true;
+                    UserData.isMarketing = IsPrivacyAccepted;
                     var response = await _authServices.RegisterUser(UserData);
                     if (response != null && response.code !=null && response.code.Equals("0000"))
                     {
@@ -112,11 +113,11 @@ namespace MyPadelApp.ViewModels
             IsPrivacyAccepted = !IsPrivacyAccepted;
         }
 
-        [RelayCommand]
-        private void MarketingTerms()
-        {
-            IsMarketingAccepted = !IsMarketingAccepted;
-        }
+        //[RelayCommand]
+        //private void MarketingTerms()
+        //{
+        //    IsMarketingAccepted = !IsMarketingAccepted;
+        //}
 
         [RelayCommand]
         public async Task Back()

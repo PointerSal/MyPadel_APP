@@ -694,7 +694,7 @@ Per registrare la tua nuova tessera FIT.</value>
     <value>OK</value>
   </data>
   <data name="AcceptConditions" xml:space="preserve">
-    <value>È necessario accettare tutti i termini e le condizioni richiesti, l'informativa sulla privacy e le preferenze di marketing.</value>
+    <value>È necessario accettare tutti i termini e le condizioni richiesti.</value>
   </data>
   <data name="NameRequired" xml:space="preserve">
     <value>Il nome è obbligatorio.</value>

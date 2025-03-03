@@ -55,7 +55,7 @@
 
                 </StackLayout>
 
-                <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="15" ColumnSpacing="10">
+                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="15" ColumnSpacing="10">
                     <Label Text="{localization:Translate AcceptTerms}" Style="{StaticResource MicroLabelStyleAlginCenter}"/>
                     <Border Grid.Column="1" Style="{StaticResource CheckboxCricleBorder}">
                         <Border.GestureRecognizers>
@@ -72,15 +72,15 @@
                     </Border>
                     <Image x:Name="image2" Grid.Row="1" Grid.Column="1" Source="check.png" Style="{StaticResource MoreSmallCricleImage}" Margin="7,0,0,7" IsVisible="{Binding IsPrivacyAccepted}" />
 
-                    <Label Grid.Row="2" Text="{localization:Translate Image2Text}" Style="{StaticResource MicroLabelStyleAlginCenter}"/>
+                    <!--<Label Grid.Row="2" Text="{localization:Translate Image2Text}" Style="{StaticResource MicroLabelStyleAlginCenter}"/>
                     <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource CheckboxCricleBorder}">
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding MarketingTermsCommand}"/>
                         </Border.GestureRecognizers>
                     </Border>
-                    <Image x:Name="image3" Grid.Row="2" Grid.Column="1" Source="check.png" Style="{StaticResource MoreSmallCricleImage}" Margin="7,0,0,7" IsVisible="{Binding IsMarketingAccepted}" />
+                    <Image x:Name="image3" Grid.Row="2" Grid.Column="1" Source="check.png" Style="{StaticResource MoreSmallCricleImage}" Margin="7,0,0,7" IsVisible="{Binding IsMarketingAccepted}" />-->
 
-                    <Label Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding CheckboxError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCheckboxError}"/>
+                    <Label Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding CheckboxError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCheckboxError}"/>
                 </Grid>
             </StackLayout>
             <Button Grid.Row="2" Text="{localization:Translate CreateAccount}" Style="{StaticResource BlueButtonStyle}" Command="{Binding RegisterCommand}"/>

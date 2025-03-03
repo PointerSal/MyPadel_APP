@@ -47,7 +47,7 @@
                     <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="MedicalCertificatePage"/>
                 </Border.GestureRecognizers>
             </Border>
-            <Border Style="{StaticResource MenuBoxBorder}">
+            <!--<Border Style="{StaticResource MenuBoxBorder}">
                 <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
                     <Image Source="creditcard" Style="{StaticResource MediumCricleImage}"/>
                     <Label Grid.Column="1" Text="{localization:Translate PaymentMethod}" Style="{StaticResource TooMicroHorizontalStart}" FontFamily=""/>
@@ -56,7 +56,7 @@
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="PaymentMethodPage"/>
                 </Border.GestureRecognizers>
-            </Border>
+            </Border>-->
             <Border Style="{StaticResource MenuBoxBorder}">
                 <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
                     <Image Source="profile" Style="{StaticResource MediumCricleImage}"/>

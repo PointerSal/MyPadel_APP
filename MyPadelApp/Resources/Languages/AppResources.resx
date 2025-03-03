@@ -714,7 +714,7 @@ To register your new FIT card.</value>
     <value>OK</value>
   </data>
   <data name="AcceptConditions" xml:space="preserve">
-    <value>You must accept all the required terms and conditions, privacy policy, and marketing preferences.</value>
+    <value>You must accept all the required terms and conditions.</value>
   </data>
   <data name="NameRequired" xml:space="preserve">
     <value>Name is required.</value>

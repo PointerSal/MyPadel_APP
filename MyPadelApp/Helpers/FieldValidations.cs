@@ -81,9 +81,9 @@ namespace MyPadelApp.Helpers
             }
         }
 
-        public static (bool, string) ValidateCheckBoxes(bool isTermsAccepted, bool isPrivacyAccepted, bool isMarketingAccepted)
+        public static (bool, string) ValidateCheckBoxes(bool isTermsAccepted)
         {
-            if (!isTermsAccepted || !isPrivacyAccepted || !isMarketingAccepted)
+            if (!isTermsAccepted)
                 return (true, AppResources.AcceptConditions);
 
             return (false, string.Empty);

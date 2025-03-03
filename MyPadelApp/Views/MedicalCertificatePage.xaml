@@ -5,7 +5,7 @@
              x:Class="MyPadelApp.Views.MedicalCertificatePage"
              xmlns:Loader="clr-namespace:MyPadelApp.Controls"
              xmlns:viewmodels="clr-namespace:MyPadelApp.ViewModels"
-             x:DataType="viewmodels:FITCardViewModel"
+             x:DataType="viewmodels:MedicalCertificateViewModel"
              BackgroundColor="{StaticResource SecondaryColor}"
              Shell.TabBarIsVisible="True"
              Shell.NavBarIsVisible="False"

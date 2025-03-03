@@ -44,5 +44,8 @@ namespace MyPadelApp.Models
         
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? token { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? isMarketing { get; set; } = false;
     }
 }
