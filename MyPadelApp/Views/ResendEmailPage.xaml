@@ -46,9 +46,17 @@
                     </Border>
                 </Grid>
                 <Label Text="{Binding OTPError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasOTPError}" />
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="{localization:Translate ResendCodeText}" Style="{StaticResource UnderlineUnBoldLabelStyleAlginCenter}" IsVisible="{Binding IsResendVisible}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ResendEmailCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Grid.Column="1" Text="{Binding TimerText}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                </Grid>
             </StackLayout>
             <Button Grid.Row="3" Text="{localization:Translate ConfirmCode}" Command="{Binding VerifyEmailCommand}" Style="{StaticResource BlueButtonStyle}"/>
-            <Button Grid.Row="4" Text="{localization:Translate ReSendButton}" Command="{Binding ResendEmailCommand}" Style="{StaticResource TransparentButtonStyle}" Margin="0,10"/>
+            <!--<Button Grid.Row="4" Text="{localization:Translate ReSendButton}" Command="{Binding ResendEmailCommand}" Style="{StaticResource TransparentButtonStyle}" Margin="0,10"/>-->
         </Grid>
         <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
     </Grid>

@@ -9,6 +9,7 @@ using MyPadelApp.Services.HttpClientServices;
 using MyPadelApp.Services.MembershipUserServices;
 using MyPadelApp.Services.PriceServices;
 using MyPadelApp.Services.StripeServices;
+using MyPadelApp.Services.UserServices;
 using MyPadelApp.ViewModels;
 using MyPadelApp.Views;
 
@@ -77,6 +78,7 @@ namespace MyPadelApp
             builder.Services.AddSingleton<IStripeService, StripeService>();
             builder.Services.AddSingleton<IPriceService, PriceService>();
             builder.Services.AddSingleton<IDesktopCourtSportsService, DesktopCourtSportsService>();
+            builder.Services.AddSingleton<IUserServices, UserServices>();
 
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<LoginPage>();

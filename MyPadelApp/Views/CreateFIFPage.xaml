@@ -44,8 +44,8 @@
                         <Label>
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{localization:Translate RegistrationDescription}" Style="{StaticResource SmallUnBoldStyleHorizontalStart}" />
-                                    <Span Text=" " Style="{StaticResource SmallUnBoldStyleHorizontalStart}" />
+                                    <Span Text="{localization:Translate RegistrationDescription}" Style="{StaticResource SmallSpanWhitebold}" />
+                                    <Span Text=" " Style="{StaticResource SmallSpanWhitebold}" />
                                     <Span Text="{localization:Translate RegistrationFooter}" Style="{StaticResource SmallSpanWhitebold}" TextDecorations="Underline"/>
                                 </FormattedString>
                             </Label.FormattedText>
@@ -64,37 +64,62 @@
                         </Grid>
                         <Label Text="{Binding LastNameError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasLastNameError}" />
 
-                        <Grid>
+                        <Grid Margin="0,0,0,-15">
                             <DatePicker Date="{Binding CardModel.BirthDate}"  Style="{StaticResource GeneralDatePicker}"/>
                             <BoxView Style="{StaticResource BoxViewStyle}"/>
                         </Grid>
                         <Label Text="{Binding BirthDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding BirthDateError}" />
 
-                        <Grid Margin="0,-20,0,0">
+                        <Grid Margin="0,0,0,0">
                             <Picker ItemsSource="{Binding Gender}" SelectedItem="{Binding CardModel.Gender, Mode=TwoWay}"  Title="{localization:Translate GenderPlaceholder}" Style="{StaticResource PickerStyle}"/>
                             <BoxView Style="{StaticResource BoxViewStyle}"/>
                         </Grid>
                         <Label Text="{Binding GenderError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasGenderError}" />
 
-                        <Grid>
-                            <Entry Text="{Binding CardModel.Address}" Placeholder="{localization:Translate AddressPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                        <Grid Margin="0,0,0,0">
+                            <Picker ItemsSource="{Binding BrithProvince}" SelectedItem="{Binding SelectedBrithProvince, Mode=TwoWay}" SelectedIndexChanged="OnBrithProvinceSelected" Title="{localization:Translate BrithProvince}" Style="{StaticResource PickerStyle}"/>
                             <BoxView Style="{StaticResource BoxViewStyle}"/>
                         </Grid>
-                        <Label Text="{Binding AddressError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasAddressError}" />
+                        <Label Text="{Binding BrithProvinceError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasBrithProvinceError}" />
 
-                        <Grid>
-                            <Entry Text="{Binding CardModel.PostalCode}" Placeholder="{localization:Translate ZipCodePlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" MaxLength="10"/>
+                        <Grid Margin="0,0,0,0">
+                            <Picker ItemsSource="{Binding BrithMunicipality}" SelectedItem="{Binding CardModel.BrithMunicipality, Mode=TwoWay}"  Title="{localization:Translate SelectMunicipalityBirth}" Style="{StaticResource PickerStyle}"/>
                             <BoxView Style="{StaticResource BoxViewStyle}"/>
                         </Grid>
-                        <Label Text="{Binding ZipCodeError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasZipCodeError}" />
+                        <Label Text="{Binding BrithMunicipalityError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasBrithMunicipalityError}" />
 
                         <Grid>
+                            <Entry Text="{Binding CardModel.TaxCode}" Placeholder="{localization:Translate TaxCode}" Style="{StaticResource EntryStyle}" Keyboard="Text"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding TaxCodeError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasTaxCodeError}" />
+
+                        <Grid Margin="0,0,0,0">
+                            <Picker ItemsSource="{Binding CitizenShips}" SelectedItem="{Binding CardModel.CitizenShips, Mode=TwoWay}"  Title="{localization:Translate Citizenship}" Style="{StaticResource PickerStyle}"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding CitizenShipsError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCitizenShipsError}" />
+
+                        <Grid Margin="0,0,0,0">
+                            <Picker ItemsSource="{Binding ResidenceProvince}" SelectedItem="{Binding SelectedResidenceProvince, Mode=TwoWay}"  SelectedIndexChanged="OnResidenceProvinceSelected" Title="{localization:Translate SelectProvinceResidence}" Style="{StaticResource PickerStyle}"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding ResidenceProvinceError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasResidenceProvinceError}" />
+
+                        <Grid Margin="0,0,0,0">
+                            <Picker ItemsSource="{Binding ResidenceMunicipality}" SelectedItem="{Binding CardModel.ResidenceMunicipality, Mode=TwoWay}"  Title="{localization:Translate SelectMunicipalityResidence}" Style="{StaticResource PickerStyle}"/>
+                            <BoxView Style="{StaticResource BoxViewStyle}"/>
+                        </Grid>
+                        <Label Text="{Binding ResidenceMunicipalityError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasResidenceMunicipalityError}" />
+
+
+                        <!--<Grid>
                             <Entry Text="{Binding CardModel.Municipality}" Placeholder="{localization:Translate MunicipalityPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
                             <BoxView Style="{StaticResource BoxViewStyle}"/>
                         </Grid>
-                        <Label Text="{Binding MunicipalityError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasMunicipalityError}" />
+                        <Label Text="{Binding MunicipalityError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasMunicipalityError}" />-->
                         
-                        <Grid>
+                        <!--<Grid>
                             <Entry Text="{Binding CardModel.CardNumber}" Placeholder="{localization:Translate CardNumberPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" MaxLength="16"/>
                             <BoxView Style="{StaticResource BoxViewStyle}"/>
                         </Grid>
@@ -110,15 +135,15 @@
                             <DatePicker Date="{Binding CardModel.MedicalCertificateDate}" Style="{StaticResource GeneralDatePicker}"/>
                             <BoxView Style="{StaticResource BoxViewStyle}"/>
                         </Grid>
-                        <Label Text="{Binding CertificateDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCertificateDateError}" />
+                        <Label Text="{Binding CertificateDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCertificateDateError}" />-->
 
-                        <Grid ColumnDefinitions="*,Auto">
+                        <!--<Grid ColumnDefinitions="*,Auto">
                             <Label Text="{localization:Translate UploadMedicalCertificate}" Style="{StaticResource LabelStyleHorizontalStart}"/>
                             <ImageButton Grid.Column="1" Source="camera" Style="{StaticResource CameraImageStyle}" Command="{Binding OpenCameraCommand}"/>
                         </Grid>
-                        <Label Text="{Binding UploadCertificateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasUploadCertificateError}" />
+                        <Label Text="{Binding UploadCertificateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasUploadCertificateError}" />-->
                     </StackLayout>
-                    <Border Style="{StaticResource NoMarginMenuBoxBorder}">
+                    <!--<Border Style="{StaticResource NoMarginMenuBoxBorder}">
                         <StackLayout Spacing="5">
                             <Label Text="{localization:Translate PaymentMethodHeading}" Style="{StaticResource SmallBoldLabelStyle}"/>
                             <CollectionView ItemsSource="{Binding PaymentMethods}" SelectionMode="Single" SelectedItem="{Binding SelectedPaymentMethod}">
@@ -132,7 +157,25 @@
                             </CollectionView>
                             <Label Text="{Binding PaymentmethodError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasPaymentmethodError}" />
                         </StackLayout>
-                    </Border>
+                    </Border>-->
+                    <Grid>
+                        <Entry Text="{Binding CardModel.PostalCode}" Placeholder="{localization:Translate PostalCode}" Style="{StaticResource EntryStyle}" Keyboard="Numeric" MaxLength="10"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Label Text="{Binding ZipCodeError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasZipCodeError}" />
+
+                    <Grid>
+                        <Entry Text="{Binding CardModel.Address}" Placeholder="{localization:Translate AddressPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default"/>
+                        <BoxView Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Label Text="{Binding AddressError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasAddressError}" />
+
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Label Text="+39" Style="{StaticResource LabelUnBoldStyle}" VerticalOptions="CenterAndExpand"/>
+                        <Entry Grid.Column="1" Text="{Binding CardModel.Cell}" MaxLength="10" Placeholder="" Style="{StaticResource EntryStyle}" Keyboard="Telephone"/>
+                        <BoxView Grid.ColumnSpan="2" Style="{StaticResource BoxViewStyle}"/>
+                    </Grid>
+                    <Label Text="{Binding PhoneError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasPhoneError}" />
                 </StackLayout>
             </ScrollView>
             <Button Grid.Row="3" Text="{localization:Translate ProceedPayment}" Style="{StaticResource BlueButtonStyle}" Command="{Binding AddCardCommand}"/>

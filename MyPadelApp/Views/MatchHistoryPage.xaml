@@ -59,9 +59,9 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <Image Grid.RowSpan="2" Source="tennis" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="EndAndExpand"/>
+                                <!--<Image Grid.RowSpan="2" Source="tennis" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="EndAndExpand"/>-->
                                 <Grid Grid.Row="2" RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*" Margin="0,10,0,0">
-                                    <Label Text="{Binding BookingStatus}" Style="{StaticResource UnboldSmallLabelStyle}"/>
+                                    <Label Grid.ColumnSpan="4" Text="{Binding BookingStatus}" Style="{StaticResource UnboldSmallLabelStyle}"/>
                                     <Label Grid.Row="1" Grid.Column="0" Text="{Binding date, StringFormat='{0:dd MMM}'}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
                                     <Label Grid.Row="1" Grid.Column="1" Text="{Binding timeSlot}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
                                     <Label Grid.Row="1" Grid.Column="2" Text="{Binding DurationInMinutes,StringFormat='{0} min'}" Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>

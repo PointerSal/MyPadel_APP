@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MyPadelApp.Helpers;
 using MyPadelApp.Models;
@@ -37,6 +39,21 @@ namespace MyPadelApp.ViewModels
             try
             {
                 IsBusy = true;
+                if (Booking.endTime.HasValue && (Booking.endTime.Value - DateTime.UtcNow).TotalHours < 24)
+                {
+                    bool result = await Shell.Current.DisplayAlert(
+                                 AppResources.Notice,
+                                 AppResources.CancelledPolicy,
+                                 AppResources.Yes,
+                                 AppResources.No
+                             );
+                    if (!result)
+                    {
+                        IsBusy = false;
+                        return;
+                    }
+                }
+
                 var response = await _bookingService.CancelBooking(new { bookingId = Booking.id, email = Utils.GetUser.email });
                 if (response != null && response.code != null && response.code.Equals("0000"))
                 {

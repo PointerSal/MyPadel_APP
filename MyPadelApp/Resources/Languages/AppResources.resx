@@ -229,7 +229,7 @@ Remember to renew your card before it expires, access the "FIT card" section fro
     <value>You can cancel your booking within 24 hours using the application, then you will have to call the centre</value>
   </data>
   <data name="PayOnline" xml:space="preserve">
-    <value>Paga Online</value>
+    <value>Pay Online</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Reset Password</value>
@@ -471,7 +471,7 @@ To register your new FIT card.</value>
     <value>Privacy information</value>
   </data>
   <data name="WelcomeText" xml:space="preserve">
-    <value>Welcome to My Padel App!</value>
+    <value>Welcome!</value>
   </data>
   <data name="NewCancellationPolicy" xml:space="preserve">
     <value>Cancellation Policy</value>
@@ -480,7 +480,7 @@ To register your new FIT card.</value>
     <value>Help and contacts</value>
   </data>
   <data name="EnterDetails" xml:space="preserve">
-    <value>Please enter your details below.</value>
+    <value>Enter your details and create an account to start playing.</value>
   </data>
   <data name="AcceptTerms" xml:space="preserve">
     <value>I accept the terms and conditions.</value>
@@ -489,7 +489,7 @@ To register your new FIT card.</value>
     <value>You're almost there!</value>
   </data>
   <data name="PhoneNumberPrompt" xml:space="preserve">
-    <value>Enter your phone number, we'll send you a code to verify your contact.</value>
+    <value>Enter the OTP we sent you via email to continue with the registration</value>
   </data>
   <data name="ResendCode" xml:space="preserve">
     <value>Send new code</value>
@@ -829,5 +829,95 @@ To register your new FIT card.</value>
   </data>
   <data name="Cricket" xml:space="preserve">
     <value>Cricket</value>
+  </data>
+  <data name="IAccept" xml:space="preserve">
+    <value>I accept the </value>
+  </data>
+  <data name="TermsConditions" xml:space="preserve">
+    <value>terms and conditions</value>
+  </data>
+  <data name="TaxCode" xml:space="preserve">
+    <value>Tax Code</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
+  <data name="BrithProvince" xml:space="preserve">
+    <value>Select Province of birth</value>
+  </data>
+  <data name="SelectMunicipalityBirth" xml:space="preserve">
+    <value>Select Municipality of birth</value>
+  </data>
+  <data name="Citizenship" xml:space="preserve">
+    <value>Select Citizenship</value>
+  </data>
+  <data name="SelectProvinceResidence" xml:space="preserve">
+    <value>Select Province of residence</value>
+  </data>
+  <data name="SelectMunicipalityResidence" xml:space="preserve">
+    <value>Select Municipality of residence</value>
+  </data>
+  <data name="TaxCodeRequired" xml:space="preserve">
+    <value>Tax Code is Required</value>
+  </data>
+  <data name="BrithProvinceRequired" xml:space="preserve">
+    <value>Province of Brith must be selected</value>
+  </data>
+  <data name="ResidenceMunicipalityRequired" xml:space="preserve">
+    <value>Municipality of Residence is required</value>
+  </data>
+  <data name="BrithMunicipality" xml:space="preserve">
+    <value>Municipality of Brith is required</value>
+  </data>
+  <data name="SelectedResidenceProvinceRequired" xml:space="preserve">
+    <value>Province Residence must be selected</value>
+  </data>
+  <data name="CitizenShipsRequired" xml:space="preserve">
+    <value>CitizenShips is required</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>Reservation Cancelled</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Notice</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="CancelledPolicy" xml:space="preserve">
+    <value>Your booking will be cancelled but refund is not applicable. Do you want to continue?</value>
+  </data>
+  <data name="CardExpiredError" xml:space="preserve">
+    <value>Your card has been expired. Please renew it for bookings</value>
+  </data>
+  <data name="ThirtyDaysExpiredError" xml:space="preserve">
+    <value>Your card will be expired in within 30 days. Please renew it for booking</value>
+  </data>
+  <data name="Renew" xml:space="preserve">
+    <value>Renew</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="ProfileImageUpdated" xml:space="preserve">
+    <value>Your profile image has been updated successfully</value>
+  </data>
+  <data name="CertificateUpdate" xml:space="preserve">
+    <value>Your medical certificate has been updated successfully</value>
+  </data>
+  <data name="FITMemberShipNotUpdate" xml:space="preserve">
+    <value>Your fit membership is not verified yet</value>
+  </data>
+  <data name="ArchivedStatus" xml:space="preserve">
+    <value>Reservation Archived</value>
+  </data>
+  <data name="ActiveStatus" xml:space="preserve">
+    <value>Active Reservation</value>
+  </data>
+  <data name="CardRenew" xml:space="preserve">
+    <value>Your membership has been renew. Please wait for an admin approve</value>
   </data>
 </root>

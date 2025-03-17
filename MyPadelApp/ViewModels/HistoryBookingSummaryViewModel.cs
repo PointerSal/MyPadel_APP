@@ -59,7 +59,7 @@ namespace MyPadelApp.ViewModels
                 if (query != null)
                 {
                     Booking = (Booking)query["BookingData"];
-                    CanCancelBooking = Booking.flagCanceled == true ? false : true;
+                    CanCancelBooking = (bool)query["CanCancelled"];
                 }
             }
             catch { }

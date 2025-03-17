@@ -57,6 +57,7 @@
 
     <!--TextColors-->
     <Color x:Key="DefaultTextColors">White</Color>
+    <Color x:Key="LightDefaultTextColors">#EFEFEF</Color>
     <Color x:Key="BlackTextColors">Black</Color>
     <Color x:Key="BlueTextColors">#24a9ff</Color>
     <Color x:Key="TooMuchLightPurpleTextColors">#7fccfe</Color>

@@ -133,6 +133,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active Reservation.
+        /// </summary>
+        internal static string ActiveStatus {
+            get {
+                return ResourceManager.GetString("ActiveStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Card.
         /// </summary>
         internal static string AddCard {
@@ -174,6 +183,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string Archived {
             get {
                 return ResourceManager.GetString("Archived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation Archived.
+        /// </summary>
+        internal static string ArchivedStatus {
+            get {
+                return ResourceManager.GetString("ArchivedStatus", resourceCulture);
             }
         }
         
@@ -331,6 +349,33 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Municipality of Brith is required.
+        /// </summary>
+        internal static string BrithMunicipality {
+            get {
+                return ResourceManager.GetString("BrithMunicipality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Province of birth.
+        /// </summary>
+        internal static string BrithProvince {
+            get {
+                return ResourceManager.GetString("BrithProvince", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Province of Brith must be selected.
+        /// </summary>
+        internal static string BrithProvinceRequired {
+            get {
+                return ResourceManager.GetString("BrithProvinceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to , call us and present yourself.
         /// </summary>
         internal static string CallUs {
@@ -403,6 +448,24 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reservation Cancelled.
+        /// </summary>
+        internal static string Cancelled {
+            get {
+                return ResourceManager.GetString("Cancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your booking will be cancelled but refund is not applicable. Do you want to continue?.
+        /// </summary>
+        internal static string CancelledPolicy {
+            get {
+                return ResourceManager.GetString("CancelledPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CANCEL RESERVATION SCREEN
         /// + 
         ///REFUND.
@@ -410,6 +473,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string CancelScreenDescription {
             get {
                 return ResourceManager.GetString("CancelScreenDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your card has been expired. Please renew it for bookings.
+        /// </summary>
+        internal static string CardExpiredError {
+            get {
+                return ResourceManager.GetString("CardExpiredError", resourceCulture);
             }
         }
         
@@ -432,6 +504,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your membership has been renew. Please wait for an admin approve.
+        /// </summary>
+        internal static string CardRenew {
+            get {
+                return ResourceManager.GetString("CardRenew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always check that you have an active medical certificate, without it you won’t be able to play..
         /// </summary>
         internal static string CertificateDescription {
@@ -450,6 +531,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your medical certificate has been updated successfully.
+        /// </summary>
+        internal static string CertificateUpdate {
+            get {
+                return ResourceManager.GetString("CertificateUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always make sure you have the.
         /// </summary>
         internal static string CheckCard {
@@ -464,6 +554,24 @@ namespace MyPadelApp.Resources.Languages {
         internal static string ChooseDuration {
             get {
                 return ResourceManager.GetString("ChooseDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Citizenship.
+        /// </summary>
+        internal static string Citizenship {
+            get {
+                return ResourceManager.GetString("Citizenship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CitizenShips is required.
+        /// </summary>
+        internal static string CitizenShipsRequired {
+            get {
+                return ResourceManager.GetString("CitizenShipsRequired", resourceCulture);
             }
         }
         
@@ -765,7 +873,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter your details below..
+        ///   Looks up a localized string similar to Enter your details and create an account to start playing..
         /// </summary>
         internal static string EnterDetails {
             get {
@@ -882,6 +990,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your fit membership is not verified yet.
+        /// </summary>
+        internal static string FITMemberShipNotUpdate {
+            get {
+                return ResourceManager.GetString("FITMemberShipNotUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gender.
         /// </summary>
         internal static string GenderPlaceholder {
@@ -932,6 +1049,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string HelpsContact {
             get {
                 return ResourceManager.GetString("HelpsContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I accept the .
+        /// </summary>
+        internal static string IAccept {
+            get {
+                return ResourceManager.GetString("IAccept", resourceCulture);
             }
         }
         
@@ -1253,6 +1379,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I don’t have a FIT card. Please arrive 30 minutes early with:
         ///• ID card
         ///• Medical Certificate
@@ -1288,6 +1423,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string NoFITCard {
             get {
                 return ResourceManager.GetString("NoFITCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notice.
+        /// </summary>
+        internal static string Notice {
+            get {
+                return ResourceManager.GetString("Notice", resourceCulture);
             }
         }
         
@@ -1571,7 +1715,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paga Online.
+        ///   Looks up a localized string similar to Pay Online.
         /// </summary>
         internal static string PayOnline {
             get {
@@ -1607,7 +1751,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your phone number, we&apos;ll send you a code to verify your contact..
+        ///   Looks up a localized string similar to Enter the OTP we sent you via email to continue with the registration.
         /// </summary>
         internal static string PhoneNumberPrompt {
             get {
@@ -1630,6 +1774,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string PhoneResent {
             get {
                 return ResourceManager.GetString("PhoneResent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postal Code.
+        /// </summary>
+        internal static string PostalCode {
+            get {
+                return ResourceManager.GetString("PostalCode", resourceCulture);
             }
         }
         
@@ -1666,6 +1819,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string ProceedPayment {
             get {
                 return ResourceManager.GetString("ProceedPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your profile image has been updated successfully.
+        /// </summary>
+        internal static string ProfileImageUpdated {
+            get {
+                return ResourceManager.GetString("ProfileImageUpdated", resourceCulture);
             }
         }
         
@@ -1779,6 +1941,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Renew.
+        /// </summary>
+        internal static string Renew {
+            get {
+                return ResourceManager.GetString("Renew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to if you need to renew it.
         /// </summary>
         internal static string RenewIt {
@@ -1851,6 +2022,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Municipality of Residence is required.
+        /// </summary>
+        internal static string ResidenceMunicipalityRequired {
+            get {
+                return ResourceManager.GetString("ResidenceMunicipalityRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Right Arrow.
         /// </summary>
         internal static string RightArrow {
@@ -1901,6 +2081,42 @@ namespace MyPadelApp.Resources.Languages {
         internal static string SelectDuration {
             get {
                 return ResourceManager.GetString("SelectDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Province Residence must be selected.
+        /// </summary>
+        internal static string SelectedResidenceProvinceRequired {
+            get {
+                return ResourceManager.GetString("SelectedResidenceProvinceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Municipality of birth.
+        /// </summary>
+        internal static string SelectMunicipalityBirth {
+            get {
+                return ResourceManager.GetString("SelectMunicipalityBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Municipality of residence.
+        /// </summary>
+        internal static string SelectMunicipalityResidence {
+            get {
+                return ResourceManager.GetString("SelectMunicipalityResidence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Province of residence.
+        /// </summary>
+        internal static string SelectProvinceResidence {
+            get {
+                return ResourceManager.GetString("SelectProvinceResidence", resourceCulture);
             }
         }
         
@@ -2004,6 +2220,24 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tax Code.
+        /// </summary>
+        internal static string TaxCode {
+            get {
+                return ResourceManager.GetString("TaxCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tax Code is Required.
+        /// </summary>
+        internal static string TaxCodeRequired {
+            get {
+                return ResourceManager.GetString("TaxCodeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tennis.
         /// </summary>
         internal static string TennisLabel {
@@ -2040,11 +2274,29 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to terms and conditions.
+        /// </summary>
+        internal static string TermsConditions {
+            get {
+                return ResourceManager.GetString("TermsConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to By registering, you accept.
         /// </summary>
         internal static string TermsText {
             get {
                 return ResourceManager.GetString("TermsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your card will be expired in within 30 days. Please renew it for booking.
+        /// </summary>
+        internal static string ThirtyDaysExpiredError {
+            get {
+                return ResourceManager.GetString("ThirtyDaysExpiredError", resourceCulture);
             }
         }
         
@@ -2085,6 +2337,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Password.
         /// </summary>
         internal static string UpdatePasswordButton {
@@ -2118,7 +2379,7 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to My Padel App!.
+        ///   Looks up a localized string similar to Welcome!.
         /// </summary>
         internal static string WelcomeText {
             get {
@@ -2159,6 +2420,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string With {
             get {
                 return ResourceManager.GetString("With", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
         

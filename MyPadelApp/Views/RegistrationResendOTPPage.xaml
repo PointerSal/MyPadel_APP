@@ -31,11 +31,14 @@
                 </Grid>
                 <Label Text="{Binding PhoneError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasPhoneError}" />
 
-                <Label Text="{localization:Translate ResendCodeText}" Style="{StaticResource UnderlineUnBoldLabelStyleAlginCenter}" IsVisible="{Binding IsOTPSend}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SendCodeCommand}"/>
-                    </Label.GestureRecognizers>
-                </Label>
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="{localization:Translate ResendCodeText}" Style="{StaticResource UnderlineUnBoldLabelStyleAlginCenter}" IsVisible="{Binding IsResendVisible}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SendCodeCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Grid.Column="1" Text="{Binding TimerText}" Style="{StaticResource SmallBoldLabelStyle}"/>
+                </Grid>
             </StackLayout>
 
             <StackLayout Spacing="7">

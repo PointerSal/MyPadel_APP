@@ -59,6 +59,10 @@ namespace MyPadelApp.ViewModels
 
         [ObservableProperty]
         private bool _hasPaymentmethodError;
+
+        [ObservableProperty]
+        private ObservableCollection<CourtsDuration> _durationSlots = new ();
+
         public List<BookingPrices> bookingPricesList = null;
 
         #endregion
@@ -74,7 +78,7 @@ namespace MyPadelApp.ViewModels
                     return;
 
                 Booking.amount = Amount;
-                Booking.duration = Duration.ToString();
+                Booking.duration = DurationSlots.FirstOrDefault(e=>e.IsSelected == true).Duration.ToString();
                 Booking.paymentMethod = SelectedPaymentMethod;
 
                 var Data = new StripePayment { email = Utils.GetUser.email, amount = Amount };
@@ -148,6 +152,7 @@ namespace MyPadelApp.ViewModels
                 {
                     Booking = (Booking)query["CurrentBooking"];
                     MySelectedBooking = (BookingTypes)query["BookingType"];
+                    DurationSlots = new ObservableCollection<CourtsDuration> { new CourtsDuration { Duration = MySelectedBooking.slot1Duration, IsSelected = true }, new CourtsDuration { Duration = MySelectedBooking.slot2Duration } , new CourtsDuration { Duration = MySelectedBooking.slot3Duration }};
                     GetPrices();
                     query.Clear();
                 }

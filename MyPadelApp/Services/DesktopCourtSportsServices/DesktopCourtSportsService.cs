@@ -14,5 +14,9 @@ namespace MyPadelApp.Services.DesktopCourtSportsServices
         {
             return await httpClientService.GetAsync("courtsports/all", true);
         }
+        public async Task<GeneralResponse> RenewMembership(string email)
+        {
+            return await httpClientService.PostAsync("desktop-client/renew-membership?email=" + email + "", null, true);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPadelApp.Resources.Languages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,20 +36,6 @@ namespace MyPadelApp.Models
                 return null;
             }
         }
-        public string? BookingStatus
-        {
-            get
-            {
-                try
-                {
-                    if (flagBooked == true && flagCanceled == true)
-                        return "Cancelled";
-                    else if (flagCanceled == false)
-                        return "Booked";
-                }
-                catch { }
-                return "";
-            }
-        }
+        public string? BookingStatus { get; set; }
     }
 }

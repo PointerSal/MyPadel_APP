@@ -12,7 +12,7 @@
              Title="">
 
     <Grid>
-        <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*,Auto">
             <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
                 <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
                 <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
@@ -30,12 +30,20 @@
                     </Label>
                 </StackLayout>
                 <StackLayout Spacing="5" Margin="0,40,0,0">
-                    <StackLayout>
-                        <Label Text="{Binding Card.expiryDate}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
+                    <StackLayout Spacing="0">
+                        <!--<DatePicker Date="{Binding ExpiryDate}"  Style="{StaticResource GeneralDatePicker}"/>-->
+                        <Label Text="{Binding ExpiryDate,Converter={StaticResource NullToN_AConverter}}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
                         <BoxView Style="{StaticResource BoxViewStyle}"/>
                     </StackLayout>
+                    <Label Text="{Binding ExpiryDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasExpiryDateError}" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="{localization:Translate UploadMedicalCertificate}" Style="{StaticResource LabelStyleHorizontalStart}"/>
+                        <ImageButton Grid.Column="1" Source="camera" Style="{StaticResource CameraImageStyle}" Command="{Binding OpenCameraCommand}"/>
+                    </Grid>
+                    <Label Text="{Binding UploadCertificateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasUploadCertificateError}" />
                 </StackLayout>
             </StackLayout>
+            <Button Grid.Row="2" Text="{localization:Translate Update}" Style="{StaticResource BlueButtonStyle}" Command="{Binding UpdateCertificateCommand}" Margin="20"/>
         </Grid>
         <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
     </Grid>

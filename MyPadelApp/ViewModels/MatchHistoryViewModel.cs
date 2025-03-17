@@ -50,7 +50,10 @@ namespace MyPadelApp.ViewModels
                     if (response != null && response.code != null && response.code.Equals("0000"))
                     {
                         AllBookings = JsonSerializer.Deserialize<BookingCategory>(response.data.ToString());
-                        if(ClickedTab == 1)
+                        AllBookings?.active?.ForEach(e => e.BookingStatus = AppResources.ActiveStatus);
+                        AllBookings?.archived?.ForEach(e => e.BookingStatus = AppResources.ArchivedStatus);
+                        AllBookings?.canceled?.ForEach(e => e.BookingStatus = AppResources.Cancelled);
+                        if (ClickedTab == 1)
                             BookingList = new ObservableCollection<Booking>(AllBookings.active);
                         else if (ClickedTab == 2)
                             BookingList = new ObservableCollection<Booking>(AllBookings.archived);
@@ -93,7 +96,8 @@ namespace MyPadelApp.ViewModels
             {
                 await Shell.Current.GoToAsync("HistoryBookingSummaryPage", true, new Dictionary<string, object>
                 {
-                    { "BookingData",booking }
+                    { "BookingData",booking },
+                    { "CanCancelled",ClickedTab == 1 }
                 });
             }
             catch(Exception ex) { }

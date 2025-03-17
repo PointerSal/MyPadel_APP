@@ -30,6 +30,15 @@ namespace MyPadelApp.ViewModels
         [ObservableProperty]
         public string _oTPError;
 
+        [ObservableProperty]
+        private bool _isResendVisible = false;
+
+        [ObservableProperty]
+        private string _timerText;
+
+        private IDispatcherTimer _timer;
+        private int _timerCount = 60;
+
         #endregion
 
         #region Commands
@@ -88,7 +97,10 @@ namespace MyPadelApp.ViewModels
                 var Data = new User { email = Utils.GetUser.email };
                 var response = await _authServices.ResendOTP(Data);
                 if (response != null && response.code != null && response.code.Equals("0000"))
+                {
                     await Shell.Current.DisplayAlert(AppResources.Success, AppResources.EmailResent, AppResources.OK);
+                    StartTimer();
+                }
                 else if (response != null && response.code != null)
                     await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
                 else
@@ -109,6 +121,48 @@ namespace MyPadelApp.ViewModels
         public ResendEmailViewModel(IAuthServices authServices)
         {
             _authServices = authServices;
+            StartTimer();
+        }
+
+        #endregion
+
+        #region Methods
+        private void StartTimer()
+        {
+            try
+            {
+                _timerCount = 60;
+                IsResendVisible = false;
+                TimerText = FormatTime(_timerCount);
+
+                _timer?.Stop();
+                _timer = Dispatcher.GetForCurrentThread().CreateTimer();
+                _timer.Interval = TimeSpan.FromSeconds(1);
+                _timer.Tick += (s, e) =>
+                {
+                    _timerCount--;
+                    TimerText = FormatTime(_timerCount);
+
+                    if (_timerCount <= 0)
+                    {
+                        _timer.Stop();
+                        IsResendVisible = true;
+                        TimerText = "00:00";
+                    }
+                };
+                _timer.Start();
+            }
+            catch (Exception ex) { }
+        }
+        private string FormatTime(int seconds)
+        {
+            try
+            {
+                TimeSpan time = TimeSpan.FromSeconds(seconds);
+                return time.ToString(@"mm\:ss");
+            }
+            catch { }
+            return seconds.ToString();
         }
 
         #endregion

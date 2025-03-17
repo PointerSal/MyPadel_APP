@@ -9,6 +9,7 @@
              Title="">
 
     <Grid RowDefinitions="*,Auto" Margin="10,0,10,20">
+        <Image Grid.RowSpan="2" Source="background_image" Aspect="AspectFill" Margin="-10" Opacity="0.3"/>
         <HorizontalStackLayout x:Name="horizontalswitch" Spacing="5" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" FlowDirection="LeftToRight">
             <Label Text="English" Style="{StaticResource SmallLabelStyle}" VerticalOptions="CenterAndExpand">
                 <Label.Triggers>
@@ -20,7 +21,8 @@
             <Switch x:Name="styleSwitch" Style="{StaticResource GreenSwitch}" Toggled="styleSwitch_Toggled"/>
         </HorizontalStackLayout>
         <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20" Margin="0,0,0,70">
-            <Label Text="{localization:Translate LogoText}" Style="{StaticResource LargeLogoLabelStyleAlignCenter}"/>
+            <!--<Label Text="{localization:Translate LogoText}" Style="{StaticResource LargeLogoLabelStyleAlignCenter}"/>-->
+            <Image Source="mylogo" Style="{StaticResource VeryLargeCricleImage}"/>
             <StackLayout>
                 <Label Text="{localization:Translate ReadyToPlayText}" Style="{StaticResource LabelStyleAlginCenter}"/>
                 <Label Text="{localization:Translate AccessText}" Style="{StaticResource LabelUnBoldStyleAlginCenter}"/>

@@ -28,8 +28,8 @@ public partial class HomePage : ContentPage
         if(!IsAppeared)
         {
             _homeViewModel.GenerateCalendarForYears();
-            await Task.Delay(2000);
-            CalendarCollectionView.ScrollTo(_homeViewModel.SelectedCalender, position: ScrollToPosition.Center, animate: false);
+            //await Task.Delay(2000);
+            //CalendarCollectionView.ScrollTo(_homeViewModel.SelectedCalender, position: ScrollToPosition.Center, animate: false);
             IsAppeared =true;
         }
     }
@@ -70,8 +70,8 @@ public partial class HomePage : ContentPage
             var selectedDate = (CalendarItem)e.CurrentSelection.FirstOrDefault();
             _homeViewModel.SelectedDate = selectedDate.Date;
             await _homeViewModel.GenerateTimeSlots(_homeViewModel.SelectedCourt.SportName);
-            await Task.Delay(2000);
-            CalendarCollectionView.ScrollTo(_homeViewModel.SelectedCalender, position: ScrollToPosition.Center, animate: false);
+            //await Task.Delay(2000);
+            //CalendarCollectionView.ScrollTo(_homeViewModel.SelectedCalender, position: ScrollToPosition.Center, animate: false);
         }
         catch { }
     }

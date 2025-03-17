@@ -12,6 +12,7 @@ using MyPadelApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -66,11 +67,23 @@ namespace MyPadelApp.ViewModels
                 if (timeSlot == null || timeSlot.Status.Equals("Prenotato"))
                     return;
 
+                if (Utils.GetUser.isFitVerified == false || Utils.GetUser.isFitVerified == null)
+                {
+                    await Shell.Current.DisplayAlert(AppResources.Error, AppResources.FITMemberShipNotUpdate, AppResources.OK);
+                    return;
+                }
+                
+                if ((DateTime.Now > timeSlot.Time))
+                {
+                    await Shell.Current.DisplayAlert(AppResources.Error, "Cannot booked slot", AppResources.OK);
+                    return;
+                }
+
                 SelectedDate = new DateTime(SelectedDate.Year, SelectedDate.Month, SelectedDate.Day, timeSlot.Time.Hour, timeSlot.Time.Minute, 0);
                 await Shell.Current.GoToAsync("BookingSummaryPage", true, new Dictionary<string, object>
                 {
-                    {"CurrentBooking",new Booking{ sportType = SelectedCourt.SportName, timeSlot = timeSlot.Time.ToString("HH:mm"), fieldId = int.Parse(timeSlot.FieldName),email = Utils.GetUser.email, date = SelectedDate }}
-                    , { "BookingType", BookingTypesList.FirstOrDefault(e=>e.fieldType.Equals(timeSlot.FieldName) && e.sportsName.Equals(SelectedCourt.SportName)) }
+                    {"CurrentBooking",new Booking{ sportType = SelectedCourt.SportName, timeSlot = timeSlot.Time.ToString("HH:mm"), fieldId = int.Parse(timeSlot.FieldName),email = Utils.GetUser.email, date = SelectedDate }}, 
+                    { "BookingType", BookingTypesList.FirstOrDefault(e=>e.fieldType.Equals(timeSlot.FieldName) && e.sportsName.Equals(SelectedCourt.SportName)) }
                 });
             }
             catch { }
@@ -205,6 +218,12 @@ namespace MyPadelApp.ViewModels
                 DateTime startTime = SelectedDate.Date.AddHours(int.Parse(times[0].Split(':')[0]));
                 DateTime endTime = SelectedDate.Date.AddHours(int.Parse(times[1].Split(':')[0]));
 
+                var parts = CurrentCourts.openingHours.Split(' ')[0];
+                string today = SelectedDate.ToString("dddd", CultureInfo.InvariantCulture);
+                bool isOpenToday = parts.Split('-').Contains(today, StringComparer.OrdinalIgnoreCase);
+                if (!isOpenToday)
+                    continue;
+
                 tempSlots = new TimeSlot
                 {
                     FieldName = item,
@@ -270,8 +289,7 @@ namespace MyPadelApp.ViewModels
             {
                 IsBusy = true;
                 CalendarItems.Clear();
-                var today = DateTime.Today;
-                var startDate = DateTime.Today.AddYears(-1);
+                var startDate = DateTime.Today;
                 var endDate = DateTime.Today.AddYears(3);
 
                 for (var date = startDate; date <= endDate; date = date.AddDays(1))
@@ -283,7 +301,7 @@ namespace MyPadelApp.ViewModels
                         MonthName = date.ToString("MMM")
                     });
                 }
-                SelectedCalender = CalendarItems.FirstOrDefault(c => c.Date == today) ?? CalendarItems.FirstOrDefault();
+                SelectedCalender = CalendarItems.FirstOrDefault(c => c.Date == startDate) ?? CalendarItems.FirstOrDefault();
 
                 await GetAllCourts();
                 await GenerateTimeSlots(CourtLists.FirstOrDefault().SportName);

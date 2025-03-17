@@ -8,10 +8,10 @@ public partial class FinalStepPage : ContentPage
 	{
 		InitializeComponent();
 	}
-    private void OnCheckedBoxClicked(object sender, TappedEventArgs e)
-    {
-        image1.IsVisible = !image1.IsVisible;
-    }
+    //private void OnCheckedBoxClicked(object sender, TappedEventArgs e)
+    //{
+    //    image1.IsVisible = !image1.IsVisible;
+    //}
     private void OnFirstRadioClicked(object sender, TappedEventArgs e)
     {
         InnerBorder1.IsVisible = true;
@@ -27,15 +27,17 @@ public partial class FinalStepPage : ContentPage
     {
         try
         {
-            if (!image1.IsVisible)
-                await Shell.Current.DisplayAlert(AppResources.Error, AppResources.TermsAndConditionAgree, AppResources.OK);
-            else if (InnerBorder1.IsVisible)
+            //if (!image1.IsVisible)
+            //    await Shell.Current.DisplayAlert(AppResources.Error, AppResources.TermsAndConditionAgree, AppResources.OK);
+            if (InnerBorder1.IsVisible)
                 await Shell.Current.GoToAsync("AlreadyFITCardPage");
             else if (InnerBorder2.IsVisible)
                 await Shell.Current.GoToAsync("CreateFIFPage");
             else
                 await Shell.Current.DisplayAlert(AppResources.Error, AppResources.OneSelected, AppResources.OK);
         }
-        catch(Exception ex) { }
+        catch(Exception ex) 
+        {
+        }
     }
 }

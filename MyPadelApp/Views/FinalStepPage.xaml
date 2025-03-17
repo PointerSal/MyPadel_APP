@@ -31,11 +31,11 @@
                             <FormattedString>
                                 <Span Text="{localization:Translate HaveFITCard}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
                                 <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
-                                <Span Text="{localization:Translate TwentyMinutesBefore}" Style="{StaticResource VeryLargeSpanWhiteUnbold}" TextDecorations="Underline"/>
+                                <Span Text="{localization:Translate TwentyMinutesBefore}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
                                 <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
                                 <Span Text="{localization:Translate BeforeGameStart}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
                                 <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
-                                <Span Text="{localization:Translate RegisterFITCard}" Style="{StaticResource VeryLargeSpanWhiteUnbold}" TextDecorations="Underline"/>
+                                <Span Text="{localization:Translate RegisterFITCard}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -51,7 +51,7 @@
                             <FormattedString>
                                 <Span Text="{localization:Translate NoFITCard}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
                                 <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
-                                <Span Text="{localization:Translate ThirtyMinutesBefore}" Style="{StaticResource VeryLargeSpanWhiteUnbold}" TextDecorations="Underline"/>
+                                <Span Text="{localization:Translate ThirtyMinutesBefore}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
                                 <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
                                 <Span Text="{localization:Translate With}" Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
                                 <Span Text=" " Style="{StaticResource VeryLargeSpanWhiteUnbold}"/>
@@ -67,7 +67,7 @@
             </StackLayout>
         </StackLayout>
 
-        <Grid Grid.Row="1" RowDefinitions="Auto" ColumnDefinitions="Auto,*" ColumnSpacing="15">
+        <!--<Grid Grid.Row="1" RowDefinitions="Auto" ColumnDefinitions="Auto,*" ColumnSpacing="15">
             <Grid>
                 <Border Style="{StaticResource CheckboxCricleBorder}">
                     <Border.GestureRecognizers>
@@ -85,7 +85,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-        </Grid>
+        </Grid>-->
         <Button Grid.Row="2" Text="{localization:Translate ConfirmButton}" Style="{StaticResource BlueButtonStyle}" Clicked="OnConfirmClicked" />
     </Grid>
 </ContentPage>

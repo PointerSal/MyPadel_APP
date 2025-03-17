@@ -39,6 +39,15 @@ namespace MyPadelApp.ViewModels
         [ObservableProperty]
         public bool _isOTPSend;
 
+        [ObservableProperty]
+        private bool _isResendVisible = false;
+
+        [ObservableProperty]
+        private string _timerText = "00:00";
+
+        private IDispatcherTimer _timer;
+        private int _timerCount = 60;
+
         #endregion
 
         #region Commands
@@ -59,6 +68,7 @@ namespace MyPadelApp.ViewModels
                     {
                         IsOTPSend = true;
                         await Shell.Current.DisplayAlert(AppResources.Success, AppResources.EmailResent, AppResources.OK);
+                        StartTimer();
                     }
                     else if (response != null && response.code !=null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
@@ -110,11 +120,60 @@ namespace MyPadelApp.ViewModels
         #endregion
 
         #region Methods
+        private void StartTimer()
+        {
+            try
+            {
+                _timerCount = 60;
+                IsResendVisible = false;
+                TimerText = FormatTime(_timerCount);
 
+                _timer?.Stop();
+                _timer = Dispatcher.GetForCurrentThread().CreateTimer();
+                _timer.Interval = TimeSpan.FromSeconds(1);
+                _timer.Tick += (s, e) =>
+                {
+                    _timerCount--;
+                    TimerText = FormatTime(_timerCount);
+
+                    if (_timerCount <= 0)
+                    {
+                        _timer.Stop();
+                        IsResendVisible = true;
+                        TimerText = "00:00";
+                    }
+                };
+                _timer.Start();
+            }
+            catch (Exception ex) { }
+        }
+        private string FormatTime(int seconds)
+        {
+            try
+            {
+                TimeSpan time = TimeSpan.FromSeconds(seconds);
+                return time.ToString(@"mm\:ss");
+            }
+            catch { }
+            return seconds.ToString();
+        }
+        public void StopTimer()
+        {
+            if (_timer != null && _timer.IsRunning)
+            {
+                TimerText = "00:00";
+                _timer.Stop();
+                _timer = null;
+                Console.WriteLine("Timer Stopped");
+            }
+        }
         public async void OnBack()
         {
             if (IsOTPSend)
+            {
+                StopTimer();
                 IsOTPSend = false;
+            }
             else
                 await Shell.Current.GoToAsync("..");
         }

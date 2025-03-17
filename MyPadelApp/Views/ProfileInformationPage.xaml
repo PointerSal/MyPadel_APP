@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:LocalizationResourceManager.Maui;assembly=LocalizationResourceManager.Maui"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:Loader="clr-namespace:MyPadelApp.Controls"
              x:Class="MyPadelApp.Views.ProfileInformationPage"
              xmlns:viewmodel="clr-namespace:MyPadelApp.ViewModels"
              x:DataType="viewmodel:ProfileInformationViewModel"
@@ -15,61 +16,70 @@
         <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing"/>
     </ContentPage.Behaviors>
 
-    <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="20">
-        <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
-            <Label Text="LOGO" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
-            <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+    <Grid>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="20">
+            <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
+                <Label Text="LOGO" Style="{StaticResource LogoBoldStyleHorizontalStart}"/>
+                <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
+            </Grid>
+
+            <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Padding="20,5">
+                <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" VerticalOptions="CenterAndExpand" Command="{Binding BackCommand}"/>
+                <Border Grid.Column="1" Style="{StaticResource TransparentChipBorder}" HorizontalOptions="EndAndExpand" Stroke="{StaticResource BlackTextColors}">
+                    <Image Source="{Binding ProfileImage}" Aspect="Fill" Style="{StaticResource LargeCricleImage}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PickAndUploadImageCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="2" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto" Padding="20,5" RowSpacing="25" ColumnSpacing="15" Margin="0,40">
+                <Image Grid.Row="0" Grid.Column="0" Source="profile" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="StartAndExpand"/>
+                <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource MediumLabelStyleHorizontalStart}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding UserProfile.name}" Style="{StaticResource LargeSpanWhiteUnbold}"/>
+                            <Span Text=" " Style="{StaticResource LargeSpanWhiteUnbold}"/>
+                            <Span Text="{Binding UserProfile.surname}" Style="{StaticResource LargeSpanWhiteUnbold}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Image Grid.Row="1" Grid.Column="0" Source="email" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="StartAndExpand"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding UserProfile.email}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
+
+                <Image Grid.Row="2" Grid.Column="0" Source="padlock" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="StartAndExpand"/>
+                <Label Grid.Row="2" Grid.Column="1" Text="{localization:Translate PasswordLabel}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
+                <Image Grid.Row="2" Grid.Column="2" Source="pencil" HeightRequest="18" WidthRequest="18" HorizontalOptions="End">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="ResetPasswordPage"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            <StackLayout Grid.Row="3" Spacing="20">
+                <Border Style="{StaticResource MenuBoxBorder}">
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                        <Image Source="security" HeightRequest="25"/>
+                        <Label Grid.Column="1" Text="{localization:Translate SecurityLabel}" Style="{StaticResource TooMicroHorizontalStart}"/>
+                        <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
+                    </Grid>
+                </Border>
+
+                <!-- FIT Card Section -->
+                <Border Style="{StaticResource MenuBoxBorder}">
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                        <Image Source="question" HeightRequest="25"/>
+                        <Label Grid.Column="1" Text="{localization:Translate HelpsContact}" Style="{StaticResource TooMicroHorizontalStart}"/>
+                        <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
+                    </Grid>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="CompanyInfoPage"/>
+                    </Border.GestureRecognizers>
+                </Border>
+            </StackLayout>
         </Grid>
-
-        <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Padding="20,5">
-            <ImageButton Source="backbutton" Style="{StaticResource BackButtonStyle}" VerticalOptions="CenterAndExpand" Command="{Binding BackCommand}"/>
-            <Image Grid.Column="1" Source="profilepic" Style="{StaticResource LargeCricleImage}"/>
-        </Grid>
-
-        <Grid Grid.Row="2" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto" Padding="20,5" RowSpacing="25" ColumnSpacing="15" Margin="0,40">
-            <Image Grid.Row="0" Grid.Column="0" Source="profile" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="StartAndExpand"/>
-            <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource MediumLabelStyleHorizontalStart}">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="{Binding UserProfile.name}" Style="{StaticResource LargeSpanWhiteUnbold}"/>
-                        <Span Text=" " Style="{StaticResource LargeSpanWhiteUnbold}"/>
-                        <Span Text="{Binding UserProfile.surname}" Style="{StaticResource LargeSpanWhiteUnbold}"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-
-            <Image Grid.Row="1" Grid.Column="0" Source="email" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="StartAndExpand"/>
-            <Label Grid.Row="1" Grid.Column="1" Text="{Binding UserProfile.email}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
-
-            <Image Grid.Row="2" Grid.Column="0" Source="padlock" Style="{StaticResource MinorSmallCricleImage}" HorizontalOptions="StartAndExpand"/>
-            <Label Grid.Row="2" Grid.Column="1" Text="{localization:Translate PasswordLabel}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
-            <Image Grid.Row="2" Grid.Column="2" Source="pencil" HeightRequest="18" WidthRequest="18" HorizontalOptions="End">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="ResetPasswordPage"/>
-                </Image.GestureRecognizers>
-            </Image>
-        </Grid>
-
-        <StackLayout Grid.Row="3" Spacing="20">
-            <Border Style="{StaticResource MenuBoxBorder}">
-                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
-                    <Image Source="security" HeightRequest="25"/>
-                    <Label Grid.Column="1" Text="{localization:Translate SecurityLabel}" Style="{StaticResource TooMicroHorizontalStart}"/>
-                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
-                </Grid>
-            </Border>
-
-            <!-- FIT Card Section -->
-            <Border Style="{StaticResource MenuBoxBorder}">
-                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
-                    <Image Source="question" HeightRequest="25"/>
-                    <Label Grid.Column="1" Text="{localization:Translate HelpsContact}" Style="{StaticResource TooMicroHorizontalStart}"/>
-                    <ImageButton Grid.Column="2" Source="rightarrow" Style="{StaticResource ArrowImageStyle}"/>
-                </Grid>
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToPageCommand}" CommandParameter="CompanyInfoPage"/>
-                </Border.GestureRecognizers>
-            </Border>
-        </StackLayout>
+        <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>

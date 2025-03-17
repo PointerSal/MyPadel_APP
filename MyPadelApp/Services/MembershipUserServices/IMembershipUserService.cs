@@ -9,5 +9,6 @@ namespace MyPadelApp.Services.MembershipUserServices
         Task<GeneralResponse> ExpiryDate(string email);
         Task<GeneralResponse> RegisterFitMemberShipUser(MembershipRequestModel membershipRequestModel, string MedicalCertificate);
         Task<GeneralResponse> RegisterMemberShipUser(MembershipRequestModel membershipRequestModel, string MedicalCertificate);
+        Task<GeneralResponse> UpdateFitMemberShipUser(string MedicalCertificate);
     }
 }

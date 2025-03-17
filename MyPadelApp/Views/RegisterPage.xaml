@@ -56,7 +56,19 @@
                 </StackLayout>
 
                 <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="15" ColumnSpacing="10">
-                    <Label Text="{localization:Translate AcceptTerms}" Style="{StaticResource MicroLabelStyleAlginCenter}"/>
+                    <Label Style="{StaticResource MicroLabelStyleAlginCenter}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{localization:Translate IAccept}" Style="{StaticResource SmallSpanWhitebold}" FontSize="13"/>
+                                <Span Text=" " Style="{StaticResource SmallSpanWhitebold}" FontSize="13"/>
+                                <Span Text="{localization:Translate TermsConditions}" Style="{StaticResource SmallSpanWhitebold}" TextDecorations="Underline" FontSize="13">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://www.google.com/"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                     <Border Grid.Column="1" Style="{StaticResource CheckboxCricleBorder}">
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding AcceptTermsCommand}"/>

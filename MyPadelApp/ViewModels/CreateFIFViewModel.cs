@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -60,6 +61,12 @@ namespace MyPadelApp.ViewModels
 
         [ObservableProperty]
         public bool _hasLastNameError;
+        
+        [ObservableProperty]
+        private string _taxCodeError;
+
+        [ObservableProperty]
+        public bool _hasTaxCodeError;
 
         [ObservableProperty]
         private string _birthDateError;
@@ -84,6 +91,12 @@ namespace MyPadelApp.ViewModels
 
         [ObservableProperty] 
         public bool _hasZipCodeError;
+        
+        [ObservableProperty]
+        private string _phoneError;
+
+        [ObservableProperty] 
+        public bool _hasPhoneError;
 
         [ObservableProperty]
         private string _selectedPaymentMethod;
@@ -93,6 +106,42 @@ namespace MyPadelApp.ViewModels
 
         [ObservableProperty]
         public bool _hasMunicipalityError;
+        
+        [ObservableProperty]
+        private string _phoneErrorError;
+
+        [ObservableProperty]
+        public bool _hasPhoneErrorError;
+
+        [ObservableProperty]
+        private string _brithProvinceError;
+
+        [ObservableProperty]
+        public bool _hasBrithProvinceError;
+
+        [ObservableProperty]
+        private string _brithMunicipalityError;
+
+        [ObservableProperty]
+        public bool _hasBrithMunicipalityError;
+
+        [ObservableProperty]
+        private string _citizenShipsError;
+
+        [ObservableProperty]
+        public bool _hasCitizenShipsError;
+        
+        [ObservableProperty]
+        private string _residenceProvinceError;
+
+        [ObservableProperty]
+        public bool _hasResidenceProvinceError;
+
+        [ObservableProperty]
+        private string _residenceMunicipalityError;
+
+        [ObservableProperty]
+        public bool _hasResidenceMunicipalityError;
         public ObservableCollection<string> PaymentMethods { get; } = new()
         {
             //"PayPal",
@@ -122,6 +171,29 @@ namespace MyPadelApp.ViewModels
         private string CertificateFilePath = "";
         private BookingPrices bookingPrices = null;
 
+        [ObservableProperty]
+        public ObservableCollection<string> _brithProvince = new();
+        
+        [ObservableProperty]
+        public ObservableCollection<string> _brithMunicipality = new();
+
+        [ObservableProperty]
+        public ObservableCollection<string> _residenceProvince = new();
+
+        [ObservableProperty]
+        public ObservableCollection<string> _residenceMunicipality = new();
+
+        [ObservableProperty]
+        public ObservableCollection<string> _citizenShips = new();
+
+        private Dictionary<string, List<string>> _provinceCities = new();
+
+        [ObservableProperty]
+        private string _selectedBrithProvince;
+
+        [ObservableProperty]
+        private string _selectedResidenceProvince;
+
         #endregion
 
         #region Commands
@@ -136,6 +208,9 @@ namespace MyPadelApp.ViewModels
 
                 IsBusy = true;
                 CardModel.PaymentMethod = SelectedPaymentMethod;
+                CardModel.provinceOfBirth = SelectedBrithProvince;
+                CardModel.provinceOfResidence = SelectedResidenceProvince;
+
                 bool IsSuccess = false;
                 if (bookingPrices == null)
                     IsSuccess = await GetPrices();
@@ -150,10 +225,10 @@ namespace MyPadelApp.ViewModels
                     {
                         var result = JsonSerializer.Deserialize<PaymentResponse>(response.data.ToString());
                         await Shell.Current.GoToAsync("FITPaymentPage", true, new Dictionary<string, object>
-                    {
-                        { "PaymentURL",result.sessionUrl },
-                        { "CurrentFIT",CardModel },
-                    });
+                        {
+                            { "PaymentURL",result.sessionUrl },
+                            { "CurrentFIT",CardModel },
+                        });
                     }
                     else if (response != null && response.code != null)
                         await Shell.Current.DisplayAlert(AppResources.Error, response.message, AppResources.OK);
@@ -247,6 +322,7 @@ namespace MyPadelApp.ViewModels
             {
                 IsBusy = true;
                 await GetPrices();
+                await LoadDataAsync();
                 IsBusy = false;
             });
         }
@@ -271,6 +347,98 @@ namespace MyPadelApp.ViewModels
             }
             catch (Exception ex) { }
             return false;
+        }
+
+        private async Task LoadDataAsync()
+        {
+            try
+            {
+                await Task.Run(async () =>
+                {
+                    Stream stream3 = await FileSystem.Current.OpenAppPackageFileAsync("citizenships.txt");
+                    using (StreamReader reader = new StreamReader(stream3))
+                    {
+                        while (!reader.EndOfStream)
+                        {
+                            var line = reader.ReadLine();
+                            var parts = line.Split('\t');
+                            if (parts.Length == 2)
+                                CitizenShips.Add(parts[1][..1].ToUpperInvariant() + parts[1][1..].ToLowerInvariant());
+                        }
+                    }
+
+                    Stream stream = await FileSystem.OpenAppPackageFileAsync("provinces.txt");
+                    var TempProvinces = new ObservableCollection<string>();
+                    var _provinceDict = new Dictionary<string, string>();
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        while (!reader.EndOfStream)
+                        {
+                            var line = await reader.ReadLineAsync();
+                            var parts = line.Split('\t');
+                            if (parts.Length > 1) 
+                            {
+                                var provinceCode = parts[0].Trim();
+                                var provinceName = parts[1].Trim();
+                                if (!_provinceDict.ContainsKey(provinceCode))
+                                    _provinceDict[provinceCode] = provinceName;
+                                TempProvinces.Add(provinceName[..1].ToUpperInvariant() + provinceName[1..].ToLowerInvariant());
+                            }
+                        }
+                    }
+
+                    BrithProvince = new ObservableCollection<string>(TempProvinces.Select(s => s).ToList());
+                    ResidenceProvince = new ObservableCollection<string>(TempProvinces.Select(s => s).ToList());
+
+                    Stream stream2 = await FileSystem.OpenAppPackageFileAsync("cities.txt");
+                    using (StreamReader reader = new StreamReader(stream2))
+                    {
+                        while (!reader.EndOfStream)
+                        {
+                            var line = await reader.ReadLineAsync();
+                            var parts = line.Split('\t');
+                            if (parts.Length > 1)
+                            {
+                                var provinceName = _provinceDict.ContainsKey(parts[0].Trim()) ? _provinceDict[parts[0].Trim()] : "";
+                                var cityName = parts[1].Trim();
+                                if (!_provinceCities.ContainsKey(provinceName))
+                                    _provinceCities[provinceName] = new List<string>();
+
+                                _provinceCities[provinceName].Add(cityName[..1].ToUpperInvariant() + cityName[1..].ToLowerInvariant());
+                            }
+                        }
+                    }
+                });
+            }
+            catch (Exception ex) { }
+        }
+
+        public void LoadCitiesForProvince(bool IsBrithProvince)
+        {
+            if (IsBrithProvince)
+            {
+                CardModel.BrithMunicipality = "";
+                BrithMunicipality.Clear();
+                if (!string.IsNullOrEmpty(SelectedBrithProvince) && _provinceCities.ContainsKey(SelectedBrithProvince))
+                {
+                    foreach (var city in _provinceCities[SelectedBrithProvince])
+                    {
+                        BrithMunicipality.Add(city);
+                    }
+                }
+            }
+            else
+            {
+                CardModel.ResidenceMunicipality = "";
+                ResidenceMunicipality.Clear();
+                if (!string.IsNullOrEmpty(SelectedResidenceProvince) && _provinceCities.ContainsKey(SelectedResidenceProvince))
+                {
+                    foreach (var city in _provinceCities[SelectedResidenceProvince])
+                    {
+                        ResidenceMunicipality.Add(city);
+                    }
+                }
+            }
         }
 
         #endregion
@@ -340,6 +508,18 @@ namespace MyPadelApp.ViewModels
                 HasAddressError = false;
             }
 
+            if (string.IsNullOrWhiteSpace(CardModel.TaxCode))
+            {
+                TaxCodeError = AppResources.TaxCodeRequired;
+                HasTaxCodeError = true;
+                isValid = false;
+            }
+            else
+            {
+                TaxCodeError = string.Empty;
+                HasTaxCodeError = false;
+            }
+
             if (string.IsNullOrWhiteSpace(CardModel.PostalCode))
             {
                 ZipCodeError = AppResources.PostalCodeRequired;
@@ -358,83 +538,147 @@ namespace MyPadelApp.ViewModels
                 HasZipCodeError = false;
             }
 
-            if (string.IsNullOrWhiteSpace(CardModel.Municipality))
+            if (string.IsNullOrWhiteSpace(CardModel.ResidenceMunicipality))
             {
-                MunicipalityError = AppResources.MunicipalityRequried;
-                HasMunicipalityError = true;
+                ResidenceMunicipalityError = AppResources.ResidenceMunicipalityRequired;
+                HasResidenceMunicipalityError = true;
                 isValid = false;
             }
             else
             {
-                MunicipalityError = string.Empty;
-                HasMunicipalityError = false;
+                ResidenceMunicipalityError = string.Empty;
+                HasResidenceMunicipalityError = false;
             }
 
-            if (string.IsNullOrWhiteSpace(CardModel.CardNumber))
+            if (string.IsNullOrWhiteSpace(CardModel.BrithMunicipality))
             {
-                CardNumberError = AppResources.CardNumberRequired;
-                HasCardNumberError = true;
-                isValid = false;
-            }
-            else if (!CardModel.CardNumber.All(char.IsDigit) || CardModel.CardNumber.Length != 16)
-            {
-                CardNumberError = AppResources.Invalidcardnumber;
-                HasCardNumberError = true;
+                BrithMunicipalityError = AppResources.BrithMunicipality;
+                HasBrithMunicipalityError = true;
                 isValid = false;
             }
             else
             {
-                CardNumberError = string.Empty;
-                HasCardNumberError = false;
+                BrithMunicipalityError = string.Empty;
+                HasBrithMunicipalityError = false;
             }
 
-            if (CardModel.ExpiryDate <= DateTime.Now)
+            if (string.IsNullOrWhiteSpace(SelectedBrithProvince))
             {
-                ExpiryDateError = AppResources.ExpiryDateRequired;
-                HasExpiryDateError = true;
+                BrithProvinceError = AppResources.BrithProvinceRequired;
+                HasBrithProvinceError = true;
                 isValid = false;
             }
             else
             {
-                ExpiryDateError = string.Empty;
-                HasExpiryDateError = false;
+                BrithProvinceError = string.Empty;
+                HasBrithProvinceError = false;
             }
 
-            if (CardModel.MedicalCertificateDate > DateTime.Now)
+            if (string.IsNullOrWhiteSpace(SelectedResidenceProvince))
             {
-                CertificateDateError = AppResources.InvalidCertificateDate;
-                HasCertificateDateError = true;
+                ResidenceProvinceError = AppResources.SelectedResidenceProvinceRequired;
+                HasResidenceProvinceError = true;
                 isValid = false;
             }
             else
             {
-                CertificateDateError = string.Empty;
-                HasCertificateDateError = false;
+                ResidenceProvinceError = string.Empty;
+                HasResidenceProvinceError = false;
             }
 
-            if (string.IsNullOrWhiteSpace(CertificateFilePath))
+            if (string.IsNullOrWhiteSpace(CardModel.CitizenShips))
             {
-                UploadCertificateError = AppResources.MedicalCertificateRequired;
-                HasUploadCertificateError = true;
+                CitizenShipsError = AppResources.CitizenShipsRequired;
+                HasCitizenShipsError = true;
                 isValid = false;
             }
             else
             {
-                UploadCertificateError = string.Empty;
-                HasUploadCertificateError = false;
+                CitizenShipsError = string.Empty;
+                HasCitizenShipsError = false;
             }
 
-            if (string.IsNullOrWhiteSpace(SelectedPaymentMethod))
-            {
-                PaymentmethodError = AppResources.PaymentMethodSelected;
-                HasPaymentmethodError = true;
+            (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid("+39" + CardModel.Cell);
+            if(HasPhoneError)
                 isValid = false;
-            }
-            else
-            {
-                PaymentmethodError = string.Empty;
-                HasPaymentmethodError = false;
-            }
+
+            //if (string.IsNullOrWhiteSpace(CardModel.Municipality))
+            //{
+            //    MunicipalityError = AppResources.MunicipalityRequried;
+            //    HasMunicipalityError = true;
+            //    isValid = false;
+            //}
+            //else
+            //{
+            //    MunicipalityError = string.Empty;
+            //    HasMunicipalityError = false;
+            //}
+
+            //if (string.IsNullOrWhiteSpace(CardModel.CardNumber))
+            //{
+            //    CardNumberError = AppResources.CardNumberRequired;
+            //    HasCardNumberError = true;
+            //    isValid = false;
+            //}
+            //else if (!CardModel.CardNumber.All(char.IsDigit) || CardModel.CardNumber.Length != 16)
+            //{
+            //    CardNumberError = AppResources.Invalidcardnumber;
+            //    HasCardNumberError = true;
+            //    isValid = false;
+            //}
+            //else
+            //{
+            //    CardNumberError = string.Empty;
+            //    HasCardNumberError = false;
+            //}
+
+            //if (CardModel.ExpiryDate <= DateTime.Now)
+            //{
+            //    ExpiryDateError = AppResources.ExpiryDateRequired;
+            //    HasExpiryDateError = true;
+            //    isValid = false;
+            //}
+            //else
+            //{
+            //    ExpiryDateError = string.Empty;
+            //    HasExpiryDateError = false;
+            //}
+
+            //if (CardModel.MedicalCertificateDate > DateTime.Now)
+            //{
+            //    CertificateDateError = AppResources.InvalidCertificateDate;
+            //    HasCertificateDateError = true;
+            //    isValid = false;
+            //}
+            //else
+            //{
+            //    CertificateDateError = string.Empty;
+            //    HasCertificateDateError = false;
+            //}
+
+            //if (string.IsNullOrWhiteSpace(CertificateFilePath))
+            //{
+            //    UploadCertificateError = AppResources.MedicalCertificateRequired;
+            //    HasUploadCertificateError = true;
+            //    isValid = false;
+            //}
+            //else
+            //{
+            //    UploadCertificateError = string.Empty;
+            //    HasUploadCertificateError = false;
+            //}
+
+            //if (string.IsNullOrWhiteSpace(SelectedPaymentMethod))
+            //{
+            //    PaymentmethodError = AppResources.PaymentMethodSelected;
+            //    HasPaymentmethodError = true;
+            //    isValid = false;
+            //}
+            //else
+            //{
+            //    PaymentmethodError = string.Empty;
+            //    HasPaymentmethodError = false;
+            //}
 
             return isValid;
         }

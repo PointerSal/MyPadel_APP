@@ -209,7 +209,7 @@ Ricordati di rinnovare la tua tessera prima che scada, accedi alla sezione “Te
     <value />
   </data>
   <data name="PayOnline" xml:space="preserve">
-    <value>Paga in linea</value>
+    <value>Paga Online</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Resetta Password</value>
@@ -451,7 +451,7 @@ Per registrare la tua nuova tessera FIT.</value>
     <value>Informativa privacy</value>
   </data>
   <data name="WelcomeText" xml:space="preserve">
-    <value>Benvenuto su My Padel App!</value>
+    <value>Benvenuto!</value>
   </data>
   <data name="NewCancellationPolicy" xml:space="preserve">
     <value>Politica di annullamento</value>
@@ -460,7 +460,7 @@ Per registrare la tua nuova tessera FIT.</value>
     <value>Aiuto e contatti</value>
   </data>
   <data name="EnterDetails" xml:space="preserve">
-    <value>Inserisci i tuoi dettagli qui sotto.</value>
+    <value>Inserisci i tuoi dati e crea un account per iniziare a giocare.</value>
   </data>
   <data name="AcceptTerms" xml:space="preserve">
     <value>Accetto i termini e le condizioni.</value>
@@ -469,7 +469,7 @@ Per registrare la tua nuova tessera FIT.</value>
     <value>Ci sei quasi!</value>
   </data>
   <data name="PhoneNumberPrompt" xml:space="preserve">
-    <value>Inserisci il tuo numero di telefono, ti invieremo un codice per certificare il tuo contatto.</value>
+    <value>Inserisci l'OTP che ti abbiamo inviato via e-mail per proseguire con la registrazione</value>
   </data>
   <data name="ResendCode" xml:space="preserve">
     <value>Invia nuovo codice</value>
@@ -809,5 +809,95 @@ Per registrare la tua nuova tessera FIT.</value>
   </data>
   <data name="Cricket" xml:space="preserve">
     <value>Grillo</value>
+  </data>
+  <data name="IAccept" xml:space="preserve">
+    <value>Accetto il</value>
+  </data>
+  <data name="TermsConditions" xml:space="preserve">
+    <value>Termini e Condizioni</value>
+  </data>
+  <data name="TaxCode" xml:space="preserve">
+    <value>Codice Fiscale</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Codice Postale</value>
+  </data>
+  <data name="BrithProvince" xml:space="preserve">
+    <value>Seleziona Provincia di nascita</value>
+  </data>
+  <data name="SelectMunicipalityBirth" xml:space="preserve">
+    <value>Seleziona Comune di nascita</value>
+  </data>
+  <data name="Citizenship" xml:space="preserve">
+    <value>Seleziona Cittadinanza</value>
+  </data>
+  <data name="SelectProvinceResidence" xml:space="preserve">
+    <value>Seleziona Provincia di residenza</value>
+  </data>
+  <data name="SelectMunicipalityResidence" xml:space="preserve">
+    <value>Seleziona Comune di residenza</value>
+  </data>
+  <data name="TaxCodeRequired" xml:space="preserve">
+    <value>Il codice fiscale è obbligatorio</value>
+  </data>
+  <data name="BrithProvinceRequired" xml:space="preserve">
+    <value>Deve essere selezionata la provincia di Brith</value>
+  </data>
+  <data name="ResidenceMunicipalityRequired" xml:space="preserve">
+    <value>E' obbligatorio il Comune di Residenza</value>
+  </data>
+  <data name="BrithMunicipality" xml:space="preserve">
+    <value>È richiesto il comune di Brith</value>
+  </data>
+  <data name="SelectedResidenceProvinceRequired" xml:space="preserve">
+    <value>Deve essere selezionata la provincia di residenza</value>
+  </data>
+  <data name="CitizenShipsRequired" xml:space="preserve">
+    <value>È richiesta la cittadinanza</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>Prenotazione Cancellata</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Avviso</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>SÌ</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="CancelledPolicy" xml:space="preserve">
+    <value>La tua prenotazione verrà annullata ma il rimborso non sarà applicabile. Vuoi continuare?</value>
+  </data>
+  <data name="CardExpiredError" xml:space="preserve">
+    <value>La tua carta è scaduta. Rinnovala per le prenotazioni</value>
+  </data>
+  <data name="ThirtyDaysExpiredError" xml:space="preserve">
+    <value>La tua carta scadrà entro 30 giorni. Rinnovala per la prenotazione</value>
+  </data>
+  <data name="Renew" xml:space="preserve">
+    <value>Rinnovare</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Aggiornamento</value>
+  </data>
+  <data name="ProfileImageUpdated" xml:space="preserve">
+    <value>La tua immagine del profilo è stata aggiornata con successo</value>
+  </data>
+  <data name="CertificateUpdate" xml:space="preserve">
+    <value>Il tuo certificato medico è stato aggiornato con successo</value>
+  </data>
+  <data name="FITMemberShipNotUpdate" xml:space="preserve">
+    <value>La tua iscrizione Fit non è ancora stata verificata</value>
+  </data>
+  <data name="ArchivedStatus" xml:space="preserve">
+    <value>Prenotazione Archiviata</value>
+  </data>
+  <data name="ActiveStatus" xml:space="preserve">
+    <value>Prenotazione Attiva</value>
+  </data>
+  <data name="CardRenew" xml:space="preserve">
+    <value>La tua iscrizione è stata rinnovata. Attendi l'approvazione di un amministratore</value>
   </data>
 </root>

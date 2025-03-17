@@ -16,12 +16,12 @@ namespace MyPadelApp.Services.MembershipUserServices
     {
         public async Task<GeneralResponse> RegisterMemberShipUser(MembershipRequestModel membershipRequestModel, string MedicalCertificate)
         {
-            var data = new
+            var data = new Certificate
             {
-                cardNumber = membershipRequestModel.CardNumber,
-                expiryDate = membershipRequestModel.ExpiryDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                medicalCertificateDate = membershipRequestModel.MedicalCertificateDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                medicalCertificate = MedicalCertificate,
+                cardNumber = "",
+                expiryDate = null,
+                medicalCertificateDate = null,
+                medicalCertificate = "",
                 firstName = membershipRequestModel.FirstName,
                 lastName = membershipRequestModel.LastName,
                 gender = membershipRequestModel.Gender,
@@ -30,6 +30,14 @@ namespace MyPadelApp.Services.MembershipUserServices
                 postalCode = membershipRequestModel.PostalCode,
                 municipality = membershipRequestModel.Municipality,
                 paymentMethod = membershipRequestModel.PaymentMethod,
+                phoneNumber = membershipRequestModel.Cell,
+                provinceOfBirth = membershipRequestModel.provinceOfBirth,
+                municipalityOfBirth = membershipRequestModel.municipalityOfBirth,
+                citizenship = membershipRequestModel.CitizenShips,
+                taxCode = membershipRequestModel.TaxCode,
+                provinceOfResidence = membershipRequestModel.provinceOfResidence,
+                municipalityOfResidence = membershipRequestModel.municipalityOfResidence,
+                residentialAddress = membershipRequestModel.Cell,
                 email = Utils.GetUser.email
             };
 
@@ -43,6 +51,16 @@ namespace MyPadelApp.Services.MembershipUserServices
                 membershipNumber = membershipRequestModel.CardNumber,
                 expiryDate = membershipRequestModel.ExpiryDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                 medicalCertificateDate = membershipRequestModel.MedicalCertificateDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                medicalCertificate = MedicalCertificate,
+                email = Utils.GetUser.email
+            };
+
+            return await httpClientService.PostAsync("membershipuser/fit", data, true, false);
+        }
+        public async Task<GeneralResponse> UpdateFitMemberShipUser(string MedicalCertificate)
+        {
+            var data = new
+            {
                 medicalCertificate = MedicalCertificate,
                 email = Utils.GetUser.email
             };

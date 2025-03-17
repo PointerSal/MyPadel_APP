@@ -12,7 +12,7 @@
              Title="">
 
     <Grid>
-        <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*,Auto">
             <Grid ColumnDefinitions="*,Auto" BackgroundColor="{StaticResource DefaultPageBackground}" Padding="20,5">
                 <Label Text="{localization:Translate Logo}" Style="{StaticResource LogoStyleHorizontalStart}"/>
                 <Image Grid.Column="1" Source="info.png" Style="{StaticResource SmallCricleImage}" />
@@ -33,14 +33,14 @@
                                 <Span Text=" "/>
                                 <Span Text="{localization:Translate RenewIt}" 
                                   Style="{StaticResource LargeSpanWhiteUnbold}"
-                                  TextDecorations="Underline"/>
+                                  TextDecorations="None"/>
                                 <Span Text=" "/>
                                 <Span Text="{localization:Translate CallUs}" 
                                   Style="{StaticResource LargeSpanWhiteUnbold}"/>
                                 <Span Text=" "/>
                                 <Span Text="{localization:Translate TwentyMinutesBefore}" 
                                   Style="{StaticResource LargeSpanWhiteUnbold}"
-                                  TextDecorations="Underline"/>
+                                  TextDecorations="None"/>
                                 <Span Text=" "/>
                                 <Span Text="{localization:Translate MatchStart}" 
                                   Style="{StaticResource LargeSpanWhiteUnbold}"/>
@@ -54,10 +54,14 @@
                         <BoxView Style="{StaticResource BoxViewStyle}"/>
                     </StackLayout>
                     <StackLayout>
-                        <Label Text="{Binding Card.expiryDate}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
+                        <Label Text="{Binding Card.expiryDate,Converter={StaticResource NullToN_AConverter}}" Style="{StaticResource MediumLabelUnBoldStyleHorizontalStart}"/>
                         <BoxView Style="{StaticResource BoxViewStyle}"/>
                     </StackLayout>
                 </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="2" VerticalOptions="EndAndExpand" Margin="20" Spacing="5" IsVisible="{Binding IsCardRenew}">
+                <Button Text="{localization:Translate Renew}" Command="{Binding RenewCommand}" Style="{StaticResource BlueButtonStyle}"/>
+                <Label Text="{Binding ExpiryMessage}" Style="{StaticResource TooMicroHorizontalStart}"/>
             </StackLayout>
         </Grid>
         <Loader:ActivityIndicator Grid.RowSpan="4" IsVisible="{Binding IsBusy}"/>

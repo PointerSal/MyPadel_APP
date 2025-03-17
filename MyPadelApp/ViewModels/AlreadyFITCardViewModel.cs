@@ -5,6 +5,7 @@ using MyPadelApp.Models;
 using MyPadelApp.Resources.Languages;
 using MyPadelApp.Services.MembershipUserServices;
 using MyPadelApp.ViewModels.ViewBaseModel;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,7 @@ namespace MyPadelApp.ViewModels
                 var response = await _membershipUserService.RegisterFitMemberShipUser(CardModel, ImageToBase64.BytesToBase64(CardModel.MedicalCertificate));
                 if (response != null && response.code !=null && response.code.Equals("0000"))
                 {
+                    Utils.GetUser.isFitVerified = false;
                     Preferences.Default.Set("username", Utils.GetUser.email);
                     Preferences.Default.Set("Password", Utils.GetUser.password);
                     await Shell.Current.GoToAsync("../../BookedFieldPage");
@@ -81,7 +83,6 @@ namespace MyPadelApp.ViewModels
             catch (Exception ex) { }
             IsBusy = false;
         }
-
         [RelayCommand]
         public async Task OpenCamera()
         {
@@ -116,8 +117,11 @@ namespace MyPadelApp.ViewModels
                 {
                     using (var memoryStream = new MemoryStream())
                     {
+                        // Compress and reduce image size
                         await stream.CopyToAsync(memoryStream);
-                        CardModel.MedicalCertificate = memoryStream.ToArray();
+                        var Bytes = memoryStream.ToArray();
+                        byte[] compressedImage = CompressImage(Bytes, 800, 600, 70);
+                        CardModel.MedicalCertificate = compressedImage;
                     }
                 }
 
@@ -127,6 +131,51 @@ namespace MyPadelApp.ViewModels
             catch (Exception ex)
             {
                 await Shell.Current.DisplayAlert(AppResources.Error, $"{AppResources.FailCapturePhoto}\n{ex.Message}", AppResources.OK);
+            }
+        }
+
+        /// <summary>
+        /// Resizes and compresses an image using SkiaSharp.
+        /// </summary>
+        public byte[] CompressImage(byte[] imageData, int maxWidth, int maxHeight, int quality = 75)
+        {
+            try
+            {
+                using var inputStream = new MemoryStream(imageData);
+                using var original = SKBitmap.Decode(inputStream);
+
+                if (original == null)
+                    return Array.Empty<byte>();
+
+                int newWidth = maxWidth;
+                int newHeight = maxHeight;
+
+                // Maintain aspect ratio
+                if (original.Width > maxWidth || original.Height > maxHeight)
+                {
+                    float aspectRatio = (float)original.Width / original.Height;
+                    if (original.Width > original.Height)
+                    {
+                        newHeight = (int)(maxWidth / aspectRatio);
+                    }
+                    else
+                    {
+                        newWidth = (int)(maxHeight * aspectRatio);
+                    }
+                }
+
+                using var resized = original.Resize(new SKImageInfo(newWidth, newHeight), SKFilterQuality.High);
+                using var image = SKImage.FromBitmap(resized);
+                using var outputStream = new MemoryStream();
+
+                // Encode image with quality factor
+                image.Encode(SKEncodedImageFormat.Jpeg, quality).SaveTo(outputStream);
+
+                return outputStream.ToArray();
+            }
+            catch (Exception ex)
+            {
+                return Array.Empty<byte>(); // Handle error gracefully
             }
         }
 
