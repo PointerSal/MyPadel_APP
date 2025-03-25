@@ -25,7 +25,7 @@
                 </StackLayout>
                 <StackLayout Spacing="5">
                     <Grid>
-                        <Entry Text="{Binding Password}" x:Name="currentpasswordEntry" Placeholder="{localization:Translate PasswordPlaceholder}" Style="{StaticResource EntryStyle}" Keyboard="Default" IsPassword="True"/>
+                        <Entry Text="{Binding Password}" x:Name="currentpasswordEntry" Placeholder="{localization:Translate EnterYourPassword}" Style="{StaticResource EntryStyle}" Keyboard="Default" IsPassword="True"/>
                         <ImageButton x:Name="currentpasswordImage" Source="closeeye.png" Style="{StaticResource PasswordImageStyle}" Clicked="OnCurrentPasswordEyeClicked">
                             <ImageButton.Triggers>
                                 <DataTrigger TargetType="ImageButton" Binding="{Binding IsPassword, Source={x:Reference currentpasswordEntry}}" Value="True">

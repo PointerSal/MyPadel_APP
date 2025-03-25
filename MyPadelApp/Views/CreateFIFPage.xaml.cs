@@ -18,4 +18,14 @@ public partial class CreateFIFPage : ContentPage
     {
         _createFIFViewModel.LoadCitiesForProvince(false);
     }
+
+    private void BrithDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+    {
+        try
+        {
+            BrithDatePlaceholderLabel.IsVisible = e.NewDate == null || e.NewDate == default;
+            BrithDatePicker.Opacity = e.NewDate == null || e.NewDate == default ? 0 : 1;
+        }
+        catch { }
+    }
 }

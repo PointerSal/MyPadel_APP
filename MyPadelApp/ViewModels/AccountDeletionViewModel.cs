@@ -44,7 +44,7 @@ namespace MyPadelApp.ViewModels
         {
             try
             {
-                (HasPasswordError, PasswordError) = FieldValidations.IsFieldNotEmpty(Password,AppResources.PasswordRequired);
+                (HasPasswordError, PasswordError) = FieldValidations.IsFieldNotEmpty(Password,AppResources.TypeCurrentPassword);
 
                 if (!HasPasswordError)
                 {

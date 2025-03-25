@@ -65,7 +65,8 @@
                         <Label Text="{Binding LastNameError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasLastNameError}" />
 
                         <Grid Margin="0,0,0,-15">
-                            <DatePicker Date="{Binding CardModel.BirthDate}"  Style="{StaticResource GeneralDatePicker}"/>
+                            <Label x:Name="BrithDatePlaceholderLabel" Text="{localization:Translate SelectBrithDate}" Style="{StaticResource UnboldSmallLabelStyle}" Margin="0,10,0,0" IsVisible="True"/>
+                            <DatePicker x:Name="BrithDatePicker" Date="{Binding CardModel.BirthDate, Mode=TwoWay}" Style="{StaticResource GeneralDatePicker}" Format="dd/MM/yyyy" MinimumDate="1900-01-01" Opacity="0" DateSelected="BrithDatePicker_DateSelected"/>
                             <BoxView Style="{StaticResource BoxViewStyle}"/>
                         </Grid>
                         <Label Text="{Binding BirthDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding BirthDateError}" />
@@ -170,12 +171,12 @@
                     </Grid>
                     <Label Text="{Binding AddressError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasAddressError}" />
 
-                    <Grid ColumnDefinitions="Auto,*">
+                    <!--<Grid ColumnDefinitions="Auto,*">
                         <Label Text="+39" Style="{StaticResource LabelUnBoldStyle}" VerticalOptions="CenterAndExpand"/>
                         <Entry Grid.Column="1" Text="{Binding CardModel.Cell}" MaxLength="10" Placeholder="" Style="{StaticResource EntryStyle}" Keyboard="Telephone"/>
                         <BoxView Grid.ColumnSpan="2" Style="{StaticResource BoxViewStyle}"/>
                     </Grid>
-                    <Label Text="{Binding PhoneError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasPhoneError}" />
+                    <Label Text="{Binding PhoneError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasPhoneError}" />-->
                 </StackLayout>
             </ScrollView>
             <Button Grid.Row="3" Text="{localization:Translate ProceedPayment}" Style="{StaticResource BlueButtonStyle}" Command="{Binding AddCardCommand}"/>

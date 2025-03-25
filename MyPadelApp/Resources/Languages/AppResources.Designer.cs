@@ -918,6 +918,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter your password.
+        /// </summary>
+        internal static string EnterYourPassword {
+            get {
+                return ResourceManager.GetString("EnterYourPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string Error {
@@ -1751,7 +1760,8 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the OTP we sent you via email to continue with the registration.
+        ///   Looks up a localized string similar to You&apos;re almost there!
+        ///enter the OTP we sent you via SMS..
         /// </summary>
         internal static string PhoneNumberPrompt {
             get {
@@ -1995,7 +2005,8 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click on the link we sent you via email to confirm your registration!.
+        ///   Looks up a localized string similar to You&apos;re almost there!
+        ///Enter the OTP we sent to your email..
         /// </summary>
         internal static string ResendemailMessage {
             get {
@@ -2076,6 +2087,15 @@ namespace MyPadelApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Brith Date.
+        /// </summary>
+        internal static string SelectBrithDate {
+            get {
+                return ResourceManager.GetString("SelectBrithDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Duration.
         /// </summary>
         internal static string SelectDuration {
@@ -2090,6 +2110,24 @@ namespace MyPadelApp.Resources.Languages {
         internal static string SelectedResidenceProvinceRequired {
             get {
                 return ResourceManager.GetString("SelectedResidenceProvinceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Expriy Date.
+        /// </summary>
+        internal static string SelectExpriyDate {
+            get {
+                return ResourceManager.GetString("SelectExpriyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Medical Certificate Date.
+        /// </summary>
+        internal static string SelectMedicalCertificateDate {
+            get {
+                return ResourceManager.GetString("SelectMedicalCertificateDate", resourceCulture);
             }
         }
         
@@ -2333,6 +2371,15 @@ namespace MyPadelApp.Resources.Languages {
         internal static string TwentyMinutesBefore {
             get {
                 return ResourceManager.GetString("TwentyMinutesBefore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You need to type your current password.
+        /// </summary>
+        internal static string TypeCurrentPassword {
+            get {
+                return ResourceManager.GetString("TypeCurrentPassword", resourceCulture);
             }
         }
         

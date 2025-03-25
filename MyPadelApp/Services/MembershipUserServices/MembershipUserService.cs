@@ -25,12 +25,11 @@ namespace MyPadelApp.Services.MembershipUserServices
                 firstName = membershipRequestModel.FirstName,
                 lastName = membershipRequestModel.LastName,
                 gender = membershipRequestModel.Gender,
-                birthDate = membershipRequestModel.BirthDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                birthDate = membershipRequestModel.BirthDate.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                 address = membershipRequestModel.Address,
                 postalCode = membershipRequestModel.PostalCode,
                 municipality = membershipRequestModel.Municipality,
                 paymentMethod = membershipRequestModel.PaymentMethod,
-                phoneNumber = membershipRequestModel.Cell,
                 provinceOfBirth = membershipRequestModel.provinceOfBirth,
                 municipalityOfBirth = membershipRequestModel.municipalityOfBirth,
                 citizenship = membershipRequestModel.CitizenShips,
@@ -49,8 +48,8 @@ namespace MyPadelApp.Services.MembershipUserServices
             var data = new
             {
                 membershipNumber = membershipRequestModel.CardNumber,
-                expiryDate = membershipRequestModel.ExpiryDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                medicalCertificateDate = membershipRequestModel.MedicalCertificateDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                expiryDate = membershipRequestModel.ExpiryDate.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                medicalCertificateDate = membershipRequestModel.MedicalCertificateDate.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                 medicalCertificate = MedicalCertificate,
                 email = Utils.GetUser.email
             };

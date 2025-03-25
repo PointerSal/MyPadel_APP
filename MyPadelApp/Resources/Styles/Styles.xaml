@@ -427,6 +427,9 @@
 
     <!--Custom Styles-->
     <Converters:NullToN_AConverter x:Key="NullToN_AConverter"/>
+    <Converters:DateToOpacityConverter x:Key="DateToOpacityConverter"/>
+    <Converters:DatePickerPlaceholderConverter x:Key="DatePickerPlaceholderConverter"/>
+    <Converters:DatePickerPlaceholderConverter x:Key="DatePickerInvertedPlaceholderConverter" IsInvertedBool="True"/>
     <!--Labels-->
     <Style x:Key="LargeLogoLabelStyleAlignCenter" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource DefaultTextColors}" />

@@ -489,7 +489,8 @@ To register your new FIT card.</value>
     <value>You're almost there!</value>
   </data>
   <data name="PhoneNumberPrompt" xml:space="preserve">
-    <value>Enter the OTP we sent you via email to continue with the registration</value>
+    <value>You're almost there!
+enter the OTP we sent you via SMS.</value>
   </data>
   <data name="ResendCode" xml:space="preserve">
     <value>Send new code</value>
@@ -525,7 +526,8 @@ To register your new FIT card.</value>
     <value>Enter password</value>
   </data>
   <data name="ResendemailMessage" xml:space="preserve">
-    <value>Click on the link we sent you via email to confirm your registration!</value>
+    <value>You're almost there!
+Enter the OTP we sent to your email.</value>
   </data>
   <data name="AddCard" xml:space="preserve">
     <value>Add Card</value>
@@ -919,5 +921,20 @@ To register your new FIT card.</value>
   </data>
   <data name="CardRenew" xml:space="preserve">
     <value>Your membership has been renew. Please wait for an admin approve</value>
+  </data>
+  <data name="EnterYourPassword" xml:space="preserve">
+    <value>Enter your password</value>
+  </data>
+  <data name="TypeCurrentPassword" xml:space="preserve">
+    <value>You need to type your current password</value>
+  </data>
+  <data name="SelectBrithDate" xml:space="preserve">
+    <value>Select Brith Date</value>
+  </data>
+  <data name="SelectExpriyDate" xml:space="preserve">
+    <value>Select Expriy Date</value>
+  </data>
+  <data name="SelectMedicalCertificateDate" xml:space="preserve">
+    <value>Select Medical Certificate Date</value>
   </data>
 </root>

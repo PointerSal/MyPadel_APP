@@ -27,12 +27,14 @@
                     </Grid>
                     <Label Text="{Binding CardNumberError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCardNumberError}" />
                     <Grid>
-                        <DatePicker Date="{Binding CardModel.ExpiryDate}"  Style="{StaticResource GeneralDatePicker}"/>
+                        <Label x:Name="ExpiryDatePlaceholderLabel" Text="{localization:Translate SelectExpriyDate}" Style="{StaticResource UnboldSmallLabelStyle}" Margin="0,10,0,0" IsVisible="True"/>
+                        <DatePicker x:Name="ExpiryDatePicker" Date="{Binding CardModel.ExpiryDate}"  Style="{StaticResource GeneralDatePicker}" DateSelected="ExpiryDatePicker_DateSelected" Opacity="0"/>
                         <BoxView Style="{StaticResource BoxViewStyle}"/>
                     </Grid>
                     <Label Text="{Binding ExpiryDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasExpiryDateError}" />
                     <Grid>
-                        <DatePicker Date="{Binding CardModel.MedicalCertificateDate}" Style="{StaticResource GeneralDatePicker}"/>
+                        <Label x:Name="MedicalCertificateDatePlaceholderLabel" Text="{localization:Translate SelectMedicalCertificateDate}" Style="{StaticResource UnboldSmallLabelStyle}" Margin="0,10,0,0" IsVisible="True"/>
+                        <DatePicker x:Name="MedicalCertificateDatePicker" Date="{Binding CardModel.MedicalCertificateDate}" Style="{StaticResource GeneralDatePicker}" DateSelected="MedicalCertificateDatePicker_DateSelected" Opacity="0"/>
                         <BoxView Style="{StaticResource BoxViewStyle}"/>
                     </Grid>
                     <Label Text="{Binding CertificateDateError}" Style="{StaticResource UnboldSmallRedErrorLabelStyle}" IsVisible="{Binding HasCertificateDateError}" />

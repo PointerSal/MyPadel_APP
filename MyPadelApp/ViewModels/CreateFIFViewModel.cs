@@ -355,7 +355,9 @@ namespace MyPadelApp.ViewModels
             {
                 await Task.Run(async () =>
                 {
+                    // Load Citizenships
                     Stream stream3 = await FileSystem.Current.OpenAppPackageFileAsync("citizenships.txt");
+                    var uniqueCitizenShips = new HashSet<string>();
                     using (StreamReader reader = new StreamReader(stream3))
                     {
                         while (!reader.EndOfStream)
@@ -363,12 +365,17 @@ namespace MyPadelApp.ViewModels
                             var line = reader.ReadLine();
                             var parts = line.Split('\t');
                             if (parts.Length == 2)
-                                CitizenShips.Add(parts[1][..1].ToUpperInvariant() + parts[1][1..].ToLowerInvariant());
+                            {
+                                var formattedName = parts[1][..1].ToUpperInvariant() + parts[1][1..].ToLowerInvariant();
+                                uniqueCitizenShips.Add(formattedName);
+                            }
                         }
                     }
+                    CitizenShips = new ObservableCollection<string>(uniqueCitizenShips.OrderBy(s => s, StringComparer.OrdinalIgnoreCase));
 
+                    // Load Provinces
                     Stream stream = await FileSystem.OpenAppPackageFileAsync("provinces.txt");
-                    var TempProvinces = new ObservableCollection<string>();
+                    var uniqueProvinces = new HashSet<string>();
                     var _provinceDict = new Dictionary<string, string>();
                     using (StreamReader reader = new StreamReader(stream))
                     {
@@ -376,21 +383,25 @@ namespace MyPadelApp.ViewModels
                         {
                             var line = await reader.ReadLineAsync();
                             var parts = line.Split('\t');
-                            if (parts.Length > 1) 
+                            if (parts.Length > 1)
                             {
                                 var provinceCode = parts[0].Trim();
                                 var provinceName = parts[1].Trim();
+                                var formattedProvince = provinceName[..1].ToUpperInvariant() + provinceName[1..].ToLowerInvariant();
+
                                 if (!_provinceDict.ContainsKey(provinceCode))
                                     _provinceDict[provinceCode] = provinceName;
-                                TempProvinces.Add(provinceName[..1].ToUpperInvariant() + provinceName[1..].ToLowerInvariant());
+
+                                uniqueProvinces.Add(formattedProvince);
                             }
                         }
                     }
+                    BrithProvince = new ObservableCollection<string>(uniqueProvinces.OrderBy(s => s, StringComparer.OrdinalIgnoreCase));
+                    ResidenceProvince = new ObservableCollection<string>(uniqueProvinces.OrderBy(s => s, StringComparer.OrdinalIgnoreCase));
 
-                    BrithProvince = new ObservableCollection<string>(TempProvinces.Select(s => s).ToList());
-                    ResidenceProvince = new ObservableCollection<string>(TempProvinces.Select(s => s).ToList());
-
+                    // Load Cities
                     Stream stream2 = await FileSystem.OpenAppPackageFileAsync("cities.txt");
+                    var uniqueCitiesByProvince = new Dictionary<string, HashSet<string>>();
                     using (StreamReader reader = new StreamReader(stream2))
                     {
                         while (!reader.EndOfStream)
@@ -401,12 +412,20 @@ namespace MyPadelApp.ViewModels
                             {
                                 var provinceName = _provinceDict.ContainsKey(parts[0].Trim()) ? _provinceDict[parts[0].Trim()] : "";
                                 var cityName = parts[1].Trim();
-                                if (!_provinceCities.ContainsKey(provinceName))
-                                    _provinceCities[provinceName] = new List<string>();
+                                var formattedCity = cityName[..1].ToUpperInvariant() + cityName[1..].ToLowerInvariant();
 
-                                _provinceCities[provinceName].Add(cityName[..1].ToUpperInvariant() + cityName[1..].ToLowerInvariant());
+                                if (!uniqueCitiesByProvince.ContainsKey(provinceName))
+                                    uniqueCitiesByProvince[provinceName] = new HashSet<string>();
+
+                                uniqueCitiesByProvince[provinceName].Add(formattedCity);
                             }
                         }
+                    }
+
+                    // Convert to ObservableCollection
+                    foreach (var province in uniqueCitiesByProvince)
+                    {
+                        _provinceCities[province.Key] = province.Value.ToList();
                     }
                 });
             }
@@ -415,6 +434,7 @@ namespace MyPadelApp.ViewModels
 
         public void LoadCitiesForProvince(bool IsBrithProvince)
         {
+            var uniqueCitizenShips = new HashSet<string>();
             if (IsBrithProvince)
             {
                 CardModel.BrithMunicipality = "";
@@ -423,9 +443,10 @@ namespace MyPadelApp.ViewModels
                 {
                     foreach (var city in _provinceCities[SelectedBrithProvince])
                     {
-                        BrithMunicipality.Add(city);
+                        uniqueCitizenShips.Add(city);
                     }
                 }
+                BrithMunicipality = new ObservableCollection<string>(uniqueCitizenShips.OrderBy(s => s, StringComparer.OrdinalIgnoreCase));
             }
             else
             {
@@ -435,9 +456,10 @@ namespace MyPadelApp.ViewModels
                 {
                     foreach (var city in _provinceCities[SelectedResidenceProvince])
                     {
-                        ResidenceMunicipality.Add(city);
+                        uniqueCitizenShips.Add(city);
                     }
                 }
+                ResidenceMunicipality = new ObservableCollection<string>(uniqueCitizenShips.OrderBy(s => s, StringComparer.OrdinalIgnoreCase));
             }
         }
 
@@ -598,9 +620,9 @@ namespace MyPadelApp.ViewModels
                 HasCitizenShipsError = false;
             }
 
-            (HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid("+39" + CardModel.Cell);
-            if(HasPhoneError)
-                isValid = false;
+            //(HasPhoneError, PhoneError) = FieldValidations.IsItalianPhoneNumberValid("+39" + CardModel.Cell);
+            //if(HasPhoneError)
+            //    isValid = false;
 
             //if (string.IsNullOrWhiteSpace(CardModel.Municipality))
             //{

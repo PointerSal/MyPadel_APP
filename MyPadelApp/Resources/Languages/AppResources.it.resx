@@ -469,7 +469,8 @@ Per registrare la tua nuova tessera FIT.</value>
     <value>Ci sei quasi!</value>
   </data>
   <data name="PhoneNumberPrompt" xml:space="preserve">
-    <value>Inserisci l'OTP che ti abbiamo inviato via e-mail per proseguire con la registrazione</value>
+    <value>Ci sei quasi!
+inserisci l'OTP che ti abbiamo inviato via SMS.</value>
   </data>
   <data name="ResendCode" xml:space="preserve">
     <value>Invia nuovo codice</value>
@@ -505,7 +506,8 @@ Per registrare la tua nuova tessera FIT.</value>
     <value>Inserisci password</value>
   </data>
   <data name="ResendemailMessage" xml:space="preserve">
-    <value>Clicca sul link che ti abbiamo inviato via mail per confermare la tua registrazione!</value>
+    <value>Ci sei quasi!
+Inserisci l'OTP che abbiamo inviato alla tua email.</value>
   </data>
   <data name="AddCard" xml:space="preserve">
     <value>Aggiungi tessera</value>
@@ -899,5 +901,21 @@ Per registrare la tua nuova tessera FIT.</value>
   </data>
   <data name="CardRenew" xml:space="preserve">
     <value>La tua iscrizione è stata rinnovata. Attendi l'approvazione di un amministratore</value>
+  </data>
+  <data name="EnterYourPassword" xml:space="preserve">
+    <value>Inserisci la tua password
+</value>
+  </data>
+  <data name="TypeCurrentPassword" xml:space="preserve">
+    <value>devi digitare la tua password attuale</value>
+  </data>
+  <data name="SelectBrithDate" xml:space="preserve">
+    <value>Seleziona la data di nascita</value>
+  </data>
+  <data name="SelectExpriyDate" xml:space="preserve">
+    <value>Seleziona la data di scadenza</value>
+  </data>
+  <data name="SelectMedicalCertificateDate" xml:space="preserve">
+    <value>Seleziona la data del certificato medico</value>
   </data>
 </root>
